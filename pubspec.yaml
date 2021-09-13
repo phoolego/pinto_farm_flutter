@@ -38,6 +38,9 @@ flutter:
     - family: Prompt
       fonts:
         - asset: assets/fonts/Prompt-Light.ttf
+    - family: SansThai
+      fonts:
+        - asset: assets/fonts/IBMPlexSansThai-Regular.ttf
 
 
 

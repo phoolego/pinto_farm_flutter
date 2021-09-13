@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
 const kHeadingTextStyle = TextStyle(
-  fontFamily: 'Prompt',
-  fontSize: 30.0,
+  fontFamily: 'SansThai',
+  fontSize: 20.0,
+);
+
+const kContentTextStyle = TextStyle(
+  fontFamily: 'SansThai',
+  fontSize: 18.0,
 );
 
 const kAppbarTextStyle = TextStyle(
   fontFamily: 'Prompt',
-  fontSize: 25.0,
+  fontSize: 20.0,
 );
 
 const kLoginHeadingTextStyle = TextStyle(
@@ -15,3 +20,4 @@ const kLoginHeadingTextStyle = TextStyle(
   fontSize: 30.0,
   fontWeight: FontWeight.bold,
 );
+
