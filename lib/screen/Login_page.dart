@@ -13,10 +13,8 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(30),
-          alignment: AlignmentDirectional.center,
+          padding: EdgeInsets.all(20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                   child: Column(
@@ -26,10 +24,15 @@ class _LoginPageState extends State<LoginPage> {
                     height: 250,
                     child: Image.asset('assets/images/Icons.jpg'),
                   ),
-                  Text(
-                    'Farmer',
-                    style: kLoginHeadingTextStyle,
-                    textAlign: TextAlign.left,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Farmer',
+                        style: kLoginHeadingTextStyle,
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
                   )
                 ],
               )),

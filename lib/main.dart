@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_flutter/screen/Login_page.dart';
+import 'component/SideMenu.dart';
 import 'package:pinto_flutter/screen/product_list_page.dart';
 
 void main() => runApp(MyApp());

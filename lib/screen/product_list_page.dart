@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pinto_flutter/component/pinto_button.dart';
 import 'package:pinto_flutter/constant.dart';
 import 'package:pinto_flutter/component/productListCard.dart';
+import 'package:pinto_flutter/component/SideMenu.dart';
 
 class productListPage extends StatelessWidget {
   @override
@@ -9,18 +10,19 @@ class productListPage extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      drawer: SideMenu.withoutAny(),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 218, 154, 0),
         title: Text(
           'รายการผลิตภัณฑ์',
           style: kAppbarTextStyle,
         ),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.menu),
-        ),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     Navigator.pop(context);
+        //   },
+        //   icon: Icon(Icons.menu),
+        // ),
       ),
       body: Container(
         padding: EdgeInsets.all(20),
