@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_flutter/component/pinto_button.dart';
 import 'package:pinto_flutter/constant.dart';
-
+import 'package:pinto_flutter/component/productListCard.dart';
 
 class productListPage extends StatelessWidget {
   @override
@@ -44,40 +44,68 @@ class productListPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: TextFormField(
+                          textAlign: TextAlign.left,
+                          style:
+                              TextStyle(fontSize: 18.0, fontFamily: 'Prompht'),
                           decoration: const InputDecoration(
-                              contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
+                            hintText: 'ค้นหาผลิตภัณฑ์',
+                            hintStyle: TextStyle(fontFamily: 'Prompht'),
+                            contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
                                 Radius.circular(10),
-                              ))),
+                              ),
+                            ),
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.all(0.0),
+                              child: Icon(
+                                Icons.search,
+                                color: Colors.grey,
+                              ), // icon is 48px widget.
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 PintoButton(
+                    width: screenWidth * 0.5,
                     label: '+ เพิ่มผลิตภัณฑ์',
-                    function: (){},
+                    function: () {},
                     buttonColor: Colors.amber)
-
-
               ],
             ),
             SizedBox(
               height: 20,
             ),
             Expanded(
+              child: ListView(
+                children: [
+                  ProductCard.withoutProductID(
+                      productName: 'ชื่อผลิตภัณฑ์',
+                      dateString: '10/10/2021'),
+                  ProductCard.withoutProductID(
+                      productName: 'productName',
+                      dateString: 'dateString'),
+                  ProductCard.withoutProductID(
+                      productName: 'productName',
+                      dateString: 'dateString'),
+                  ProductCard.withoutProductID(
+                      productName: 'productName',
+                      dateString: 'dateString'),
+                  ProductCard.withoutProductID(
+                      productName: 'productName',
+                      dateString: 'dateString'),
+                  ProductCard.withoutProductID(
+                      productName: 'productName',
+                      dateString: 'dateString'),
 
-              child: ListView(children: [
-               ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-              ],),
+                ],
+              ),
             )
           ],
         ),
@@ -86,31 +114,4 @@ class productListPage extends StatelessWidget {
   }
 }
 
-class ProductCard extends StatelessWidget {
-  const ProductCard({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: 500,
-      child: Column(
-        children: [
-          Container(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 80,
-                  height:80,
-                  child: Image.asset('assets/images/Demo.PNG'),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
