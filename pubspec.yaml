@@ -19,6 +19,8 @@ dependencies:
 
 
   cupertino_icons: ^1.0.2
+  dropdown_search: ^1.0.0
+
 
 dev_dependencies:
   flutter_test:

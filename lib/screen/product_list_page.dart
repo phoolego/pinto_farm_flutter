@@ -17,12 +17,7 @@ class productListPage extends StatelessWidget {
           'รายการผลิตภัณฑ์',
           style: kAppbarTextStyle,
         ),
-        // leading: IconButton(
-        //   onPressed: () {
-        //     Navigator.pop(context);
-        //   },
-        //   icon: Icon(Icons.menu),
-        // ),
+
       ),
       body: Container(
         padding: EdgeInsets.all(20),

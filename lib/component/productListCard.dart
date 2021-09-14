@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_flutter/constant.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
 
   String productName='';
   String dateString='';
@@ -18,10 +18,15 @@ class ProductCard extends StatelessWidget {
     required this.dateString});
 
   @override
+  _ProductCardState createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print('tap card and product ID: $productId');
+        print('tap card and product ID: ${widget.productId}');
       },
       child: Container(
         height: 100,
@@ -44,11 +49,11 @@ class ProductCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          productName,
+                          widget.productName,
                           style: kHeadingTextStyle,
                         ),
                         Text(
-                          'Date: $dateString',
+                          'Date: ${widget.dateString}',
                           style: kContentTextStyle,
                         )
                       ],

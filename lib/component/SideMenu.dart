@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_flutter/constant.dart';
 import 'package:pinto_flutter/screen/Login_page.dart';
+import 'package:pinto_flutter/screen/farmer_product_sale_Page.dart';
 
 class SideMenu extends StatelessWidget {
 
@@ -63,6 +64,14 @@ SideMenu({this.firstName, this.lastName, this.role});
                 Navigator.pop(context);
                 //Navigator.pop it will just close side menu
                 print('cart');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_cart),
+              title: Text('sale product (testing)'),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                    FarmerProductSale()),);
               },
             ),
             ListTile(
