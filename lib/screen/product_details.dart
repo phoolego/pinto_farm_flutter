@@ -5,7 +5,8 @@ import 'package:pinto_flutter/constant.dart';
 class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double deviceHeight = MediaQuery.of(context).size.height;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
             backgroundColor: deepOrange,
@@ -27,8 +28,8 @@ class ProductDetailsPage extends StatelessWidget {
                 child: Column(children: [
                   Container(
                       constraints: BoxConstraints(
-                          minWidth: deviceHeight,
-                          maxHeight: 0.3 * deviceHeight),
+                          minWidth: screenWidth,
+                          maxHeight: 0.3 * screenHeight),
                       alignment: AlignmentDirectional.topCenter,
                       child: Image.asset(
                         'assets/images/white_cabbage.jpg',
@@ -36,7 +37,7 @@ class ProductDetailsPage extends StatelessWidget {
                   Container(
                       constraints: BoxConstraints(
                           maxWidth: double.infinity,
-                          maxHeight: 0.6 * deviceHeight),
+                          maxHeight: 0.6 * screenHeight),
                       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                       alignment: Alignment.bottomCenter,
                       decoration: BoxDecoration(
@@ -46,8 +47,8 @@ class ProductDetailsPage extends StatelessWidget {
                               topRight: Radius.circular(20))),
                       child: Column(children: [
                         Container(
-                            margin: EdgeInsets.only(top: 20),
-                            padding: EdgeInsets.only(top: 10),
+                            margin: EdgeInsets.only(top: 0.01*screenHeight),
+                            padding: EdgeInsets.only(top: 0.01*screenHeight),
                             decoration: BoxDecoration(
                                 color: lightGrayBackground,
                                 borderRadius:
@@ -59,8 +60,8 @@ class ProductDetailsPage extends StatelessWidget {
                                 children: [
                                   Column(children: [
                                     Container(
-                                        width: 180.0,
-                                        height: 75.0,
+                                        width: 0.43*screenWidth,
+                                        height: 0.1*screenHeight,
                                         child: Column(
                                             crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -73,8 +74,8 @@ class ProductDetailsPage extends StatelessWidget {
                                   ]),
                                   Column(children: [
                                     Container(
-                                        width: 180.0,
-                                        height: 75.0,
+                                        width: 0.43*screenWidth,
+                                        height: 0.1*screenHeight,
                                         child: Column(
                                             crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -87,7 +88,7 @@ class ProductDetailsPage extends StatelessWidget {
                                   ])
                                 ])),
                         Container(
-                            padding: EdgeInsets.only(top: 10),
+                            padding: EdgeInsets.only(top: 0.01*screenHeight),
                             decoration: BoxDecoration(color: deepWhite),
                             child: Row(
                                 mainAxisAlignment:
@@ -96,8 +97,8 @@ class ProductDetailsPage extends StatelessWidget {
                                 children: [
                                   Column(children: [
                                     Container(
-                                        width: 180.0,
-                                        height: 75.0,
+                                        width: 0.43*screenWidth,
+                                        height: 0.1*screenHeight,
                                         child: Column(
                                             crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -110,8 +111,8 @@ class ProductDetailsPage extends StatelessWidget {
                                   ]),
                                   Column(children: [
                                     Container(
-                                        width: 180.0,
-                                        height: 75.0,
+                                        width: 0.43*screenWidth,
+                                        height: 0.1*screenHeight,
                                         child: Column(
                                             crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -124,7 +125,7 @@ class ProductDetailsPage extends StatelessWidget {
                                   ])
                                 ])),
                         Container(
-                            padding: EdgeInsets.only(top: 10),
+                            padding: EdgeInsets.only(top: 0.01*screenHeight),
                             decoration: BoxDecoration(
                                 color: lightGrayBackground,
                                 borderRadius:
@@ -136,8 +137,8 @@ class ProductDetailsPage extends StatelessWidget {
                                 children: [
                                   Column(children: [
                                     Container(
-                                        width: 180.0,
-                                        height: 75.0,
+                                        width: 0.43*screenWidth,
+                                        height: 0.1*screenHeight,
                                         child: Column(
                                             crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -150,8 +151,8 @@ class ProductDetailsPage extends StatelessWidget {
                                   ]),
                                   Column(children: [
                                     Container(
-                                        width: 180.0,
-                                        height: 75.0,
+                                        width: 0.43*screenWidth,
+                                        height: 0.1*screenHeight,
                                         child: Column(
                                             crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -164,7 +165,7 @@ class ProductDetailsPage extends StatelessWidget {
                                   ])
                                 ])),
                         Container(
-                            padding: EdgeInsets.only(top: 10),
+                            padding: EdgeInsets.only(top: 0.01*screenHeight),
                             decoration: BoxDecoration(color: deepWhite),
                             child: Row(
                                 mainAxisAlignment:
@@ -173,8 +174,8 @@ class ProductDetailsPage extends StatelessWidget {
                                 children: [
                                   Column(children: [
                                     Container(
-                                        width: 180.0,
-                                        height: 75.0,
+                                        width: 0.43*screenWidth,
+                                        height: 0.1*screenHeight,
                                         child: Column(
                                             crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -187,8 +188,8 @@ class ProductDetailsPage extends StatelessWidget {
                                   ]),
                                   Column(children: [
                                     Container(
-                                        width: 180.0,
-                                        height: 75.0,
+                                        width: 0.43*screenWidth,
+                                        height: 0.1*screenHeight,
                                         child: Column(
                                             crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -201,7 +202,7 @@ class ProductDetailsPage extends StatelessWidget {
                                   ])
                                 ])),
                         Container(
-                            padding: EdgeInsets.only(top: 10),
+                            padding: EdgeInsets.only(top: 0.005*screenHeight),
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -210,7 +211,7 @@ class ProductDetailsPage extends StatelessWidget {
                                       ElevatedButton(
                                         child: Padding(
                                             padding: EdgeInsets.fromLTRB(
-                                                10, 5, 5, 10),
+                                                0.01*screenWidth, 0.005*screenHeight, 0.01*screenWidth, 0.005*screenHeight),
                                             child: Text('แก้ไขข้อมูล',
                                                 style:
                                                 whiteSmallNormalTextStyle)),
@@ -224,7 +225,7 @@ class ProductDetailsPage extends StatelessWidget {
                                   ),
                                 ])),
                         Container(
-                            padding: EdgeInsets.only(top: 5),
+                            padding: EdgeInsets.only(top: 0.005*screenHeight),
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -233,7 +234,7 @@ class ProductDetailsPage extends StatelessWidget {
                                       ElevatedButton(
                                         child: Padding(
                                             padding: EdgeInsets.fromLTRB(
-                                                10, 5, 5, 10),
+                            0.01*screenWidth, 0.005*screenHeight, 0.01*screenWidth, 0.005*screenHeight),
                                             child: Text('รายการส่งขาย',
                                                 style:
                                                 blackSmallNormalTextStyle)),
