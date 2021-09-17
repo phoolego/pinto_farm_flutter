@@ -3,6 +3,7 @@ import 'package:pinto_flutter/constant.dart';
 import 'package:pinto_flutter/component/DropDown.dart';
 import 'package:pinto_flutter/component/pinto_button.dart';
 import 'package:pinto_flutter/component/productListCard.dart';
+import 'package:pinto_flutter/component/status_card.dart';
 
 class FarmerProductSale extends StatefulWidget {
   @override
@@ -33,6 +34,7 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
         ),
       ),
       body: Container(
+        padding: EdgeInsets.zero,
         child: Column(
           children: [
             Container(
@@ -73,23 +75,53 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
                                 print('add product button');
                               });
                             },
-                            buttonColor: kColorButton),
+                            buttonColor: lightGrayBackground),
                       )
                     ],
                   )
                 ],
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  child: SizedBox(
-                    height: 20,
-                  ),
-                ),
-               
-              ],
+            Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: screenWidth * 0.9,
+                    height: screenHeight * 0.58,
+                    child: ListView(
+                      children: [
+                        StatusCard.withoutAny(function: (){
+                          print('tap');
+                        },),
+                        StatusCard.withoutAny(function: (){
+                          print('tap');
+                        },),
+                        StatusCard.withoutAny(function: (){
+                          print('tap');
+                        },),
+                        StatusCard.withoutAny(function: (){
+                          print('tap');
+                        },),
+                        StatusCard.withoutAny(function: (){
+                          print('tap');
+                        },),
+                        StatusCard.withoutAny(function: (){
+                          print('tap');
+                        },),
+                        StatusCard.withoutAny(function: (){
+                          print('tap');
+                        },),
+
+
+
+
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
         ),
@@ -97,4 +129,3 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
     );
   }
 }
-
