@@ -35,7 +35,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/images/white_cabbage.jpg
 
   fonts:
     - family: Prompt
