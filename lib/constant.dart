@@ -59,7 +59,7 @@ const Color successDeepGreen = Color(0xFF25AF43);
 const Color successGreen = Color(0xFF3ADC5D);
 const Color waitingDeepYellow = Color(0xFFF19710);
 const Color waitingYellow = Color(0xFFF6B26B);
-const Color notYedDeepRed = Color(0xFFF62D2D);
+const Color notYetDeepRed = Color(0xFFF62D2D);
 const Color notYetRed = Color(0xFFFF5959);
 //Text color
 const Color deepBlack = Color(0xFF000000);
