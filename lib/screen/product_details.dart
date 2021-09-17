@@ -8,9 +8,6 @@ class ProductDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    print(MediaQuery.of(context).padding.bottom);
-
-    print(MediaQuery.of(context).padding.top);
     return Scaffold(
         appBar: AppBar(
             backgroundColor: deepOrange,
