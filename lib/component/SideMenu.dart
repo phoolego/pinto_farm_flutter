@@ -35,7 +35,7 @@ SideMenu({this.firstName, this.lastName, this.role});
                       padding: EdgeInsets.only(right: 10),
                       width: 80,
                       height: 80,
-                      child: Image.asset('assets/images/Demo.PNG'),
+                      child: Image.asset('assets/images/Demo.png'),
                     ),
                     Text(
                       '$firstName \n$lastName \n$role',

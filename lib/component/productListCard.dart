@@ -38,7 +38,7 @@ class ProductCard extends StatelessWidget {
                   SizedBox(
                     width: 80,
                     height: 80,
-                    child: Image.asset('assets/images/Demo.PNG'),
+                    child: Image.asset('assets/images/Demo.png'),
                     //TODO- fix image to dynamic
                   ),
                   Container(
