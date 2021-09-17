@@ -1,33 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_flutter/constant.dart';
 
-class ProductCard extends StatefulWidget {
+class ProductCard extends StatelessWidget {
 
-  String productName='';
-  String dateString='';
-  int productId=0;
+  String productName = '';
+  String dateString = '';
+  int productId = 0;
+  var function;
+
   //not sure about img
 
   ProductCard({
     required this.productName,
     required this.dateString,
-    required this.productId});
+    required this.productId,
+    required this.function});
 
   ProductCard.withoutProductID({
     required this.productName,
-    required this.dateString});
+    required this.dateString,
+    required this.function});
 
-  @override
-  _ProductCardState createState() => _ProductCardState();
-}
 
-class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        print('tap card and product ID: ${widget.productId}');
-      },
+      onTap: function,
       child: Container(
         height: 100,
         width: 500,
@@ -49,11 +47,11 @@ class _ProductCardState extends State<ProductCard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.productName,
+                          productName,
                           style: kHeadingTextStyle,
                         ),
                         Text(
-                          'Date: ${widget.dateString}',
+                          'Date: ${dateString}',
                           style: kContentTextStyle,
                         )
                       ],
@@ -63,11 +61,11 @@ class _ProductCardState extends State<ProductCard> {
                   //sorry for lazy na ;-;
                   SizedBox(
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(child: Icon(Icons.chevron_right)),
-                    ],
-                  ))
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(child: Icon(Icons.chevron_right)),
+                        ],
+                      ))
                 ],
               ),
             ),

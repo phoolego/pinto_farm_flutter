@@ -3,6 +3,7 @@ import 'package:pinto_flutter/component/pinto_button.dart';
 import 'package:pinto_flutter/constant.dart';
 import 'package:pinto_flutter/component/productListCard.dart';
 import 'package:pinto_flutter/component/SideMenu.dart';
+import 'package:pinto_flutter/screen/product_details.dart';
 
 class productListPage extends StatelessWidget {
   @override
@@ -17,7 +18,6 @@ class productListPage extends StatelessWidget {
           'รายการผลิตภัณฑ์',
           style: kAppbarTextStyle,
         ),
-
       ),
       body: Container(
         padding: EdgeInsets.all(20),
@@ -83,24 +83,34 @@ class productListPage extends StatelessWidget {
               child: ListView(
                 children: [
                   ProductCard.withoutProductID(
-                      productName: 'ชื่อผลิตภัณฑ์',
-                      dateString: '10/10/2021'),
+                    productName: 'ชื่อผลิตภัณฑ์',
+                    dateString: '10/10/2021',
+                    function: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                      ProductDetailsPage()
+                      ),);
+                    },
+                  ),
                   ProductCard.withoutProductID(
                       productName: 'productName',
-                      dateString: 'dateString'),
+                      dateString: 'dateString',
+                      function: () {}),
                   ProductCard.withoutProductID(
                       productName: 'productName',
-                      dateString: 'dateString'),
+                      dateString: 'dateString',
+                      function: () {}),
                   ProductCard.withoutProductID(
                       productName: 'productName',
-                      dateString: 'dateString'),
+                      dateString: 'dateString',
+                      function: () {}),
                   ProductCard.withoutProductID(
                       productName: 'productName',
-                      dateString: 'dateString'),
+                      dateString: 'dateString',
+                      function: () {}),
                   ProductCard.withoutProductID(
                       productName: 'productName',
-                      dateString: 'dateString'),
-
+                      dateString: 'dateString',
+                      function: () {}),
                 ],
               ),
             )
@@ -110,5 +120,3 @@ class productListPage extends StatelessWidget {
     );
   }
 }
-
-
