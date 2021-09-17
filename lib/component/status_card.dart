@@ -9,11 +9,18 @@ class StatusCard extends StatelessWidget {
 
   StatusCard({required this.sendingProductDate,required this.status, required this.function});
   StatusCard.withoutAny({var function}){
-    this.sendingProductDate = '';
-    this.status = '';
+    this.sendingProductDate = '11/09/2021';
+    this.status = 'ยังไม่ส่งผลผลิต';
     this.function = function;
 
 }
+
+ void setStatusColor(status){
+    if('ยังไม่ส่งผลิต'==status){
+
+    }
+ }
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +49,25 @@ class StatusCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'รายการส่งขายวันที่:\n$sendingProductDate',
-                          style: kHeadingTextStyle,
+                        Container(
+                          child: Text(
+                            'รายการส่งขายวันที่:\n$sendingProductDate',
+                            style: kHeadingTextStyle,
+                          ),
                         ),
-                        Text(
-                          'สถานะ   $status',
-                          style: kContentTextStyle,
-                        )
+                        Row(
+                          children: [
+                            Text(
+                              'สถานะ    ',
+                              style: kContentTextStyle,
+                            ),
+                            Text(
+                              status,
+                              style: kContentTextStyle,
+                            ),
+                          ],
+                        ),
+
                       ],
                     ),
                   ),
