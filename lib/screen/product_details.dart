@@ -47,7 +47,7 @@ class ProductDetailsPage extends StatelessWidget {
                       Positioned(
                         top:0.35 * screenHeight,
                         child: Container(
-                          height: screenHeight*0.65-MediaQuery.of(context).padding.vertical + kToolbarHeight,
+                          height: screenHeight*0.65-MediaQuery.of(context).padding.top - kToolbarHeight,
                           width: screenWidth,
                           padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                           // alignment: Alignment.bottomCenter,
