@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pinto_flutter/component/pinto_button.dart';
-import 'package:pinto_flutter/constant.dart';
-import 'package:pinto_flutter/component/productListCard.dart';
-import 'package:pinto_flutter/component/SideMenu.dart';
-import 'package:pinto_flutter/screen/product_details.dart';
+import 'package:pinto_farmer_flutter/component/pinto_button.dart';
+import 'package:pinto_farmer_flutter/constant.dart';
+import 'package:pinto_farmer_flutter/component/productListCard.dart';
+import 'package:pinto_farmer_flutter/component/side_menu.dart';
+import 'package:pinto_farmer_flutter/screen/product_details.dart';
 
-class productListPage extends StatelessWidget {
+class ProductListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -70,10 +70,11 @@ class productListPage extends StatelessWidget {
                   height: 10,
                 ),
                 PintoButton(
-                    width: screenWidth * 0.5,
-                    label: '+ เพิ่มผลิตภัณฑ์',
-                    function: () {},
-                    buttonColor: Colors.amber)
+                  width: screenWidth * 0.5,
+                  label: '+ เพิ่มผลิตภัณฑ์',
+                  function: () {},
+                  buttonColor: Colors.amber
+                )
               ],
             ),
             SizedBox(

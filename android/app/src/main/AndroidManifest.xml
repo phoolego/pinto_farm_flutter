@@ -1,8 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pinto_flutter">
+    package="com.example.pinto_farmer_flutter">
    <application
-        android:label="pinto_flutter"
-        android:icon="@mipmap/ic_launcher">
+        android:label="pinto_farmer_flutter"
+        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"
+        android:fullBackupContent="@xml/my_backup_rules">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
