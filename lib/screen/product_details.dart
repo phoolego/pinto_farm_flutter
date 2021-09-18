@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:pinto_flutter/constant.dart';
-import 'package:pinto_flutter/component/pinto_button.dart';
+import 'package:pinto_farmer_flutter/constant.dart';
+import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   @override

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pinto_flutter/constant.dart';
-import 'package:pinto_flutter/component/DropDown.dart';
-import 'package:pinto_flutter/component/pinto_button.dart';
-import 'package:pinto_flutter/component/productListCard.dart';
-import 'package:pinto_flutter/component/status_card.dart';
+import 'package:pinto_farmer_flutter/constant.dart';
+import 'package:pinto_farmer_flutter/component/drop_down.dart';
+import 'package:pinto_farmer_flutter/component/pinto_button.dart';
+import 'package:pinto_farmer_flutter/component/productListCard.dart';
+import 'package:pinto_farmer_flutter/component/status_card.dart';
 
 class FarmerProductSale extends StatefulWidget {
   @override

@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:pinto_flutter/constant.dart';
-import 'package:pinto_flutter/screen/Login_page.dart';
-import 'package:pinto_flutter/screen/farmer_product_sale_Page.dart';
+import 'package:pinto_farmer_flutter/constant.dart';
+import 'package:pinto_farmer_flutter/screen/farmer_product_sale_Page.dart';
+import 'package:pinto_farmer_flutter/service/auth.dart';
 
 class SideMenu extends StatelessWidget {
 
@@ -77,10 +77,9 @@ SideMenu({this.firstName, this.lastName, this.role});
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Logout'),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    LoginPage()),);
-                print('Logout');
+              onTap: ()async {
+                await Auth.logout();
+                Navigator.pushReplacementNamed(context,'/');
               },
             ),
           ],

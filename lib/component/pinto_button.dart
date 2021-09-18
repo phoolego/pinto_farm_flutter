@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pinto_flutter/constant.dart';
+import 'package:pinto_farmer_flutter/constant.dart';
 
 class PintoButton extends StatelessWidget {
   double? width;

@@ -1,4 +1,4 @@
-name: pinto_flutter
+name: pinto_farmer_flutter
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -15,11 +15,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-
   cupertino_icons: ^1.0.2
   dropdown_search: ^1.0.0
+  dio: ^4.0.0
+  flutter_secure_storage: ^4.2.1
 
 
 dev_dependencies:
