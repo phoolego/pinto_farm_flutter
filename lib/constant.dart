@@ -5,6 +5,36 @@ const kHeadingTextStyle = TextStyle(
   fontSize: 18.0,
 );
 
+const kSubHeadingBoldTextStyle = TextStyle(
+  fontFamily: 'SansThai',
+  fontSize: 16.0,
+  fontWeight: FontWeight.bold
+);
+
+const kTextdetailGreyColor = TextStyle(
+    fontFamily: 'SansThai',
+    fontSize: 14.0,
+    color: mediumBlack
+);
+
+const kStatusCompleteTextColor = TextStyle(
+    fontFamily: 'SansThai',
+    fontSize: 16.0,
+    color: successGreen
+);
+
+const kStatusWaringTextColor = TextStyle(
+    fontFamily: 'SansThai',
+    fontSize: 16.0,
+    color: waitingDeepYellow
+);
+
+const kStatusNotCompleteTextColor = TextStyle(
+    fontFamily: 'SansThai',
+    fontSize: 16.0,
+    color: notYetDeepRed
+);
+
 const kContentTextStyle = TextStyle(
   fontFamily: 'SansThai',
   fontSize: 16.0,

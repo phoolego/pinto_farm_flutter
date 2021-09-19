@@ -251,6 +251,7 @@ class ProductDetailsPage extends StatelessWidget {
                                                 primary: lightOrange,
                                               ),
                                               onPressed: () {
+                                                Navigator.pushNamed(context, '/product/sale');
                                                 print('Pressed');
                                               },
                                             )
