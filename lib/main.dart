@@ -4,6 +4,7 @@ import 'package:pinto_farmer_flutter/screen/auth/login_page.dart';
 import 'package:pinto_farmer_flutter/screen/farmer_product_sale_Page.dart';
 import 'package:pinto_farmer_flutter/screen/product_details.dart';
 import 'package:pinto_farmer_flutter/screen/product_list_page.dart';
+import 'package:pinto_farmer_flutter/screen/add_sell_product.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         '/product': (context) => ProductListPage(),
         '/product/detail': (context) => ProductDetailsPage(),
         '/product/sale': (context) => FarmerProductSale(),
+        '/product/sale/addProduct': (context) => AddSellProductPage(),
       },
       // home: productListPage(),
       //home: FarmerProductSale(),

@@ -71,7 +71,10 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
                         child: PintoButton(
                             label: '+ เพิ่มรายการ',
                             function: () {
+                              Navigator.pushNamed(context, '/product/sale/addProduct');
                               setState(() {
+
+
                                 print('add product button');
                               });
                             },
