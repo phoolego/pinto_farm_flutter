@@ -13,16 +13,21 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   String email = "";
   String password = "";
+  String errorMessage = '';
   bool _loading = false;
-  _login() async {
+  _login(BuildContext context) async {
     try{
       setState(() {
         _loading=true;
       });
       await Auth.login(email, password);
+      Navigator.pushReplacementNamed(context,'/');
     }catch(err){
       print(err);
-      _loading=false;
+      errorMessage=err.toString();
+      setState(() {
+        _loading=false;
+      });
     }
   }
   @override
@@ -124,12 +129,13 @@ class _LoginPageState extends State<LoginPage> {
                         label: 'Login',
                         function: () async{
                           if(_formKey.currentState!.validate()){
-                            await _login();
-                            Navigator.pushReplacementNamed(context,'/');
+                            await _login(context);
                           }
                         },
                         buttonColor: Colors.amber
                     ),
+                    SizedBox(height: 10),
+                    Text(errorMessage),
                     SizedBox(height: 10),
                   ],)
                 ],

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/component/drop_down.dart';
 import 'package:pinto_farmer_flutter/component/pinto_button.dart';
-import 'package:pinto_farmer_flutter/component/productListCard.dart';
 import 'package:pinto_farmer_flutter/component/status_card.dart';
 
 class FarmerProductSale extends StatefulWidget {
@@ -71,7 +70,10 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
                         child: PintoButton(
                             label: '+ เพิ่มรายการ',
                             function: () {
+                              Navigator.pushNamed(context, '/product/sale/addProduct');
                               setState(() {
+
+
                                 print('add product button');
                               });
                             },
@@ -93,6 +95,7 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
                     child: ListView(
                       children: [
                         StatusCard.withoutAny(function: (){
+                          Navigator.pushNamed(context, '/product/sale/status');
                           print('tap');
                         },),
                         StatusCard.withoutAny(function: (){
