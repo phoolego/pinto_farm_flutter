@@ -44,6 +44,11 @@ const kAppbarTextStyle = TextStyle(
   fontFamily: 'Prompt',
   fontSize: 18.0,
 );
+const kAppbarDeepYellowTextStyle = TextStyle(
+  fontFamily: 'Prompt',
+  fontSize: 18.0,
+  color: waitingDeepYellow,
+);
 
 const kLoginHeadingTextStyle = TextStyle(
   fontFamily: 'Prompt',

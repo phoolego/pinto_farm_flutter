@@ -48,12 +48,9 @@ class AddSellProductPage extends StatelessWidget {
                     child: Row(
                       children: [
                         Expanded(
-                          child: TextField(
+                          child: TextFormField(
                             textAlign: TextAlign.left,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
+                            keyboardType: TextInputType.numberWithOptions(decimal: true),
                             style: TextStyle(
                                 fontSize: 18.0, fontFamily: 'Prompht'),
                             decoration: const InputDecoration(

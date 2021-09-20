@@ -18,7 +18,7 @@ class Auth {
       return Farmer(response.data);
     } on DioError catch (err) {
       if(err.response!.statusCode==403){
-        throw 'กรุณากรอก อีเมล และ รหัวผ่าน';
+        throw 'กรุณากรอก อีเมล และ รหัสผ่าน';
       }else if(err.response!.data['message']=='wrong password'){
         throw 'รหัสผ่านไม่ถูกต้อง';
       }else if(err.response!.data['message']=='Do not have permission'){
