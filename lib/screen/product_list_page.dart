@@ -3,7 +3,7 @@ import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/component/productListCard.dart';
 import 'package:pinto_farmer_flutter/component/side_menu.dart';
-import 'package:pinto_farmer_flutter/screen/product_details.dart';
+import 'package:pinto_farmer_flutter/screen/product_details_page.dart';
 
 class ProductListPage extends StatelessWidget {
   @override

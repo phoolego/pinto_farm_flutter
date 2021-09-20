@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/screen/auth/auth_controller.dart';
 import 'package:pinto_farmer_flutter/screen/auth/login_page.dart';
 import 'package:pinto_farmer_flutter/screen/farmer_product_sale_Page.dart';
-import 'package:pinto_farmer_flutter/screen/product_details.dart';
+import 'package:pinto_farmer_flutter/screen/product_details_page.dart';
 import 'package:pinto_farmer_flutter/screen/product_list_page.dart';
 import 'package:pinto_farmer_flutter/screen/add_sell_product.dart';
 import 'package:pinto_farmer_flutter/screen/status_product_sell_page.dart';
