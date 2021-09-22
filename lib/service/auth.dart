@@ -37,21 +37,46 @@ class Auth {
     await _storage.delete(key: 'email');
     await _storage.delete(key: 'password');
   }
-  static Future<int> register(String username,String email,String password,String address,String contact) async {
+  static Future<int> register(String firstname,String lastname,String email,String password,String address,String contact,String farmName,double maxArea) async {
     try {
-      var response = await Api.dio.post('/insert-farmer',
+      var response = await Api.dio.post('/register-farmer',
         data:{
-          'username':username,
+          'firstname':firstname,
+          'lastname':lastname,
           'email':email,
           'password':password,
           'address':address,
           'contact':contact,
-          'role':'FARMER'
+          'farmName': farmName,
+          'maxArea': maxArea
         }
       );
       return response.data['insertId'];
     } on DioError catch (err) {
       throw err.response!.data['message'];
+    }
+  }
+  static Future<int> requestRole(String email,String password) async {
+    try {
+      var response = await Api.dio.post('/request-farmer-role',
+          data:{'email':email,'password':password}
+      );
+      return response.data['insertId'];
+    } on DioError catch (err) {
+      if(err.response!.statusCode==403){
+        throw 'กรุณากรอก อีเมล และ รหัสผ่าน';
+      }else if(err.response!.data['message']=='wrong password'){
+        throw 'รหัสผ่านไม่ถูกต้อง';
+      }else if(err.response!.data['message']=='you already have farmer permission'){
+        throw 'คุณสิทธิ์การเข้าใช้งานแบบเกษตรกรอยู่แล้ว';
+      }else if(err.response!.data['message']=='wait for request response'){
+        throw 'รอการอนุมัติสิทธิ์';
+      }
+      else if(err.response!.data['message']=='no user found'){
+        throw 'ไม่พบบัญชีผู้ใช้';
+      }else{
+        throw 'ระบบขัดข้อง';
+      }
     }
   }
   static Future<Farmer> getLoginUser() async{
