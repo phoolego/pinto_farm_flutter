@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/screen/product_edit_details_page.dart';
-import 'package:pinto_farmer_flutter/service/date_farmat.dart';
+import 'package:pinto_farmer_flutter/service/date_format.dart';
 
 
 class ProductDetailsPage extends StatelessWidget {
