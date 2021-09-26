@@ -35,8 +35,53 @@ class ProductService{
       List<Product> products =  (response.data as List).map((product) => Product(
           product
       )).toList();
-      // print(products[0]);
       return products;
+    } on DioError catch (err) {
+      throw err.response!.data['message'];
+    }catch(err){
+      print(err.toString());
+      throw err.toString();
+    }
+  }
+  static Future<void> insertProduct(String productType,double area, DateTime plantDate, DateTime predictHarvestDate, double predictAmount) async{
+    try{
+      await Api.dio.post('/farmer-product/insert',
+        options: Options(
+          headers: {
+            'userId':Auth.farmer.userId,
+            'farmerId':Auth.farmer.farmId,
+          },
+        ),
+        data: {
+          'productType':productType,
+          'area':area,
+          'plantDate':plantDate.toString().substring(0,10),
+          'predictHarvestDate':predictHarvestDate.toString().substring(0,10),
+          'predictAmount':predictAmount
+        },
+      );
+    } on DioError catch (err) {
+      throw err.response!.data['message'];
+    }catch(err){
+      print(err.toString());
+      throw err.toString();
+    }
+  }
+  static Future<void> harvestProduct(int productId, DateTime harvestDate, DateTime harvestAmount) async{
+    try{
+      await Api.dio.put('/farmer-product/harvest',
+        options: Options(
+          headers: {
+            'userId':Auth.farmer.userId,
+            'farmerId':Auth.farmer.farmId,
+          },
+        ),
+        data: {
+          'productId':productId,
+          'harvestDate':harvestDate.toString().substring(0,10),
+          'harvestAmount':harvestAmount.toString().substring(0,10),
+        },
+      );
     } on DioError catch (err) {
       throw err.response!.data['message'];
     }catch(err){
