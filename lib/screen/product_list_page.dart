@@ -3,7 +3,11 @@ import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/component/productListCard.dart';
 import 'package:pinto_farmer_flutter/component/side_menu.dart';
+import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/screen/product_details_page.dart';
+import 'package:pinto_farmer_flutter/service/auth.dart';
+import 'package:pinto_farmer_flutter/service/date_farmat.dart';
+import 'package:pinto_farmer_flutter/service/product_service.dart';
 
 class ProductListPage extends StatelessWidget {
   @override
@@ -28,7 +32,7 @@ class ProductListPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('สวัสดี,\nฟาร์ม สมหญิง', style: kHeadingTextStyle)
+                  Text('สวัสดี,\nฟาร์ม ${Auth.farmer.farmName}', style: kHeadingTextStyle)
                 ],
               ),
             ),
@@ -81,38 +85,41 @@ class ProductListPage extends StatelessWidget {
               height: 20,
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  ProductCard.withoutProductID(
-                    productName: 'ชื่อผลิตภัณฑ์',
-                    dateString: '10/10/2021',
-                    function: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                      ProductDetailsPage()
-                      ),);
-                    },
-                  ),
-                  ProductCard.withoutProductID(
-                      productName: 'productName',
-                      dateString: 'dateString',
-                      function: () {}),
-                  ProductCard.withoutProductID(
-                      productName: 'productName',
-                      dateString: 'dateString',
-                      function: () {}),
-                  ProductCard.withoutProductID(
-                      productName: 'productName',
-                      dateString: 'dateString',
-                      function: () {}),
-                  ProductCard.withoutProductID(
-                      productName: 'productName',
-                      dateString: 'dateString',
-                      function: () {}),
-                  ProductCard.withoutProductID(
-                      productName: 'productName',
-                      dateString: 'dateString',
-                      function: () {}),
-                ],
+              child: FutureBuilder<List<Product>>(
+                future: ProductService.getAllProduct(),
+                builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot){
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else {
+                    List<Product>? products = snapshot.data;
+                    return ListView.builder(
+                      itemCount: products!.length,
+                      itemBuilder:(context, index) => ProductCard.withoutProductID(
+                          productName: products[index].typeOfProduct,
+                          dateString: DateFormat.getFullDate(products[index].plantDate),
+                          function: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ProductDetailsPage(product: products[index],))
+                            );
+                          },
+                      ),
+                    );
+                    // return ListView(
+                    //   children: [
+                    //     ProductCard.withoutProductID(
+                    //       productName: 'ชื่อผลิตภัณฑ์',
+                    //       dateString: '10/10/2021',
+                    //       function: () {
+                    //         Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsPage()));
+                    //       },
+                    //     ),
+                    //   ],
+                    // );
+                  }
+                },
               ),
             )
           ],

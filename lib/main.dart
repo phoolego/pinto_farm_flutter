@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const AuthController(),
         '/login': (context) => LoginPage(),
         '/product': (context) => ProductListPage(),
-        '/product/detail': (context) => ProductDetailsPage(),
+        // '/product/detail': (context) => ProductDetailsPage(),
         '/product/sale': (context) => FarmerProductSale(),
         '/product/sale/add-product': (context) => AddSellProductPage(),
         '/product/sale/status' : (context) => StatusProductSellPage(),

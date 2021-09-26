@@ -70,8 +70,7 @@ SideMenu({this.firstName, this.lastName, this.role});
               leading: Icon(Icons.shopping_cart),
               title: Text('sale product (testing)'),
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    FarmerProductSale()),);
+                Navigator.pushNamed(context, '/product/sale',);
               },
             ),
             ListTile(
