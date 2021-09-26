@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
+import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/screen/product_edit_details_page.dart';
+import 'package:pinto_farmer_flutter/service/date_farmat.dart';
 
 
 class ProductDetailsPage extends StatelessWidget {
+  Product product;
+  ProductDetailsPage({required this.product});
+  bool _isNull(dynamic value){
+    return value==null;
+  }
   @override
   Widget build(BuildContext context) {
     //String
@@ -29,7 +36,7 @@ class ProductDetailsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: deepOrange,
         title: Text(
-          '$productName',
+          '${product.typeOfProduct}',
           style: kAppbarTextStyle,
         ),
         leading: IconButton(
@@ -98,7 +105,7 @@ class ProductDetailsPage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('พื้นที่การปลูก', style: kNormalTextStyle),
-                                        Text('$farmSize $unitSize', style: kNormalTextStyle)
+                                        Text('${product.area} $unitSize', style: kNormalTextStyle)
                                       ],
                                     ),
                                   )
@@ -110,7 +117,10 @@ class ProductDetailsPage extends StatelessWidget {
                                     width: 0.43 * screenWidth,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [Text('วันที่เริ่มปลูก', style: kNormalTextStyle), Text('$startDate', style: kNormalTextStyle)],
+                                      children: [
+                                        Text('วันที่เริ่มปลูก', style: kNormalTextStyle),
+                                        Text(DateFormat.getFullDate(product.plantDate), style: kNormalTextStyle),
+                                      ],
                                     ),
                                   )
                                 ],
@@ -133,7 +143,7 @@ class ProductDetailsPage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('ปริมาณที่คาดว่าจะได้', style: kNormalTextStyle),
-                                        Text('$expectAmount $unitAmount', style: kNormalTextStyle)
+                                        Text('${product.predictAmount} ${product.unit}', style: kNormalTextStyle)
                                       ],
                                     ),
                                   )
@@ -147,7 +157,7 @@ class ProductDetailsPage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('วันที่คาดว่าจะได้', style: kNormalTextStyle),
-                                        Text('$expectDate', style: kNormalTextStyle)
+                                        Text(DateFormat.getFullDate(product.predictHarvestDate), style: kNormalTextStyle)
                                       ],
                                     ),
                                   )
@@ -176,7 +186,10 @@ class ProductDetailsPage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('ปริมาณที่เก็บเกี่ยว', style: kNormalTextStyle),
-                                        Text('$nullData $unitAmount', style: kNormalAlertTextStyle)
+                                        Text(
+                                          '${_isNull(product.harvestAmount)?nullData:product.harvestAmount} ${product.unit}',
+                                          style: _isNull(product.harvestAmount)?kNormalAlertTextStyle:kNormalTextStyle,
+                                        )
                                       ],
                                     ),
                                   )
@@ -188,7 +201,13 @@ class ProductDetailsPage extends StatelessWidget {
                                     width: 0.43 * screenWidth,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [Text('วันที่เก็บเกี่ยว', style: kNormalTextStyle), Text('$nullData', style: kNormalAlertTextStyle)],
+                                      children: [
+                                        Text('วันที่เก็บเกี่ยว', style: kNormalTextStyle),
+                                        Text(
+                                          _isNull(product.harvestDate)?nullData:DateFormat.getFullDate(product.harvestDate!),
+                                          style: _isNull(product.harvestAmount)?kNormalAlertTextStyle:kNormalTextStyle,
+                                        ),
+                                      ],
                                     ),
                                   )
                                 ],
@@ -225,7 +244,7 @@ class ProductDetailsPage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('ราคาต่อหน่วย', style: kNormalTextStyle),
-                                        Text('$pricePerOne $unitPrice', style: kNormalTextStyle)
+                                        Text('${product.buyPrice} บาท/${product.unit}', style: kNormalTextStyle)
                                       ],
                                     ),
                                   )
