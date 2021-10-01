@@ -7,18 +7,19 @@ import 'package:pinto_farmer_flutter/screen/product_details_page.dart';
 
 class ProductEditDetailsPage extends StatelessWidget {
   Product product;
-  DateTime selectedDate = DateTime.now();
+
   ProductEditDetailsPage({required this.product});
   bool _isNull(dynamic value) {
     return value == null;
   }
 
+  DateTime selectedDate = DateTime.now();
   _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate, // Refer step 1
       firstDate: DateTime.now(),
-      lastDate: DateTime(2030),
+      lastDate: DateTime(2050),
         helpText: 'เลือกวันที่',
         cancelText: 'ยกเลิก',
         confirmText: 'ตกลง',
@@ -207,7 +208,7 @@ class ProductEditDetailsPage extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          height: 0.05 * screenHeight,
+                          height: 0.2 * screenHeight,
                         ),
                       ],
                     ),
