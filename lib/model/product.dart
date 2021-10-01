@@ -10,6 +10,8 @@ class Product{
   String status='';
   double buyPrice=0.0;
   String unit = 'กก.';
+  String areaUnit = 'ตร.ม.';
+  String priceUnit = 'บาท';
 
   Product(Map<String,dynamic> jsonProduct){
     productId = jsonProduct['product_id'];
