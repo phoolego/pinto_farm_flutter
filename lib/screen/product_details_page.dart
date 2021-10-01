@@ -5,29 +5,17 @@ import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/screen/product_edit_details_page.dart';
 import 'package:pinto_farmer_flutter/service/date_format.dart';
 
-
 class ProductDetailsPage extends StatelessWidget {
   Product product;
   ProductDetailsPage({required this.product});
-  bool _isNull(dynamic value){
-    return value==null;
+  bool _isNull(dynamic value) {
+    return value == null;
   }
+
   @override
   Widget build(BuildContext context) {
     //String
     String nullData = 'ไม่มีข้อมูล';
-    String productName = 'ผักกาดขาว';
-    double farmSize = 100;
-    String unitSize = 'ตร.ม.';
-    String unitAmount = 'กรัม';
-    String unitPrice = 'บาท';
-    String startDate = '01/06/2021';
-    double expectAmount = 175;
-    String expectDate = '02/07/2021';
-    // double harvestAmount = 180;
-    // String harvestDate = '11/07/2021';
-    // double sellAmount = 150;
-    double pricePerOne = 20;
 
     //size
     double screenHeight = MediaQuery.of(context).size.height;
@@ -71,7 +59,8 @@ class ProductDetailsPage extends StatelessWidget {
                 child: Container(
                   height: screenHeight * 0.7 - MediaQuery.of(context).padding.top - kToolbarHeight,
                   width: screenWidth,
-                  padding: EdgeInsets.fromLTRB(0.04 * screenWidth, 0.01 * screenHeight, 0.04 * screenWidth, 0.01 * screenHeight),
+                  padding: EdgeInsets.fromLTRB(
+                      0.04 * screenWidth, 0.01 * screenHeight, 0.04 * screenWidth, 0.01 * screenHeight),
                   // alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
                     color: deepWhite,
@@ -105,7 +94,7 @@ class ProductDetailsPage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('พื้นที่การปลูก', style: kNormalTextStyle),
-                                        Text('${product.area} $unitSize', style: kNormalTextStyle)
+                                        Text('${product.area} ${product.areaUnit}', style: kNormalTextStyle)
                                       ],
                                     ),
                                   )
@@ -157,7 +146,8 @@ class ProductDetailsPage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('วันที่คาดว่าจะได้', style: kNormalTextStyle),
-                                        Text(DateFormat.getFullDate(product.predictHarvestDate), style: kNormalTextStyle)
+                                        Text(DateFormat.getFullDate(product.predictHarvestDate),
+                                            style: kNormalTextStyle)
                                       ],
                                     ),
                                   )
@@ -187,8 +177,9 @@ class ProductDetailsPage extends StatelessWidget {
                                       children: [
                                         Text('ปริมาณที่เก็บเกี่ยว', style: kNormalTextStyle),
                                         Text(
-                                          '${_isNull(product.harvestAmount)?nullData:product.harvestAmount} ${product.unit}',
-                                          style: _isNull(product.harvestAmount)?kNormalAlertTextStyle:kNormalTextStyle,
+                                          '${_isNull(product.harvestAmount) ? nullData : product.harvestAmount} ${product.unit}',
+                                          style:
+                                              _isNull(product.harvestAmount) ? kNormalAlertTextStyle : kNormalTextStyle,
                                         )
                                       ],
                                     ),
@@ -204,8 +195,11 @@ class ProductDetailsPage extends StatelessWidget {
                                       children: [
                                         Text('วันที่เก็บเกี่ยว', style: kNormalTextStyle),
                                         Text(
-                                          _isNull(product.harvestDate)?nullData:DateFormat.getFullDate(product.harvestDate!),
-                                          style: _isNull(product.harvestAmount)?kNormalAlertTextStyle:kNormalTextStyle,
+                                          _isNull(product.harvestDate)
+                                              ? nullData
+                                              : DateFormat.getFullDate(product.harvestDate!),
+                                          style:
+                                              _isNull(product.harvestAmount) ? kNormalAlertTextStyle : kNormalTextStyle,
                                         ),
                                       ],
                                     ),
@@ -230,7 +224,7 @@ class ProductDetailsPage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('ปริมาณที่ส่งขาย', style: kNormalTextStyle),
-                                        Text('$nullData $unitAmount', style: kNormalAlertTextStyle)
+                                        Text('$nullData ${product.unit}', style: kNormalAlertTextStyle)
                                       ],
                                     ),
                                   )
@@ -244,7 +238,8 @@ class ProductDetailsPage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('ราคาต่อหน่วย', style: kNormalTextStyle),
-                                        Text('${product.buyPrice} บาท/${product.unit}', style: kNormalTextStyle)
+                                        Text('${product.buyPrice} ${product.priceUnit}/${product.unit}',
+                                            style: kNormalTextStyle)
                                       ],
                                     ),
                                   )
@@ -260,10 +255,11 @@ class ProductDetailsPage extends StatelessWidget {
                             children: [
                               Column(
                                 children: [
+                                  //IF farmer already add data, it will can't press the button
                                   ElevatedButton(
                                     child: Padding(
-                                        padding:
-                                        EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight, 0.01 * screenWidth, 0.005 * screenHeight),
+                                        padding: EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight,
+                                            0.01 * screenWidth, 0.005 * screenHeight),
                                         child: Text('แก้ไขข้อมูล', style: whiteSmallNormalTextStyle)),
                                     style: ElevatedButton.styleFrom(primary: deepOrange),
                                     onPressed: () {
@@ -271,8 +267,7 @@ class ProductDetailsPage extends StatelessWidget {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => ProductEditDetailsPage(),
-                                        ),
+                                            builder: (context) => ProductEditDetailsPage(product: this.product)),
                                       );
                                     },
                                   )
@@ -290,8 +285,8 @@ class ProductDetailsPage extends StatelessWidget {
                                 children: [
                                   ElevatedButton(
                                     child: Padding(
-                                        padding:
-                                        EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight, 0.01 * screenWidth, 0.005 * screenHeight),
+                                        padding: EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight,
+                                            0.01 * screenWidth, 0.005 * screenHeight),
                                         child: Text('รายการส่งขาย', style: blackSmallNormalTextStyle)),
                                     style: ElevatedButton.styleFrom(
                                       primary: lightOrange,
