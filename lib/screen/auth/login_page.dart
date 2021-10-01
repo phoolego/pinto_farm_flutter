@@ -136,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(height: 10),
                             PintoButton(
                                 width: screenWidth * 0.4,
-                                label: 'เข้าสูระบบ',
+                                label: 'เข้าสู่ระบบ',
                                 function: () async {
                                   if (_formKey.currentState!.validate()) {
                                     await _login(context);
