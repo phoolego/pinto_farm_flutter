@@ -7,7 +7,7 @@ import 'package:pinto_farmer_flutter/screen/product_details_page.dart';
 
 class ProductEditDetailsPage extends StatelessWidget {
   Product product;
-  String selectedDate = DateFormat.getFullDate(DateTime.now());
+  DateTime selectedDate = DateTime.now();
   ProductEditDetailsPage({required this.product});
   bool _isNull(dynamic value) {
     return value == null;
@@ -16,16 +16,16 @@ class ProductEditDetailsPage extends StatelessWidget {
   _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(), // Refer step 1
+      initialDate: selectedDate, // Refer step 1
       firstDate: DateTime.now(),
       lastDate: DateTime(2030),
-      helpText: 'เลือกวันที่',
-      cancelText: 'ยกเลิก',
-      confirmText: 'ตกลง',
+        helpText: 'เลือกวันที่',
+        cancelText: 'ยกเลิก',
+        confirmText: 'ตกลง',
     );
     if (picked != null && picked != selectedDate)
       setState(() {
-        selectedDate = picked as String;
+        selectedDate = picked;
       });
   }
 
@@ -160,7 +160,7 @@ class ProductEditDetailsPage extends StatelessWidget {
                                       child: InkWell(
                                         onTap: () => _selectDate(context),
                                         child: Text(
-                                          "${selectedDate}".split(' ')[0],
+                                          "${DateFormat.getFullDate(selectedDate.toLocal())}".split(' ')[0],
                                           style: kNormalTextStyle,
                                         ),
                                       ),
@@ -168,6 +168,7 @@ class ProductEditDetailsPage extends StatelessWidget {
                                     Text('ปริมาณที่เก็บเกี่ยว (${product.unit})', style: kNormalTextStyle),
                                     TextField(
                                       obscureText: false,
+                                      keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                         contentPadding: EdgeInsets.all(5),
@@ -197,11 +198,6 @@ class ProductEditDetailsPage extends StatelessWidget {
                                         child: Text('ยืนยันแก้ไขข้อมูล', style: whiteSmallNormalTextStyle)),
                                     style: ElevatedButton.styleFrom(primary: deepOrange),
                                     onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => ProductDetailsPage(product: this.product)),
-                                      );
                                       print('Pressed');
                                     },
                                   )
