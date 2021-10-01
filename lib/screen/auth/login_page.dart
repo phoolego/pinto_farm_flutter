@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: SafeArea(
         child: _loading
-            ? const Center(child: Text('login loading...'))
+            ? const Center(child: Text('กำลังลงชื่อเข้าใช้'))
             : SingleChildScrollView(
                 child: Form(
                   key: _formKey,
@@ -47,16 +47,16 @@ class _LoginPageState extends State<LoginPage> {
                         Column(
                           children: [
                             Container(
-                              width: 250,
-                              height: 250,
+                              width: 200,
+                              height: 200,
                               child: Image.asset('assets/images/Icons.jpg'),
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Farmer',
-                                  style: kLoginHeadingTextStyle,
+                                  'เกษตรกร',
+                                  style: kNormalTextStyle,
                                   textAlign: TextAlign.left,
                                 ),
                               ],
@@ -67,17 +67,17 @@ class _LoginPageState extends State<LoginPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Login',
+                              'ลงชื่อเข้าใช้',
                               style: kLoginHeadingTextStyle,
                             ),
                             SizedBox(
-                              height: 30,
+                              height: 10,
                             ),
                             Padding(
                               padding: EdgeInsets.all(3),
                               child: TextFormField(
                                 decoration: const InputDecoration(
-                                  hintText: 'E-mail',
+                                  hintText: 'อีเมล',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(10),
@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 validator: (String? value) {
                                   if (value!.isEmpty) {
-                                    return 'E-mail is a required filed.';
+                                    return 'กรุณากรอกอีเมล';
                                   } else {
                                     return null;
                                   }
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                               child: TextFormField(
                                 obscureText: true,
                                 decoration: const InputDecoration(
-                                  hintText: 'Password',
+                                  hintText: 'รหัสผ่าน',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(10),
@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                                 validator: (String? value) {
                                   if (value!.isEmpty) {
                                     // validate password must longer than 6 character
-                                    return 'Password is a required filed.';
+                                    return 'กรุณากรอกรหัสผ่าน';
                                   } else {
                                     return null;
                                   }
@@ -131,9 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         Column(
                           children: [
-                            SizedBox(height: 5),
                             Text(errorMessage,style: kStatusNotCompleteTextColor,),
-                            SizedBox(height: 10),
                             PintoButton(
                                 width: screenWidth * 0.4,
                                 label: 'เข้าสู่ระบบ',
@@ -142,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                                     await _login(context);
                                   }
                                 },
-                                buttonColor: Colors.amber),
+                                buttonColor: deepOrange),
                             SizedBox(height: 10),
                             PintoButton(
                                 width: screenWidth * 0.4,
@@ -150,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                                 function: () async {
                                   Navigator.pushNamed(context, '/register');
                                 },
-                                buttonColor: Colors.amber),
+                                buttonColor: lightOrange),
                             SizedBox(height: 10),
                           ],
                         )

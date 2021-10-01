@@ -11,9 +11,9 @@ String? lastName = '';
 String? role = '';
 
 SideMenu.withoutAny(){
-  this.firstName = 'Firstname';
-  this.lastName = 'Lastname';
-  this.role = 'Role';
+  this.firstName = 'ชื่อจริง';
+  this.lastName = 'นามสกุล';
+  this.role = 'ตำแหน่ง';
 }
 SideMenu({this.firstName, this.lastName, this.role});
 
@@ -35,7 +35,7 @@ SideMenu({this.firstName, this.lastName, this.role});
                       padding: EdgeInsets.only(right: 10),
                       width: 80,
                       height: 80,
-                      child: Image.asset('assets/images/Demo.png'),
+                      child: Image.asset('assets/images/Icons.jpg'),
                     ),
                     Text(
                       '$firstName \n$lastName \n$role',
@@ -51,7 +51,7 @@ SideMenu({this.firstName, this.lastName, this.role});
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: Text('Home'),
+              title: Text('หน้าหลัก'),
               onTap: (){
                 //Navigator.pop(context);
                 print('Home');
@@ -75,7 +75,7 @@ SideMenu({this.firstName, this.lastName, this.role});
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
-              title: Text('Logout'),
+              title: Text('ออกจากระบบ'),
               onTap: ()async {
                 await Auth.logout();
                 Navigator.pushReplacementNamed(context,'/');
