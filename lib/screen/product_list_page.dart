@@ -54,7 +54,7 @@ class ProductListPage extends StatelessWidget {
                             contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(10),
+                                Radius.circular(5),
                               ),
                             ),
                             prefixIcon: Padding(
@@ -76,8 +76,10 @@ class ProductListPage extends StatelessWidget {
                 PintoButton(
                   width: screenWidth * 0.5,
                   label: '+ เพิ่มผลิตภัณฑ์',
-                  function: () {},
-                  buttonColor: Colors.amber
+                  function: () {
+                    Navigator.pushNamed(context, '/product/add');
+                  },
+                  buttonColor: lightOrange
                 )
               ],
             ),

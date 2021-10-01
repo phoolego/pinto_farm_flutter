@@ -3,7 +3,9 @@ class ProductType {
   String nameEng = '';
   double priceBuy = 0;
   double priceSell = 0;
-  String unit = '';
+  String unit = 'กก.';
+  String areaUnit = 'ตร.ม.';
+  String priceUnit = 'บาท';
   String picture = '';
 
   ProductType(Map<String,dynamic> jsonProductType){
