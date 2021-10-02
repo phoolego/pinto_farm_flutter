@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pinto_farmer_flutter/component/drop_down_field.dart';
+import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/model/product_type.dart';
 import 'package:pinto_farmer_flutter/service/date_format.dart';
@@ -159,14 +160,14 @@ class _AddProductPageState extends State<AddProductPage> {
                                 Text('วันที่เริ่มปลูก', style: kNormalTextStyle),
                                 Container(
                                   width: 0.9 * screenWidth,
-                                  height: 40 ,
+                                  height: 50 ,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: lightBlack),
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(5),
                                     ),
                                   ),
-                                  padding: const EdgeInsets.all(5),
+                                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                                   child: InkWell(
                                     onTap: () => _selectDate(context,_plantDate,(pick){_plantDate=pick;}),
                                     child: Text(
@@ -194,14 +195,14 @@ class _AddProductPageState extends State<AddProductPage> {
                                 Text('วันที่คาดว่าจะเก็บเกี่ยว', style: kNormalTextStyle),
                                 Container(
                                   width: 0.9 * screenWidth,
-                                  height: 40,
+                                  height: 50,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: lightBlack),
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(5),
                                     ),
                                   ),
-                                  padding: const EdgeInsets.all(5),
+                                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                                   child: InkWell(
                                     onTap: () => _selectDate(context,_predictHarvestDate,(pick){_predictHarvestDate=pick;}),
                                     child: Text(
@@ -256,17 +257,13 @@ class _AddProductPageState extends State<AddProductPage> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.only(top: 0.005 * screenHeight),
+                        padding: EdgeInsets.only(top: 0.01 * screenHeight),
                         child: Column(
                           children: [
-                            ElevatedButton(
-                              child: Padding(
-                                  padding: EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight,
-                                      0.01 * screenWidth, 0.005 * screenHeight),
-                                  child: const Text('เพิ่มผลิตภัณฑ์', style: whiteSmallNormalTextStyle)
-                              ),
-                              style: ElevatedButton.styleFrom(primary: deepOrange),
-                              onPressed: () async{
+                            PintoButton(
+                              width: 200,
+                              label: 'เพิ่มผลิตภัณฑ์',
+                              function: () async{
                                 setState(() {
                                   _errorProductType='';
                                 });
@@ -286,7 +283,37 @@ class _AddProductPageState extends State<AddProductPage> {
                                   }
                                 }
                               },
+                              buttonColor: deepOrange,
+                              textStyle: whiteSmallNormalTextStyle,
                             ),
+                            // ElevatedButton(
+                            //   child: Padding(
+                            //       padding: EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight,
+                            //           0.01 * screenWidth, 0.005 * screenHeight),
+                            //       child: const Text('เพิ่มผลิตภัณฑ์', style: whiteSmallNormalTextStyle)
+                            //   ),
+                            //   style: ElevatedButton.styleFrom(primary: deepOrange),
+                            //   onPressed: () async{
+                            //     setState(() {
+                            //       _errorProductType='';
+                            //     });
+                            //     if(_productType.isEmpty){
+                            //       setState(() {
+                            //         _errorProductType='กรุณาเลือกผลิตภัฒฑ์';
+                            //       });
+                            //     }else if (_formKey.currentState!.validate()) {
+                            //       try{
+                            //         await ProductService.insertProduct(_productType, _area, _plantDate, _predictHarvestDate, _predictAmount);
+                            //         Navigator.pop(context);
+                            //         Navigator.pushReplacementNamed(context, '/product');
+                            //       }catch(err){
+                            //         setState(() {
+                            //           _errorMessage = err.toString();
+                            //         });
+                            //       }
+                            //     }
+                            //   },
+                            // ),
                             Text(_errorMessage,style: TextStyle(color: Colors.red),),
                           ],
                         ),

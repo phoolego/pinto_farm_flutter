@@ -112,7 +112,7 @@ class ProductService{
       throw err.toString();
     }
   }
-  static Future<void> harvestProduct(int productId, DateTime harvestDate, DateTime harvestAmount) async{
+  static Future<void> harvestProduct(int productId, DateTime harvestDate, double harvestAmount) async{
     try{
       await Api.dio.put('/farmer-product/harvest',
         options: Options(
@@ -124,7 +124,7 @@ class ProductService{
         data: {
           'productId':productId,
           'harvestDate':harvestDate.toString().substring(0,10),
-          'harvestAmount':harvestAmount.toString().substring(0,10),
+          'harvestAmount':harvestAmount,
         },
       );
     } on DioError catch (err) {
