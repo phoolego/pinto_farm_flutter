@@ -28,12 +28,12 @@ class PintoButton extends StatelessWidget {
           ),
           height: 40,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Icon(icon),
               Text(
                 label,
-                style: kContentTextStyle,
+                style: kNormalTextStyle,
               ),
             ],
           ),

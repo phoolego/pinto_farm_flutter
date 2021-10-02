@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
-import 'package:pinto_farmer_flutter/component/productListCard.dart';
+import 'package:pinto_farmer_flutter/component/product_list_card.dart';
 import 'package:pinto_farmer_flutter/component/side_menu.dart';
 import 'package:pinto_farmer_flutter/screen/product_details_page.dart';
 import 'package:pinto_farmer_flutter/service/auth.dart';
@@ -40,7 +40,6 @@ class ProductListPage extends StatelessWidget {
               children: [
                 Container(
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
                         child: TextFormField(
@@ -49,7 +48,7 @@ class ProductListPage extends StatelessWidget {
                               kNormalTextStyle,
                           decoration: const InputDecoration(
                             hintText: 'ค้นหาผลิตภัณฑ์',
-                            hintStyle: TextStyle(fontFamily: 'Prompht'),
+                            hintStyle: kNormalTextStyle,
                             contentPadding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
@@ -73,8 +72,8 @@ class ProductListPage extends StatelessWidget {
                   height: 5,
                 ),
                 PintoButton(
-                  width: screenWidth * 0.5,
-                  label: '+ เพิ่มผลิตภัณฑ์',
+                  width: 150,
+                  label: '+เพิ่มผลิตภัณฑ์',
                   function: () {
                     Navigator.pushNamed(context, '/product/add');
                   },
