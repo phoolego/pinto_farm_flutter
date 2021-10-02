@@ -16,8 +16,6 @@ SideMenu.withoutAny(){
 }
 SideMenu({this.firstName, this.lastName, this.role});
 
-
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -56,14 +54,14 @@ SideMenu({this.firstName, this.lastName, this.role});
                 Navigator.pushNamed(context, '/product',);
               },
             ),
-            ListTile(
-              leading: Icon(Icons.list),
-              title: Text('รายการที่ส่งขาย'),
-              onTap: (){
-                print('$firstName เข้าสู่หน้ารายการที่ส่งขาย');
-                Navigator.pushNamed(context, '/product/sale',);
-              },
-            ),
+            // ListTile(
+            //   leading: Icon(Icons.list),
+            //   title: Text('รายการที่ส่งขาย'),
+            //   onTap: (){
+            //     print('$firstName เข้าสู่หน้ารายการที่ส่งขาย');
+            //     Navigator.pushNamed(context, '/product/sale',);
+            //   },
+            // ),
             ListTile(
               leading: Icon(Icons.account_circle),
               title: Text('โปรไฟล์ของฉัน'),

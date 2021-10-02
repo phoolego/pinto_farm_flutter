@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/product/add': (context) => AddProductPage(),
         // '/product/detail': (context) => ProductDetailsPage(),
         // '/product/detail/edit': (context) => ProductEditDetailsPage(product: product),
-        '/product/sale': (context) => FarmerProductSale(),
+        // '/product/sale': (context) => FarmerProductSale(),
         '/product/sale/add-product': (context) => AddSellProductPage(),
         '/product/sale/status' : (context) => StatusProductSellPage(),
         '/register' : (context) => RegisterChoosePage(),

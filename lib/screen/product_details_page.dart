@@ -6,6 +6,8 @@ import 'package:pinto_farmer_flutter/screen/product_edit_details_page.dart';
 import 'package:pinto_farmer_flutter/service/date_format.dart';
 import 'package:pinto_farmer_flutter/service/product_service.dart';
 
+import 'farmer_product_sell_page.dart';
+
 class ProductDetailsPage extends StatefulWidget {
   int productId;
   ProductDetailsPage({Key? key, required this.productId}) : super(key: key);
@@ -336,8 +338,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                             primary: lightOrange,
                                           ),
                                           onPressed: () {
-                                            Navigator.pushNamed(context, '/product/sale');
                                             print('Pressed');
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      FarmerProductSale(product: product)),
+                                            );
                                           },
                                         ),
                                       ],

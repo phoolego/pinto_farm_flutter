@@ -2,25 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 
 class StatusCard extends StatelessWidget {
-
   String sendingProductDate = '';
   String status = '';
   var function;
 
-  StatusCard({required this.sendingProductDate,required this.status, required this.function});
-  StatusCard.withoutAny({var function}){
+  StatusCard({required this.sendingProductDate, required this.status, required this.function});
+  StatusCard.withoutAny({var function}) {
     this.sendingProductDate = '11/09/2021';
     this.status = 'ยังไม่ส่งผลผลิต';
     this.function = function;
-
-}
-
- void setStatusColor(status){
-    if('ยังไม่ส่งผลิต'==status){
-
-    }
- }
-
+  }
+  void setStatusColor(status) {
+    if ('ยังไม่ส่งผลิต' == status) {}
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +24,9 @@ class StatusCard extends StatelessWidget {
       onTap: function,
       child: Container(
         alignment: AlignmentDirectional.center,
-        height: screenHeight * 0.20,
         width: screenWidth * 0.1,
-        padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-        margin: EdgeInsets.all(10),
+        padding: EdgeInsets.fromLTRB(2, 5, 2, 5),
+        margin: EdgeInsets.all(3),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           color: lightOrange,
@@ -52,22 +45,21 @@ class StatusCard extends StatelessWidget {
                         Container(
                           child: Text(
                             'รายการส่งขายวันที่:\n$sendingProductDate',
-                            style: kHeadingTextStyle,
+                            style: kNormalTextStyle,
                           ),
                         ),
                         Row(
                           children: [
                             Text(
                               'สถานะ    ',
-                              style: kContentTextStyle,
+                              style: kNormalTextStyle,
                             ),
                             Text(
                               status,
-                              style: kContentTextStyle,
+                              style: kNormalTextStyle,
                             ),
                           ],
                         ),
-
                       ],
                     ),
                   ),
