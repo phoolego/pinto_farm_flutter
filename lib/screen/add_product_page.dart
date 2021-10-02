@@ -138,7 +138,6 @@ class _AddProductPageState extends State<AddProductPage> {
                                       if(num.tryParse(value)!=null && double.parse(value)>0){
                                         _area=double.parse(value);
                                       }
-
                                     },
                                   )
                                 ],
@@ -147,9 +146,7 @@ class _AddProductPageState extends State<AddProductPage> {
                           ],
                         ),
                       ),
-<<<<<<< Updated upstream
-                    ),
-                    Container(
+                      Container(
                       padding: EdgeInsets.only(top: 0.01 * screenHeight, bottom: 0.01 * screenHeight),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -167,46 +164,24 @@ class _AddProductPageState extends State<AddProductPage> {
                                     border: Border.all(color: lightBlack),
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(5),
-=======
-                      Container(
-                        padding: EdgeInsets.only(top: 0.01 * screenHeight, bottom: 0.01 * screenHeight),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: 0.8 * screenWidth,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text('วันที่เริ่มปลูก', style: kNormalTextStyle),
-                                  Container(
-                                    width: 0.9 * screenWidth,
-                                    height: 0.05 * screenHeight,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: lightBlack),
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(5),
-                                      ),
->>>>>>> Stashed changes
-                                    ),
-                                    padding: const EdgeInsets.all(5),
-                                    child: InkWell(
-                                      onTap: () => _selectDate(context,_plantDate,(pick){_plantDate=pick;}),
-                                      child: Text(
-                                        DateFormat.getFullDate(_plantDate.toLocal()).split(' ')[0],
-                                        style: kNormalTextStyle,
-                                      ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                                  padding: const EdgeInsets.all(5),
+                                  child: InkWell(
+                                    onTap: () => _selectDate(context,_plantDate,(pick){_plantDate=pick;}),
+                                    child: Text(
+                                      DateFormat.getFullDate(_plantDate.toLocal()).split(' ')[0],
+                                      style: kNormalTextStyle,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
                       ),
-<<<<<<< Updated upstream
                     ),
-                    Container(
+                      Container(
                       padding: EdgeInsets.only(top: 0.01 * screenHeight, bottom: 0.01 * screenHeight),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -224,43 +199,23 @@ class _AddProductPageState extends State<AddProductPage> {
                                     border: Border.all(color: lightBlack),
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(5),
-=======
-                      Container(
-                        padding: EdgeInsets.only(top: 0.01 * screenHeight, bottom: 0.01 * screenHeight),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: 0.8 * screenWidth,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text('วันที่คาดว่าจะเก็บเกี่ยว', style: kNormalTextStyle),
-                                  Container(
-                                    width: 0.9 * screenWidth,
-                                    height: 0.05 * screenHeight,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: lightBlack),
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(5),
-                                      ),
->>>>>>> Stashed changes
-                                    ),
-                                    padding: const EdgeInsets.all(5),
-                                    child: InkWell(
-                                      onTap: () => _selectDate(context,_predictHarvestDate,(pick){_predictHarvestDate=pick;}),
-                                      child: Text(
-                                        DateFormat.getFullDate(_predictHarvestDate.toLocal()).split(' ')[0],
-                                        style: kNormalTextStyle,
-                                      ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                                  padding: const EdgeInsets.all(5),
+                                  child: InkWell(
+                                    onTap: () => _selectDate(context,_predictHarvestDate,(pick){_predictHarvestDate=pick;}),
+                                    child: Text(
+                                      DateFormat.getFullDate(_predictHarvestDate.toLocal()).split(' ')[0],
+                                      style: kNormalTextStyle,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
                       ),
+                    ),
                       Container(
                         padding: EdgeInsets.only(top: 0.01 * screenHeight, bottom: 0.01 * screenHeight),
                         child: Column(
@@ -324,78 +279,36 @@ class _AddProductPageState extends State<AddProductPage> {
                           ],
                         ),
                       ),
-                      Container(
-                        padding: EdgeInsets.only(top: 0.005 * screenHeight),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                              children: [
-                                Text(_errorMessage,style: TextStyle(color: Colors.red),),
-                                ElevatedButton(
-                                  child: Padding(
-                                      padding: EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight,
-                                          0.01 * screenWidth, 0.005 * screenHeight),
-                                      child: const Text('เพิ่มผลิตภัณฑ์', style: whiteSmallNormalTextStyle)),
-                                  style: ElevatedButton.styleFrom(primary: deepOrange),
-                                  onPressed: () async{
-                                    setState(() {
-                                      _errorProductType='';
-                                    });
-                                    if(_productType.isEmpty){
-                                      setState(() {
-                                        _errorProductType='กรุณาเลือกผลิตภัฒฑ์';
-                                      });
-                                    }else if (_formKey.currentState!.validate()) {
-                                      try{
-                                        await ProductService.insertProduct(_productType, _area, _plantDate, _predictHarvestDate, _predictAmount);
-                                        Navigator.pop(context);
-                                        Navigator.pushReplacementNamed(context, '/product');
-                                      }catch(err){
-                                        setState(() {
-                                          _errorMessage = err.toString();
-                                        });
-                                      }
-                                    }
-                                  },
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-<<<<<<< Updated upstream
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: 0.005 * screenHeight),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Column(
-                            children: [
-                              ElevatedButton(
-                                child: Padding(
-                                    padding: EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight,
-                                        0.01 * screenWidth, 0.005 * screenHeight),
-                                    child: Text('เพิ่มผลิตภัณฑ์', style: whiteSmallNormalTextStyle)),
-                                style: ElevatedButton.styleFrom(primary: deepOrange),
-                                onPressed: () {
-                                  print('Pressed');
-                                },
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 40),
-                  ]),
-                ],
-=======
+                      ElevatedButton(
+                        child: Padding(
+                            padding: EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight,
+                                0.01 * screenWidth, 0.005 * screenHeight),
+                            child: const Text('เพิ่มผลิตภัณฑ์', style: whiteSmallNormalTextStyle)),
+                        style: ElevatedButton.styleFrom(primary: deepOrange),
+                        onPressed: () async{
+                          setState(() {
+                            _errorProductType='';
+                          });
+                          if(_productType.isEmpty){
+                            setState(() {
+                              _errorProductType='กรุณาเลือกผลิตภัฒฑ์';
+                            });
+                          }else if (_formKey.currentState!.validate()) {
+                            try{
+                              await ProductService.insertProduct(_productType, _area, _plantDate, _predictHarvestDate, _predictAmount);
+                              Navigator.pop(context);
+                              Navigator.pushReplacementNamed(context, '/product');
+                            }catch(err){
+                              setState(() {
+                                _errorMessage = err.toString();
+                              });
+                            }
+                          }
+                        },
+                      )
                     ]),
                   ],
                 ),
->>>>>>> Stashed changes
               ),
             ),
           ]),

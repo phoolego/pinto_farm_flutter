@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/screen/auth/auth_controller.dart';
 import 'package:pinto_farmer_flutter/screen/auth/login_page.dart';
-<<<<<<< Updated upstream
-import 'package:pinto_farmer_flutter/screen/farmer_product_sell_page.dart';
-=======
-import 'package:pinto_farmer_flutter/screen/farmer_product_sale_page.dart';
->>>>>>> Stashed changes
 import 'package:pinto_farmer_flutter/screen/product_details_page.dart';
 import 'package:pinto_farmer_flutter/screen/product_edit_details_page.dart';
 import 'package:pinto_farmer_flutter/screen/add_product_page.dart';

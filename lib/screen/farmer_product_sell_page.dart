@@ -66,7 +66,7 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
                       Container(
                         width: 0.9 * screenWidth,
                         height: 60,
-                        child: DropDown.withoutAny(),
+                        child: DropDown.sendStockProduct(),
                       )
                     ],
                   ),
