@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
-import 'package:pinto_farmer_flutter/screen/farmer_product_sale_Page.dart';
 import 'package:pinto_farmer_flutter/service/auth.dart';
 
 class SideMenu extends StatelessWidget {
