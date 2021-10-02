@@ -1,17 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
+import 'package:pinto_farmer_flutter/model/product.dart';
+import 'package:pinto_farmer_flutter/service/date_format.dart';
+import 'package:pinto_farmer_flutter/screen/product_details_page.dart';
 
 class ProductEditDetailsPage extends StatelessWidget {
+  Product product;
+
+  ProductEditDetailsPage({required this.product});
+  bool _isNull(dynamic value) {
+    return value == null;
+  }
+
+  DateTime selectedDate = DateTime.now();
+  _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate, // Refer step 1
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2050),
+        helpText: 'เลือกวันที่',
+        cancelText: 'ยกเลิก',
+        confirmText: 'ตกลง',
+    );
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
-    //String
-    String productName = 'ผักกาดขาว';
-    double farmSize = 100;
-    String unitSize = 'ตร.ม.';
-    String unitAmount = 'กรัม';
-    String startDate = '01/06/2021';
-
     //size
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
@@ -19,7 +39,7 @@ class ProductEditDetailsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: deepOrange,
         title: Text(
-          '$productName',
+          '${product.typeOfProduct}',
           style: kAppbarTextStyle,
         ),
         leading: IconButton(
@@ -54,7 +74,8 @@ class ProductEditDetailsPage extends StatelessWidget {
                 child: Container(
                   height: screenHeight * 0.7 - MediaQuery.of(context).padding.top - kToolbarHeight,
                   width: screenWidth,
-                  padding: EdgeInsets.fromLTRB(0.04 * screenWidth, 0.01 * screenHeight, 0.04 * screenWidth, 0.01 * screenHeight),
+                  padding: EdgeInsets.fromLTRB(
+                      0.04 * screenWidth, 0.01 * screenHeight, 0.04 * screenWidth, 0.01 * screenHeight),
                   // alignment: Alignment.bottomCenter,
                   decoration: BoxDecoration(
                     color: deepWhite,
@@ -88,7 +109,7 @@ class ProductEditDetailsPage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('พื้นที่การปลูก', style: kNormalTextStyle),
-                                        Text('$farmSize $unitSize', style: kNormalTextStyle)
+                                        Text('${product.area} ${product.areaUnit}', style: kNormalTextStyle)
                                       ],
                                     ),
                                   )
@@ -100,7 +121,10 @@ class ProductEditDetailsPage extends StatelessWidget {
                                     width: 0.43 * screenWidth,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [Text('วันที่เริ่มปลูก', style: kNormalTextStyle), Text('$startDate', style: kNormalTextStyle)],
+                                      children: [
+                                        Text('วันที่เริ่มปลูก', style: kNormalTextStyle),
+                                        Text(DateFormat.getFullDate(product.plantDate), style: kNormalTextStyle)
+                                      ],
                                     ),
                                   )
                                 ],
@@ -126,16 +150,26 @@ class ProductEditDetailsPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('วันที่เก็บเกี่ยว', style: kNormalTextStyle),
-                                    TextField(
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                        contentPadding: EdgeInsets.all(5),
+                                    Container(
+                                      width: 0.9 * screenWidth,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: lightBlack),
+                                        borderRadius: BorderRadius.all(Radius.circular(5),),
+                                      ),
+                                      padding: EdgeInsets.all(5),
+                                      child: InkWell(
+                                        onTap: () => _selectDate(context),
+                                        child: Text(
+                                          "${DateFormat.getFullDate(selectedDate.toLocal())}".split(' ')[0],
+                                          style: kNormalTextStyle,
+                                        ),
                                       ),
                                     ),
-                                    Text('ปริมาณที่เก็บเกี่ยว ($unitAmount)', style: kNormalTextStyle),
+                                    Text('ปริมาณที่เก็บเกี่ยว (${product.unit})', style: kNormalTextStyle),
                                     TextField(
                                       obscureText: false,
+                                      keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                         contentPadding: EdgeInsets.all(5),
@@ -160,8 +194,8 @@ class ProductEditDetailsPage extends StatelessWidget {
                                 children: [
                                   ElevatedButton(
                                     child: Padding(
-                                        padding:
-                                        EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight, 0.01 * screenWidth, 0.005 * screenHeight),
+                                        padding: EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight,
+                                            0.01 * screenWidth, 0.005 * screenHeight),
                                         child: Text('ยืนยันแก้ไขข้อมูล', style: whiteSmallNormalTextStyle)),
                                     style: ElevatedButton.styleFrom(primary: deepOrange),
                                     onPressed: () {
@@ -173,9 +207,7 @@ class ProductEditDetailsPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
-                          height: 0.05 * screenHeight,
-                        ),
+                        SizedBox(height: 40),
                       ],
                     ),
                   ),
@@ -187,4 +219,6 @@ class ProductEditDetailsPage extends StatelessWidget {
       ),
     );
   }
+
+  void setState(Null Function() param0) {}
 }

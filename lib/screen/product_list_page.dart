@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
-import 'package:pinto_farmer_flutter/component/productListCard.dart';
+import 'package:pinto_farmer_flutter/component/product_list_card.dart';
 import 'package:pinto_farmer_flutter/component/side_menu.dart';
-import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/screen/product_details_page.dart';
 import 'package:pinto_farmer_flutter/service/auth.dart';
 import 'package:pinto_farmer_flutter/service/date_format.dart';
@@ -41,20 +40,19 @@ class ProductListPage extends StatelessWidget {
               children: [
                 Container(
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
                         child: TextFormField(
                           textAlign: TextAlign.left,
                           style:
-                              TextStyle(fontSize: 18.0, fontFamily: 'Prompht'),
+                              kNormalTextStyle,
                           decoration: const InputDecoration(
                             hintText: 'ค้นหาผลิตภัณฑ์',
-                            hintStyle: TextStyle(fontFamily: 'Prompht'),
-                            contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                            hintStyle: kNormalTextStyle,
+                            contentPadding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(10),
+                                Radius.circular(5),
                               ),
                             ),
                             prefixIcon: Padding(
@@ -71,53 +69,46 @@ class ProductListPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 PintoButton(
-                  width: screenWidth * 0.5,
-                  label: '+ เพิ่มผลิตภัณฑ์',
-                  function: () {},
-                  buttonColor: Colors.amber
+                  width: 150,
+                  label: '+เพิ่มผลิตภัณฑ์',
+
+                  function: () {
+                    Navigator.pushNamed(context, '/product/add');
+                    print('เข้าสู่หน้าเพิ่มผลิตภัณฑ์');
+                  },
+                  buttonColor: lightOrange
                 )
               ],
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Expanded(
-              child: FutureBuilder<List<Product>>(
+              child: FutureBuilder<List<Map>>(
                 future: ProductService.getAllProduct(),
-                builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot){
+                builder: (BuildContext context, AsyncSnapshot<List<Map>> snapshot){
                   if (!snapshot.hasData) {
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else {
-                    List<Product>? products = snapshot.data;
+                    List<Map>? products = snapshot.data;
                     return ListView.builder(
                       itemCount: products!.length,
                       itemBuilder:(context, index) => ProductCard.withoutProductID(
-                          productName: products[index].typeOfProduct,
-                          dateString: DateFormat.getFullDate(products[index].plantDate),
+                          productName: products[index]['name'],
+                          dateString: DateFormat.getFullDate(products[index]['plantDate']),
                           function: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => ProductDetailsPage(product: products[index],))
+                              MaterialPageRoute(builder: (context) => ProductDetailsPage(productId: products[index]['productId'],))
                             );
                           },
                       ),
                     );
-                    // return ListView(
-                    //   children: [
-                    //     ProductCard.withoutProductID(
-                    //       productName: 'ชื่อผลิตภัณฑ์',
-                    //       dateString: '10/10/2021',
-                    //       function: () {
-                    //         Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsPage()));
-                    //       },
-                    //     ),
-                    //   ],
-                    // );
                   }
                 },
               ),

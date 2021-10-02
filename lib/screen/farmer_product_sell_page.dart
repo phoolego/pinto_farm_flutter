@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
+import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/component/drop_down.dart';
 import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 import 'package:pinto_farmer_flutter/component/status_card.dart';
 
 class FarmerProductSale extends StatefulWidget {
+  Product product;
+  FarmerProductSale({Key? key, required this.product}) : super(key: key);
+
   @override
   _FarmerProductSaleState createState() => _FarmerProductSaleState();
 }
 
 class _FarmerProductSaleState extends State<FarmerProductSale> {
-  String productName = 'ผักกาดขาว';
-  Color kColorButton = Colors.white70;
-  //TODO - not sure about color code
+  bool _isNull(dynamic value) {
+    return value == null;
+  }
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 218, 154, 0),
+        backgroundColor: deepOrange,
         title: Text(
           'รายการที่ส่งขาย',
           style: kAppbarTextStyle,
@@ -38,7 +43,7 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
           children: [
             Container(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Row(
                     children: [
@@ -47,18 +52,21 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
                             padding: EdgeInsets.only(left: 40),
                             alignment: Alignment.centerLeft,
                             height: 60,
-                            color: Colors.amber,
+                            color: lightOrange,
                             child: Text(
-                              'ชื่อผลิตภัณฑ์: $productName',
+                              '${widget.product.typeOfProduct}',
                               style: kHeadingTextStyle,
                             )),
                       ),
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: DropDown.withoutAny(),
+                      Container(
+                        width: 0.9 * screenWidth,
+                        height: 60,
+                        child: DropDown.sendStockProduct(),
                       )
                     ],
                   ),
@@ -66,60 +74,70 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
-                        padding: EdgeInsets.only(right: 20),
                         child: PintoButton(
+                            width: 150,
                             label: '+ เพิ่มรายการ',
                             function: () {
-                              Navigator.pushNamed(context, '/product/sale/addProduct');
-                              setState(() {
-
-
-                                print('add product button');
-                              });
+                              Navigator.pushNamed(context, '/product/sale/add-product');
+                              print('เข้าสู่หน้าเพิ่มรายการ');
                             },
                             buttonColor: lightGrayBackground),
-                      )
+                      ),
+                      SizedBox(
+                        width: 0.1 * screenWidth,
+                      ),
                     ],
                   )
                 ],
               ),
             ),
             Container(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.fromLTRB(
+                  0.01 * screenWidth, 0.005 * screenHeight, 0.01 * screenWidth, 0.005 * screenHeight),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     width: screenWidth * 0.9,
-                    height: screenHeight * 0.58,
+                    height: screenHeight * 0.5,
                     child: ListView(
                       children: [
-                        StatusCard.withoutAny(function: (){
-                          Navigator.pushNamed(context, '/product/sale/status');
-                          print('tap');
-                        },),
-                        StatusCard.withoutAny(function: (){
-                          print('tap');
-                        },),
-                        StatusCard.withoutAny(function: (){
-                          print('tap');
-                        },),
-                        StatusCard.withoutAny(function: (){
-                          print('tap');
-                        },),
-                        StatusCard.withoutAny(function: (){
-                          print('tap');
-                        },),
-                        StatusCard.withoutAny(function: (){
-                          print('tap');
-                        },),
-                        StatusCard.withoutAny(function: (){
-                          print('tap');
-                        },),
-
-
-
-
+                        StatusCard.withoutAny(
+                          function: () {
+                            Navigator.pushNamed(context, '/product/sale/status');
+                            print('tap');
+                          },
+                        ),
+                        StatusCard.withoutAny(
+                          function: () {
+                            print('tap');
+                          },
+                        ),
+                        StatusCard.withoutAny(
+                          function: () {
+                            print('tap');
+                          },
+                        ),
+                        StatusCard.withoutAny(
+                          function: () {
+                            print('tap');
+                          },
+                        ),
+                        StatusCard.withoutAny(
+                          function: () {
+                            print('tap');
+                          },
+                        ),
+                        StatusCard.withoutAny(
+                          function: () {
+                            print('tap');
+                          },
+                        ),
+                        StatusCard.withoutAny(
+                          function: () {
+                            print('tap');
+                          },
+                        ),
                       ],
                     ),
                   )
