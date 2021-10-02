@@ -74,8 +74,10 @@ class ProductListPage extends StatelessWidget {
                 PintoButton(
                   width: 150,
                   label: '+เพิ่มผลิตภัณฑ์',
+
                   function: () {
                     Navigator.pushNamed(context, '/product/add');
+                    print('เข้าสู่หน้าเพิ่มผลิตภัณฑ์');
                   },
                   buttonColor: lightOrange
                 )
