@@ -152,7 +152,7 @@ class ProductEditDetailsPage extends StatelessWidget {
                                     Text('วันที่เก็บเกี่ยว', style: kNormalTextStyle),
                                     Container(
                                       width: 0.9 * screenWidth,
-                                      height: 0.05 * screenHeight,
+                                      height: 40,
                                       decoration: BoxDecoration(
                                         border: Border.all(color: lightBlack),
                                         borderRadius: BorderRadius.all(Radius.circular(5),),

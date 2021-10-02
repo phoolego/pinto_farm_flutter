@@ -40,7 +40,7 @@ SideMenu({this.firstName, this.lastName, this.role});
                     Text(
                       '$firstName \n$lastName \n$role',
                       textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.black, fontSize: 20),
+                      style: kNormalTextStyle,
                     ),
                   ],
                 ),
@@ -51,32 +51,33 @@ SideMenu({this.firstName, this.lastName, this.role});
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: Text('หน้าหลัก'),
+              title: Text('รายการผลิตภัณฑ์'),
               onTap: (){
-                //Navigator.pop(context);
-                print('Home');
+                print('$firstName เข้าสู่หน้ารายการผลิตภัณฑ์');
+                Navigator.pushNamed(context, '/product',);
               },
             ),
             ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text('Cart'),
+              leading: Icon(Icons.list),
+              title: Text('รายการที่ส่งขาย'),
               onTap: (){
-                Navigator.pop(context);
-                //Navigator.pop it will just close side menu
-                print('cart');
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text('sale product (testing)'),
-              onTap: (){
+                print('$firstName เข้าสู่หน้ารายการที่ส่งขาย');
                 Navigator.pushNamed(context, '/product/sale',);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('โปรไฟล์ของฉัน'),
+              onTap: (){
+                print('$firstName เข้าสู่หน้าโปรไฟล์ของฉัน');
+                Navigator.pop(context);
               },
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('ออกจากระบบ'),
               onTap: ()async {
+                print('$role $firstName ออกจากระบบ');
                 await Auth.logout();
                 Navigator.pushReplacementNamed(context,'/');
               },
