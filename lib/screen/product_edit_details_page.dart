@@ -207,9 +207,7 @@ class ProductEditDetailsPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
-                          height: 0.2 * screenHeight,
-                        ),
+                        SizedBox(height: 40),
                       ],
                     ),
                   ),

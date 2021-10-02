@@ -121,7 +121,7 @@ class AddProductPage extends StatelessWidget {
                                 Text('วันที่เริ่มปลูก', style: kNormalTextStyle),
                                 Container(
                                   width: 0.9 * screenWidth,
-                                  height: 0.05 * screenHeight,
+                                  height: 40 ,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: lightBlack),
                                     borderRadius: BorderRadius.all(
@@ -156,7 +156,7 @@ class AddProductPage extends StatelessWidget {
                                 Text('วันที่คาดว่าจะเก็บเกี่ยว', style: kNormalTextStyle),
                                 Container(
                                   width: 0.9 * screenWidth,
-                                  height: 0.05 * screenHeight,
+                                  height: 40,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: lightBlack),
                                     borderRadius: BorderRadius.all(
@@ -253,6 +253,7 @@ class AddProductPage extends StatelessWidget {
                         ],
                       ),
                     ),
+                    SizedBox(height: 40),
                   ]),
                 ],
               ),
