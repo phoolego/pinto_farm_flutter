@@ -78,7 +78,7 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
                             width: 150,
                             label: '+ เพิ่มรายการ',
                             function: () {
-                              Navigator.pushNamed(context, '/product/sale/addProduct');
+                              Navigator.pushNamed(context, '/product/sale/add-product');
                               print('เข้าสู่หน้าเพิ่มรายการ');
                             },
                             buttonColor: lightGrayBackground),
