@@ -22,7 +22,7 @@ class ProductService{
       return err.response!.data['message'];
     }
   }
-  static Future<List<Product>> getAllProduct() async{
+  static Future<List<Map>> getAllProduct() async{
     try{
       var response = await Api.dio.get('/farmer-product',
         options: Options(
@@ -32,10 +32,35 @@ class ProductService{
           },
         ),
       );
-      List<Product> products =  (response.data as List).map((product) => Product(
-          product
-      )).toList();
+      List<Map> products = (response.data as List).map((product) => {
+        'productId':product['product_id'],
+        'plantDate':DateTime.parse(product['plant_date']),
+        'name':product['type_of_product'],
+        'status':product['status']
+      }).toList();
       return products;
+    } on DioError catch (err) {
+      throw err.response!.data['message'];
+    }catch(err){
+      print(err.toString());
+      throw err.toString();
+    }
+  }
+  static Future<Product> getProductDetail(int productId) async{
+    try{
+      var response = await Api.dio.get('/farmer-product/detail',
+        queryParameters: {
+          'productId':productId
+        },
+        options: Options(
+          headers: {
+            'userId':Auth.farmer.userId,
+            'farmerId':Auth.farmer.farmId,
+          },
+        ),
+      );
+      Product product = Product(response.data);
+      return product;
     } on DioError catch (err) {
       throw err.response!.data['message'];
     }catch(err){
