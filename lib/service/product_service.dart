@@ -14,14 +14,30 @@ class ProductService{
           },
         ),
       );
-      List<ProductType> productType =  (response.data as List).map((productType) => ProductType(
+      List<ProductType> productType = (response.data as List).map((productType) => ProductType(
           productType
       )).toList();
       return productType;
     } on DioError catch (err) {
       return err.response!.data['message'];
+    }catch(err){
+      print(err.toString());
+      throw err.toString();
     }
   }
+  static Future<List<String>> getProductTypeName() async{
+    try {
+      List<ProductType> productType = await getAllProductType();
+      List<String> nameList =  productType.map((type) => type.name).toList();
+      return nameList;
+    } on DioError catch (err) {
+      return err.response!.data['message'];
+    }catch(err){
+      print(err.toString());
+      throw err.toString();
+    }
+  }
+
   static Future<List<Map>> getAllProduct() async{
     try{
       var response = await Api.dio.get('/farmer-product',
@@ -86,7 +102,11 @@ class ProductService{
         },
       );
     } on DioError catch (err) {
-      throw err.response!.data['message'];
+      if(err.response!.data['message']=='not enough area'){
+        throw 'ฟาร์มของคุณเหลือพื้นที่ไม่มากพอ';
+      }else{
+        throw 'เกิดข้อผิดพลาด';
+      }
     }catch(err){
       print(err.toString());
       throw err.toString();
