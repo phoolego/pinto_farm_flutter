@@ -46,11 +46,11 @@ class ProductListPage extends StatelessWidget {
                         child: TextFormField(
                           textAlign: TextAlign.left,
                           style:
-                              TextStyle(fontSize: 18.0, fontFamily: 'Prompht'),
+                              kNormalTextStyle,
                           decoration: const InputDecoration(
                             hintText: 'ค้นหาผลิตภัณฑ์',
                             hintStyle: TextStyle(fontFamily: 'Prompht'),
-                            contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                            contentPadding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(5),
@@ -70,7 +70,7 @@ class ProductListPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 PintoButton(
                   width: screenWidth * 0.5,
@@ -83,7 +83,7 @@ class ProductListPage extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Expanded(
               child: FutureBuilder<List<Map>>(

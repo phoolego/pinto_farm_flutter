@@ -35,9 +35,6 @@ class PintoButton extends StatelessWidget {
                 label,
                 style: kContentTextStyle,
               ),
-              SizedBox(
-                width: 20,
-              )
             ],
           ),
         ),
