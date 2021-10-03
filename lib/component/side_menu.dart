@@ -67,7 +67,7 @@ SideMenu({this.firstName, this.lastName, this.role});
               title: Text('โปรไฟล์ของฉัน'),
               onTap: (){
                 print('$firstName เข้าสู่หน้าโปรไฟล์ของฉัน');
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/profile',);
               },
             ),
             ListTile(
