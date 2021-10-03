@@ -130,7 +130,7 @@ class _AddProductPageState extends State<AddProductPage> {
                                       if(value!.isEmpty){
                                         return 'กรุณากรอกพื้นที่ปลูก';
                                       }else if(num.tryParse(value)==null || double.parse(value)<=0){
-                                        return 'กรุณากรอกพตัวเลขที่ถูกต้อง';
+                                        return 'กรุณากรอกตัวเลขที่ถูกต้อง';
                                       }else{
                                         return null;
                                       }
@@ -159,7 +159,7 @@ class _AddProductPageState extends State<AddProductPage> {
                               children: [
                                 Text('วันที่เริ่มปลูก', style: kNormalTextStyle),
                                 Container(
-                                  width: 0.9 * screenWidth,
+                                  width: 0.8 * screenWidth,
                                   height: 50 ,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: lightBlack),

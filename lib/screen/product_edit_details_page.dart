@@ -96,7 +96,7 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                         topRight: Radius.circular(20),
                       ),
                     ),
-                    child: Column(
+                    child: ListView(
                       children: [
                         Container(
                           margin: EdgeInsets.only(top: 0.01 * screenHeight),
@@ -164,7 +164,6 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                       Text('วันที่เก็บเกี่ยว', style: kNormalTextStyle),
                                       Container(
                                         width: 0.9 * screenWidth,
-                                        height: 50,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: lightBlack),
                                           borderRadius: BorderRadius.all(Radius.circular(5),),
@@ -179,7 +178,7 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                         ),
                                       ),
                                       _errorHarvestDate.isEmpty?SizedBox():Text(_errorHarvestDate,style: TextStyle(color: Colors.red),),
-                                      SizedBox(height: 0.02 * screenHeight,),
+                                      SizedBox(height: 0.01 * screenHeight,),
                                       Text('ปริมาณที่เก็บเกี่ยว (${widget.product.unit})', style: kNormalTextStyle),
                                       TextFormField(
                                         keyboardType: TextInputType.number,
@@ -191,7 +190,7 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                           if(value!.isEmpty){
                                             return 'กรุณากรอกปริมาณที่เก็บเกี่ยว';
                                           }else if(num.tryParse(value)==null || double.parse(value)<=0){
-                                            return 'กรุณากรอกพตัวเลขที่ถูกต้อง';
+                                            return 'กรุณากรอกตัวเลขที่ถูกต้อง';
                                           }else{
                                             return null;
                                           }
@@ -209,7 +208,6 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                             ),
                           ),
                         ),
-                        SizedBox(height: screenHeight*0.05,),
                         Container(
                           padding: EdgeInsets.only(top: 0.01 * screenHeight),
                           child: Column(
