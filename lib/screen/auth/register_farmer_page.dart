@@ -16,7 +16,7 @@ class _RegisterFarmerPageState extends State<RegisterFarmerPage> {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 218, 154, 0),
+        backgroundColor: deepOrange,
         title: Text(
           'สร้างบัญชีใหม่ในระบบ',
           style: kAppbarTextStyle,

@@ -16,7 +16,7 @@ class ProductListPage extends StatelessWidget {
     return Scaffold(
       drawer: SideMenu.withoutAny(),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 218, 154, 0),
+        backgroundColor: deepOrange,
         title: Text(
           'รายการผลิตภัณฑ์',
           style: kAppbarTextStyle,

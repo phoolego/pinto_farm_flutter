@@ -13,7 +13,7 @@ class AddSellProductPage extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 218, 154, 0),
+        backgroundColor: deepOrange,
         title: Text(
           'เพิ่มรายการ',
           style: kAppbarTextStyle,

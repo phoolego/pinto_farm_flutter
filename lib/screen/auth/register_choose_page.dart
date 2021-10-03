@@ -11,7 +11,7 @@ class RegisterChoosePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: waitingDeepYellow),
-          backgroundColor: Colors.white70,
+          backgroundColor: deepWhite,
           centerTitle: false,
           title: Text(
             'ย้อนกลับ',
@@ -21,7 +21,7 @@ class RegisterChoosePage extends StatelessWidget {
           elevation: 0,
         ),
         body: Container(
-          color: Colors.white70,
+          color: deepWhite,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
