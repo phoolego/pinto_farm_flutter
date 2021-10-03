@@ -239,7 +239,7 @@ class _AddProductPageState extends State<AddProductPage> {
                                       if(value!.isEmpty){
                                         return 'กรุณากรอกปริมาณที่คาดว่าจะเก็บเกี่ยว';
                                       }else if(num.tryParse(value)==null || double.parse(value)<=0){
-                                        return 'กรุณากรอกพตัวเลขที่ถูกต้อง';
+                                        return 'กรุณากรอกตัวเลขที่ถูกต้อง';
                                       }else{
                                         return null;
                                       }
@@ -269,7 +269,7 @@ class _AddProductPageState extends State<AddProductPage> {
                                 });
                                 if(_productType.isEmpty){
                                   setState(() {
-                                    _errorProductType='กรุณาเลือกผลิตภัฒฑ์';
+                                    _errorProductType='กรุณาเลือกผลิตภัณฑ์';
                                   });
                                 }else if (_formKey.currentState!.validate()) {
                                   try{
@@ -299,7 +299,7 @@ class _AddProductPageState extends State<AddProductPage> {
                             //     });
                             //     if(_productType.isEmpty){
                             //       setState(() {
-                            //         _errorProductType='กรุณาเลือกผลิตภัฒฑ์';
+                            //         _errorProductType='กรุณาเลือกผลิตภัณฑ์';
                             //       });
                             //     }else if (_formKey.currentState!.validate()) {
                             //       try{

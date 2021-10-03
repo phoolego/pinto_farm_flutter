@@ -54,7 +54,7 @@ class _AddSellProductPageState extends State<AddSellProductPage> {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'ปริมาตรที่จะส่งขาย',
+                      'ปริมาณที่จะส่งขาย',
                       style: kHeadingTextStyle,
                     ),
                   ),
@@ -79,7 +79,7 @@ class _AddSellProductPageState extends State<AddSellProductPage> {
                               if(value!.isEmpty){
                                 return 'กรุณากรอกปริมาณที่เก็บเกี่ยว';
                               }else if(num.tryParse(value)==null || double.parse(value)<=0){
-                                return 'กรุณากรอกพตัวเลขที่ถูกต้อง';
+                                return 'กรุณากรอกตัวเลขที่ถูกต้อง';
                               }else{
                                 return null;
                               }
