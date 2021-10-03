@@ -2,15 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/component/pinto_button.dart';
+import 'package:pinto_farmer_flutter/model/product.dart';
+import 'package:pinto_farmer_flutter/screen/farmer_product_sell_page.dart';
+import 'package:pinto_farmer_flutter/service/product_service.dart';
 
-class AddSellProductPage extends StatelessWidget {
-  String productUnit = 'กรัม';
-  double productPrice = 00.00;
+class AddSellProductPage extends StatefulWidget {
+  Product product;
+  AddSellProductPage({required this.product});
+
+  @override
+  State<AddSellProductPage> createState() => _AddSellProductPageState();
+}
+
+class _AddSellProductPageState extends State<AddSellProductPage> {
+  final _formKey = GlobalKey<FormState>();
+  double sspAmount=0;
+  double productPrice = 0.00;
+  String _errorMessage ='';
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: deepOrange,
@@ -40,23 +54,20 @@ class AddSellProductPage extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'ปริมาตรที่คาดว่าจะส่งขาย',
+                      'ปริมาตรที่จะส่งขาย',
                       style: kHeadingTextStyle,
                     ),
                   ),
-                  Container(
+                  Form(
+                    key: _formKey,
                     child: Row(
                       children: [
                         Expanded(
                           child: TextFormField(
                             textAlign: TextAlign.left,
                             keyboardType: TextInputType.numberWithOptions(decimal: true),
-                            style: TextStyle(
-                                fontSize: 18.0, fontFamily: 'Prompht'),
+                            style: TextStyle(fontSize: 18.0, fontFamily: 'Prompht'),
                             decoration: const InputDecoration(
-                              // hintTextDirection: TextDirection.rtl,
-                              // hintText: 'กรัม',
-                              // hintStyle: TextStyle(fontFamily: 'Prompht'),
                               contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
@@ -64,12 +75,33 @@ class AddSellProductPage extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            validator: (value){
+                              if(value!.isEmpty){
+                                return 'กรุณากรอกปริมาณที่เก็บเกี่ยว';
+                              }else if(num.tryParse(value)==null || double.parse(value)<=0){
+                                return 'กรุณากรอกพตัวเลขที่ถูกต้อง';
+                              }else{
+                                return null;
+                              }
+                            },
+                            onChanged: (value){
+                              if(num.tryParse(value)!=null && double.parse(value)>0){
+                                setState(() {
+                                  sspAmount=double.parse(value);
+                                  productPrice=sspAmount*widget.product.buyPrice;
+                                });
+                              }else{
+                                setState(() {
+                                  productPrice=0;
+                                });
+                              }
+                            },
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.only(left: 10),
                           child: Text(
-                            productUnit,
+                            widget.product.unit,
                             style: kContentTextStyle,
                           ),
                         ),
@@ -100,16 +132,33 @@ class AddSellProductPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(top: screenHeight*0.05),
                     child: PintoButton(
-                      width: screenWidth * 0.35,
+                      width: 200,
                       label: 'บันทึกข้อมูล',
-                      function: () {
-                        Navigator.pop(context);
-                        print('save');
+                      function: () async{
+                        if(_formKey.currentState!.validate()){
+                          setState(() {
+                            _errorMessage = '';
+                          });
+                          try{
+                            await ProductService.insertStockProduct(widget.product.productId,sspAmount,productPrice);
+                            Navigator.pop(context);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FarmerProductSale(product: widget.product)
+                              ),
+                            );
+                          }catch(err){
+                            setState(() {
+                              _errorMessage = err.toString();
+                            });
+                          }
+                        }
                       },
                       buttonColor: Colors.amber,
                     ),
                   ),
-
+                  Text(_errorMessage,style: kErrorTextStyle,),
                 ],
               ),
             ),

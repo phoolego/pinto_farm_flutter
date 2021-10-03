@@ -23,7 +23,7 @@ class DropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.symmetric(vertical: 10),
       child: DropdownSearch<String>(
         mode: Mode.MENU,
         items: items,

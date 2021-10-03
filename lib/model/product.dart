@@ -26,4 +26,15 @@ class Product{
     buyPrice = jsonProduct['price_buy']+0.0;
     unit = jsonProduct['unit'];
   }
+
+  double getusedAmount(){
+    if(status=='PLANTING') {
+      return predictAmount;
+    }
+    else if(status=='HARVESTED' && harvestAmount!=null){
+      return harvestAmount!;
+    }else{
+      return 0;
+    }
+  }
 }

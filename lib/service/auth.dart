@@ -17,7 +17,9 @@ class Auth {
       await _storage.write(key: 'password', value: password);
       return Farmer(response.data);
     } on DioError catch (err) {
-      if(err.response!.statusCode==403){
+      if(err.response==null){
+        throw 'การเชื่อมต่อขัดข้อง';
+      }else if(err.response!.statusCode==403){
         throw 'กรุณากรอก อีเมล และ รหัสผ่าน';
       }else if(err.response!.data['message']=='wrong password'){
         throw 'รหัสผ่านไม่ถูกต้อง';
@@ -28,8 +30,6 @@ class Auth {
       }else{
         throw 'ระบบขัดข้อง';
       }
-      // print(err.response!.statusCode);
-      // print(err.response!.data['message']);
     }
   }
   static Future<void> logout() async{

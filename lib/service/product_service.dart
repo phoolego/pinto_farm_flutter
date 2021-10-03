@@ -2,6 +2,7 @@ import 'package:pinto_farmer_flutter/api/api.dart';
 import 'package:dio/dio.dart';
 import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/model/product_type.dart';
+import 'package:pinto_farmer_flutter/model/stock_product.dart';
 import 'package:pinto_farmer_flutter/service/auth.dart';
 
 class ProductService{
@@ -130,7 +131,73 @@ class ProductService{
     } on DioError catch (err) {
       throw err.response!.data['message'];
     }catch(err){
-      print(err.toString());
+      throw err.toString();
+    }
+  }
+  static Future<void> disposeProduct(int productId) async{
+    try{
+      await Api.dio.put('/farmer-product/dispose',
+        options: Options(
+          headers: {
+            'userId':Auth.farmer.userId,
+            'farmerId':Auth.farmer.farmId,
+          },
+        ),
+        data: {
+          'productId':productId,
+        },
+      );
+    } on DioError catch (err) {
+      throw err.response!.data['message'];
+    }catch(err){
+      throw err.toString();
+    }
+  }
+  static Future<List<StockProduct>> getStockProduct(int productId) async{
+    try{
+      var response = await Api.dio.get('/send-stock-product',
+        options: Options(
+          headers: {
+            'userId':Auth.farmer.userId,
+            'farmerId':Auth.farmer.farmId,
+          },
+        ),
+        queryParameters: {
+          'productId':productId
+        },
+      );
+      List<StockProduct> stockProducts = (response.data as List).map((stockProduct) => StockProduct(
+          stockProduct
+      )).toList();
+      return stockProducts;
+    } on DioError catch (err) {
+      throw err.response!.data['message'];
+    }catch(err){
+      throw err.toString();
+    }
+  }
+  static Future<void> insertStockProduct(int productId,double sspAmount, double sspPrice) async{
+    try{
+      await Api.dio.post('/send-stock-product/insert',
+        options: Options(
+          headers: {
+            'userId':Auth.farmer.userId,
+            'farmerId':Auth.farmer.farmId,
+          },
+        ),
+        data: {
+          'productId':productId,
+          'sspAmount':sspAmount,
+          'sspPrice':sspPrice
+        },
+      );
+    } on DioError catch (err) {
+      if(err.response!.data['message']=='This product does not have enough number to send'){
+        throw 'ผลิตภัณฑ์มีปริมาณไม่มากพอ';
+      }else if(err.response!.data['message']=='This product is not available'){
+        throw 'ผลิตภัณฑ์นี้ไม่สามารถส่งขายได้';
+      }
+    }catch(err){
       throw err.toString();
     }
   }
