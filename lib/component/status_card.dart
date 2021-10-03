@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
+import 'package:pinto_farmer_flutter/model/stock_product.dart';
+import 'package:pinto_farmer_flutter/service/date_format.dart';
 
 class StatusCard extends StatelessWidget {
-  String sendingProductDate = '';
-  String status = '';
+  StockProduct stockProduct;
   var function;
 
-  StatusCard({required this.sendingProductDate, required this.status, required this.function});
-  StatusCard.withoutAny({var function}) {
-    this.sendingProductDate = '11/09/2021';
-    this.status = 'ยังไม่ส่งผลผลิต';
-    this.function = function;
-  }
-  void setStatusColor(status) {
-    if ('ยังไม่ส่งผลิต' == status) {}
-  }
+  StatusCard({required this.stockProduct, required this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -34,44 +27,37 @@ class StatusCard extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          child: Text(
-                            'รายการส่งขายวันที่:\n$sendingProductDate',
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'รายการส่งขายวันที่: ${DateFormat.getFullDate(stockProduct.createDate)}',
+                        style: kNormalTextStyle,
+                      ),
+                      Text(
+                        'จำนวน: ${stockProduct.sspAmount} ${stockProduct.unit}',
+                        style: kNormalTextStyle,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'สถานะ  ',
                             style: kNormalTextStyle,
                           ),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              'สถานะ    ',
-                              style: kNormalTextStyle,
-                            ),
-                            Text(
-                              status,
-                              style: kNormalTextStyle,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(child: Text(' ')),
-                  //sorry for lazy na ;-;
-                  SizedBox(
-                      child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(child: Icon(Icons.more_horiz_outlined)),
+                          Text(
+                            stockProduct.getStatus(),
+                            style: stockProduct.getStatusTextStyle(),
+                          ),
+                        ],
+                      ),
                     ],
-                  ))
+                  ),
+                  Icon(Icons.more_horiz_outlined),
                 ],
               ),
             ),

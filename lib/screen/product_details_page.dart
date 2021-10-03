@@ -292,11 +292,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 ],
                               ),
                             ),
-                            Container(
+                            product.status=='HARVESTED'?SizedBox():Container(
                               padding: EdgeInsets.only(top: 0.01 * screenHeight),
                               child: PintoButton(
                                 width: 200,
-                                label: 'แก้ไขข้อมูล',
+                                label: 'เพิ่มข้อมูลการเก็บเกี่ยว',
                                 buttonColor: deepOrange,
                                 textStyle: whiteSmallNormalTextStyle,
                                 function: (){
@@ -341,8 +341,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            FarmerProductSale(product: product)),
+                                      builder: (context) => FarmerProductSale(product: product)
+                                    ),
                                   );
                                 },
                               ),

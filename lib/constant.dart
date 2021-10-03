@@ -56,26 +56,38 @@ const kLoginHeadingTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );
 const kNormalTextStyle = TextStyle(
-fontFamily: 'Prompt',
-fontSize: 16.0
+  fontFamily: 'Prompt',
+  fontSize: 16.0
 );
 
 const kNormalAlertTextStyle = TextStyle(
-fontFamily: 'Prompt',
-fontSize: 16.0,
-color:deepOrange
+  fontFamily: 'Prompt',
+  fontSize: 16.0,
+  color:deepOrange
+);
+
+const kErrorTextStyle = TextStyle(
+    fontFamily: 'Prompt',
+    fontSize: 16.0,
+    color: notYetDeepRed
+);
+
+const kSuccessTextStyle = TextStyle(
+    fontFamily: 'Prompt',
+    fontSize: 16.0,
+    color: successDeepGreen
 );
 
 const whiteSmallNormalTextStyle = TextStyle(
-fontFamily: 'Prompt',
-fontSize: 14.0,
-color: deepWhite
+  fontFamily: 'Prompt',
+  fontSize: 14.0,
+  color: deepWhite
 );
 
 const blackSmallNormalTextStyle = TextStyle(
-fontFamily: 'Prompt',
-fontSize: 14.0,
-color: deepBlack
+  fontFamily: 'Prompt',
+  fontSize: 14.0,
+  color: deepBlack
 );
 
 

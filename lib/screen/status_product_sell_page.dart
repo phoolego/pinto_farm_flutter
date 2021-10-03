@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
+import 'package:pinto_farmer_flutter/model/stock_product.dart';
+import 'package:pinto_farmer_flutter/service/date_format.dart';
 
 class StatusProductSellPage extends StatelessWidget {
+  StockProduct stockProduct;
+  StatusProductSellPage({required this.stockProduct});
   @override
   Widget build(BuildContext context) {
     String productName = 'ผักกาดขาว';
@@ -18,7 +22,7 @@ class StatusProductSellPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 218, 154, 0),
         title: Text(
-          'ชื่อผลิตภัณฑ์: $productName',
+          'ชื่อผลิตภัณฑ์: ${stockProduct.name}',
           style: kAppbarTextStyle,
         ),
         leading: IconButton(
@@ -41,47 +45,50 @@ class StatusProductSellPage extends StatelessWidget {
                       Column(
                         children: [
                           Container(
-                              padding: EdgeInsets.only(
-                                  left: 40, top: 20, bottom: 20),
-                              height: screenHeight * 0.17,
+                            padding: EdgeInsets.only(left: 40, top: 20, bottom: 20),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
                               color: lightOrange,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    alignment: Alignment.topLeft,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'ชื่อผลิตภัณฑ์: $productName',
-                                          style: kSubHeadingBoldTextStyle,
-                                        ),
-                                        Text(
-                                          'ปลูกวันที่: $date',
-                                          style: kTextdetailGreyColor,
-                                        ),
-                                      ],
-                                    ),
+                            ),
+                            // height: screenHeight * 0.17,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  alignment: Alignment.topLeft,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'ชื่อผลิตภัณฑ์: ${stockProduct.name}',
+                                        style: kSubHeadingBoldTextStyle,
+                                      ),
+                                      Text(
+                                        'ปลูกวันที่: ${DateFormat.getFullDate(stockProduct.plantDate)}',
+                                        style: kTextdetailGreyColor,
+                                      ),
+                                    ],
                                   ),
-                                  Container(
-                                    padding: EdgeInsets.only(top: 10),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'สถานะ    ',
-                                          style: kSubHeadingBoldTextStyle,
-                                        ),
-                                        Text(
-                                          status,
-                                          style: kStatusNotCompleteTextColor,
-                                        ),
-                                      ],
-                                    ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'สถานะ    ',
+                                        style: kSubHeadingBoldTextStyle,
+                                      ),
+                                      Text(
+                                        stockProduct.getStatus(),
+                                        style: stockProduct.getStatusTextStyle(),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              )),
+                                ),
+                              ],
+                            )
+                          ),
                         ],
                       ),
                     ],
@@ -93,52 +100,71 @@ class StatusProductSellPage extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(
                   screenWidth * 0.1, screenHeight * 0.05, screenWidth * 0.1, screenHeight*0.05),
               alignment: Alignment.centerLeft,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
                 children: [
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          'ปริมาณที่คาดว่าจะส่งขาย',
-                          style: kContentTextStyle,
-                        ),
-                        Text(
-                          numberOfSelling.toString(),
-                          style: kContentTextStyle,
-                        ),
-                        Text(
-                          productUnit,
-                          style: kContentTextStyle,
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Row(
+                  SizedBox(
+                    width: screenWidth * 0.4,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        SizedBox(
-                          width: screenWidth * 0.2,
+                        Text(
+                          'ปริมาณที่จะส่งขาย',
+                          style: kContentTextStyle,
                         ),
                         Text(
                           'เป็นราคา',
                           style: kContentTextStyle,
                         ),
                         Text(
-                          totalCost.toString(),
+                          'วันที่ส่งผลิตภัณฑ์',
+                          style: kContentTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: screenWidth * 0.3,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          stockProduct.sspAmount.toString(),
+                          style: kContentTextStyle,
+                        ),
+                        Text(
+                          stockProduct.sspPrice.toString(),
+                          style: kContentTextStyle,
+                        ),
+                        Text(
+                          DateFormat.getFullDate(stockProduct.createDate),
+                          style: kContentTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: screenWidth * 0.1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          stockProduct.unit,
                           style: kContentTextStyle,
                         ),
                         Text(
                           'บาท',
                           style: kContentTextStyle,
                         ),
+                        Text(
+                          '',
+                          style: kContentTextStyle,
+                        ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
