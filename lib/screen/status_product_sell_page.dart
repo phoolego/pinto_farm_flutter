@@ -16,7 +16,7 @@ class StatusProductSellPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: deepOrange,
         title: Text(
-          'ชื่อผลิตภัณฑ์: ${stockProduct.name}',
+          '${stockProduct.name}',
           style: kAppbarTextStyle,
         ),
         leading: IconButton(

@@ -48,7 +48,7 @@ SideMenu({this.firstName, this.lastName, this.role});
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: Text('รายการผลิตภัณฑ์'),
+              title: Text('รายการผลิตภัณฑ์',style: kNormalTextStyle),
               onTap: (){
                 print('$firstName เข้าสู่หน้ารายการผลิตภัณฑ์');
                 Navigator.pushNamed(context, '/product',);
@@ -64,7 +64,7 @@ SideMenu({this.firstName, this.lastName, this.role});
             // ),
             ListTile(
               leading: Icon(Icons.account_circle),
-              title: Text('โปรไฟล์ของฉัน'),
+              title: Text('โปรไฟล์ของฉัน',style: kNormalTextStyle),
               onTap: (){
                 print('$firstName เข้าสู่หน้าโปรไฟล์ของฉัน');
                 Navigator.pushNamed(context, '/profile',);
@@ -72,7 +72,7 @@ SideMenu({this.firstName, this.lastName, this.role});
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
-              title: Text('ออกจากระบบ'),
+              title: Text('ออกจากระบบ',style: kNormalTextStyle),
               onTap: ()async {
                 print('$role $firstName ออกจากระบบ');
                 await Auth.logout();
