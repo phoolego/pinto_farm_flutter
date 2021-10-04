@@ -7,14 +7,11 @@ class SideMenu extends StatelessWidget {
 
 String? firstName = '';
 String? lastName = '';
-String? role = '';
-
 SideMenu.withoutAny(){
-  this.firstName = 'ชื่อจริง';
-  this.lastName = 'นามสกุล';
-  this.role = 'ตำแหน่ง';
+  this.firstName = Auth.farmer.firstname;
+  this.lastName = Auth.farmer.lastname;
 }
-SideMenu({this.firstName, this.lastName, this.role});
+SideMenu({this.firstName, this.lastName});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +32,7 @@ SideMenu({this.firstName, this.lastName, this.role});
                       child: Image.asset('assets/images/Icons.jpg'),
                     ),
                     Text(
-                      '${Auth.farmer.firstname} \n${Auth.farmer.lastname}',
+                      '$firstName \n$lastName',
                       textAlign: TextAlign.left,
                       style: kNormalTextStyle,
                     ),
@@ -50,7 +47,7 @@ SideMenu({this.firstName, this.lastName, this.role});
               leading: Icon(Icons.home),
               title: Text('รายการผลิตภัณฑ์',style: kNormalTextStyle),
               onTap: (){
-                print('$firstName เข้าสู่หน้ารายการผลิตภัณฑ์');
+                print('${Auth.farmer.firstname} เข้าสู่หน้ารายการผลิตภัณฑ์');
                 Navigator.pushNamed(context, '/product',);
               },
             ),
@@ -66,7 +63,7 @@ SideMenu({this.firstName, this.lastName, this.role});
               leading: Icon(Icons.account_circle),
               title: Text('โปรไฟล์ของฉัน',style: kNormalTextStyle),
               onTap: (){
-                print('$firstName เข้าสู่หน้าโปรไฟล์ของฉัน');
+                print('${Auth.farmer.firstname} เข้าสู่หน้าโปรไฟล์ของฉัน');
                 Navigator.pushNamed(context, '/profile',);
               },
             ),
@@ -74,7 +71,7 @@ SideMenu({this.firstName, this.lastName, this.role});
               leading: Icon(Icons.exit_to_app),
               title: Text('ออกจากระบบ',style: kNormalTextStyle),
               onTap: ()async {
-                print('$role $firstName ออกจากระบบ');
+                print('${Auth.farmer.firstname} ออกจากระบบ');
                 await Auth.logout();
                 Navigator.pushReplacementNamed(context,'/');
               },
