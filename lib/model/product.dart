@@ -27,7 +27,7 @@ class Product{
     unit = jsonProduct['unit'];
   }
 
-  double getusedAmount(){
+  double getUsedAmount(){
     if(status=='PLANTING') {
       return predictAmount;
     }
@@ -35,6 +35,16 @@ class Product{
       return harvestAmount!;
     }else{
       return 0;
+    }
+  }
+  DateTime? getUsedPlanting(){
+    if(status=='PLANTING') {
+      return predictHarvestDate;
+    }
+    else if(status=='HARVESTED' && harvestAmount!=null){
+      return harvestDate!;
+    }else{
+      return null;
     }
   }
 }

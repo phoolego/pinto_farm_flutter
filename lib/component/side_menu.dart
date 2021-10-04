@@ -35,7 +35,7 @@ SideMenu({this.firstName, this.lastName, this.role});
                       child: Image.asset('assets/images/Icons.jpg'),
                     ),
                     Text(
-                      '$firstName \n$lastName \n$role',
+                      '${Auth.farmer.firstname} \n${Auth.farmer.lastname}',
                       textAlign: TextAlign.left,
                       style: kNormalTextStyle,
                     ),

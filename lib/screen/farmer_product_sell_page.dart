@@ -130,7 +130,7 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('ปริมาณที่ขายได้ทั้งหมด ${widget.product.getusedAmount()} ${widget.product.unit} ${
+                  Text('ปริมาณที่ขายได้ทั้งหมด ${widget.product.getUsedAmount()} ${widget.product.unit} ${
                       widget.product.status=='PLANTING'?'จากการคาดการ':'จากการเก็บเกี่ยว'}',style: kNormalTextStyle,),
                   FutureBuilder<List<StockProduct>>(
                     future: ProductService.getStockProduct(widget.product.productId),
