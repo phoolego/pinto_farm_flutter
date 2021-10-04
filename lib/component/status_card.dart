@@ -11,14 +11,13 @@ class StatusCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return InkWell(
       onTap: function,
       child: Container(
         alignment: AlignmentDirectional.center,
         width: screenWidth * 0.1,
-        padding: EdgeInsets.fromLTRB(2, 5, 2, 5),
+        padding: EdgeInsets.fromLTRB(2, 10, 2, 10),
         margin: EdgeInsets.all(3),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),

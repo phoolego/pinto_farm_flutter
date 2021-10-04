@@ -10,10 +10,10 @@ class DropDown extends StatelessWidget {
   DropDown.sendStockProduct() {
     headingLabel = 'ตัวกรอง';
     items = [
+      "ทั้งหมด",
       "ยังไม่ได้รับเงิน",
       "ยังไม่ส่งผลผลิต",
       "ได้รับเงินแล้ว",
-      "ทั้งหมด",
     ];
     hintText = "กรองสถานะรายการ";
   }
@@ -32,7 +32,7 @@ class DropDown extends StatelessWidget {
         hint: hintText,
         popupItemDisabled: (String s) => s.startsWith('I'),
         onChanged: print,
-        selectedItem: "ทั้งหมด",
+        selectedItem: items![0],
       ),
     );
   }
