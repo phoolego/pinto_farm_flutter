@@ -254,7 +254,7 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 40),
+                        SizedBox(height: screenHeight * 0.4),
                       ],
                     ),
                   ),
