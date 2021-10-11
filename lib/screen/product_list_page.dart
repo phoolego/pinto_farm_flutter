@@ -3,18 +3,40 @@ import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/component/product_list_card.dart';
 import 'package:pinto_farmer_flutter/component/side_menu.dart';
+import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/screen/product_details_page.dart';
 import 'package:pinto_farmer_flutter/service/auth.dart';
 import 'package:pinto_farmer_flutter/service/date_format.dart';
 import 'package:pinto_farmer_flutter/service/product_service.dart';
 
-class ProductListPage extends StatelessWidget {
+class ProductListPage extends StatefulWidget {
+  @override
+  State<ProductListPage> createState() => _ProductListPageState();
+}
+
+class _ProductListPageState extends State<ProductListPage> {
+  String _keyword='';
+
+  List<ProductPreview> searchOperation(String keyword, List<ProductPreview> ProdctList) {
+    List<ProductPreview> result = [];
+    if(keyword.isNotEmpty){
+      for (int index = 0; index < ProdctList.length; index++) {
+        if (ProdctList[index].typeOfProduct.contains(keyword)) {
+          result.add(ProdctList[index]);
+        }
+      }
+      return result;
+    }else{
+      return ProdctList;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer: SideMenu.withoutAny(),
+      drawer: SideMenu.defaultMenu('รายการผลิตภัณฑ์'),
       appBar: AppBar(
         backgroundColor: deepOrange,
         title: Text(
@@ -63,6 +85,11 @@ class ProductListPage extends StatelessWidget {
                               ), // icon is 48px widget.
                             ),
                           ),
+                          onChanged: (val){
+                            setState(() {
+                              _keyword = val;
+                            });
+                          },
                         ),
                       ),
                     ],
@@ -86,24 +113,25 @@ class ProductListPage extends StatelessWidget {
               height: 10,
             ),
             Expanded(
-              child: FutureBuilder<List<Map>>(
+              child: FutureBuilder<List<ProductPreview>>(
                 future: ProductService.getAllProduct(),
-                builder: (BuildContext context, AsyncSnapshot<List<Map>> snapshot){
+                builder: (BuildContext context, AsyncSnapshot<List<ProductPreview>> snapshot){
                   if (!snapshot.hasData) {
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else {
-                    List<Map>? products = snapshot.data;
+                    List<ProductPreview> products = snapshot.data!;
+                    products = searchOperation(_keyword, products);
                     return ListView.builder(
-                      itemCount: products!.length,
+                      itemCount: products.length,
                       itemBuilder:(context, index) => ProductCard.withoutProductID(
-                          productName: products[index]['name'],
-                          dateString: DateFormat.getFullDate(products[index]['plantDate']),
+                          productName: products[index].typeOfProduct,
+                          dateString: DateFormat.getFullDate(products[index].plantDate),
                           function: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => ProductDetailsPage(productId: products[index]['productId'],))
+                              MaterialPageRoute(builder: (context) => ProductDetailsPage(productId: products[index].productId,))
                             );
                           },
                       ),

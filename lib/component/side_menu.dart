@@ -4,10 +4,10 @@ import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/service/auth.dart';
 
 class SideMenu extends StatelessWidget {
-
 String? firstName = '';
 String? lastName = '';
-SideMenu.withoutAny(){
+String currentPage='รายการผลิตภัณฑ์';
+SideMenu.defaultMenu(this.currentPage){
   this.firstName = Auth.farmer.firstname;
   this.lastName = Auth.farmer.lastname;
 }
@@ -47,8 +47,11 @@ SideMenu({this.firstName, this.lastName});
               leading: Icon(Icons.home),
               title: Text('รายการผลิตภัณฑ์',style: kNormalTextStyle),
               onTap: (){
-                print('${Auth.farmer.firstname} เข้าสู่หน้ารายการผลิตภัณฑ์');
-                Navigator.pushNamed(context, '/product',);
+                if(currentPage=='รายการผลิตภัณฑ์'){
+                  Navigator.pop(context);
+                }else{
+                  Navigator.pushNamed(context, '/product',);
+                }
               },
             ),
             // ListTile(
@@ -63,15 +66,17 @@ SideMenu({this.firstName, this.lastName});
               leading: Icon(Icons.account_circle),
               title: Text('โปรไฟล์ของฉัน',style: kNormalTextStyle),
               onTap: (){
-                print('${Auth.farmer.firstname} เข้าสู่หน้าโปรไฟล์ของฉัน');
-                Navigator.pushNamed(context, '/profile',);
+                if(currentPage=='โปรไฟล์ของฉัน'){
+                  Navigator.pop(context);
+                }else{
+                  Navigator.pushNamed(context, '/profile',);
+                }
               },
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('ออกจากระบบ',style: kNormalTextStyle),
               onTap: ()async {
-                print('${Auth.farmer.firstname} ออกจากระบบ');
                 await Auth.logout();
                 Navigator.pushReplacementNamed(context,'/');
               },

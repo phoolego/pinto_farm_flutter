@@ -48,3 +48,17 @@ class Product{
     }
   }
 }
+
+class ProductPreview{
+  int productId=0;
+  DateTime plantDate = DateTime.now();
+  String typeOfProduct='';
+  String status='';
+
+  ProductPreview(Map<String,dynamic> jsonProduct){
+    productId = jsonProduct['product_id'];
+    plantDate = DateTime.parse(jsonProduct['plant_date']);
+    typeOfProduct = jsonProduct['type_of_product'];
+    status = jsonProduct['status'];
+  }
+}

@@ -4,6 +4,7 @@ import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/model/product_type.dart';
 import 'package:pinto_farmer_flutter/model/stock_product.dart';
 import 'package:pinto_farmer_flutter/service/auth.dart';
+import 'package:pinto_farmer_flutter/service/thai_sort.dart';
 
 class ProductService{
   static Future<List<ProductType>> getAllProductType() async{
@@ -18,6 +19,7 @@ class ProductService{
       List<ProductType> productType = (response.data as List).map((productType) => ProductType(
           productType
       )).toList();
+      productType.sort((a,b)=> ThaiSort.compareTo(a.name, b.name));
       return productType;
     } on DioError catch (err) {
       return err.response!.data['message'];
@@ -30,6 +32,7 @@ class ProductService{
     try {
       List<ProductType> productType = await getAllProductType();
       List<String> nameList =  productType.map((type) => type.name).toList();
+      nameList.sort((a,b)=> ThaiSort.compareTo(a, b));
       return nameList;
     } on DioError catch (err) {
       return err.response!.data['message'];
@@ -39,7 +42,7 @@ class ProductService{
     }
   }
 
-  static Future<List<Map>> getAllProduct() async{
+  static Future<List<ProductPreview>> getAllProduct() async{
     try{
       var response = await Api.dio.get('/farmer-product',
         options: Options(
@@ -49,12 +52,7 @@ class ProductService{
           },
         ),
       );
-      List<Map> products = (response.data as List).map((product) => {
-        'productId':product['product_id'],
-        'plantDate':DateTime.parse(product['plant_date']),
-        'name':product['type_of_product'],
-        'status':product['status']
-      }).toList();
+      List<ProductPreview> products = (response.data as List).map((product) => ProductPreview(product)).toList();
       return products;
     } on DioError catch (err) {
       throw err.response!.data['message'];

@@ -14,6 +14,7 @@ class DropDownField extends StatelessWidget {
       decoration: const InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 10),
         border: OutlineInputBorder(),
+        prefixIcon: Icon(Icons.search),
         suffixIcon: Icon(Icons.arrow_drop_down),
       ),
       dropdownHeight: 150,

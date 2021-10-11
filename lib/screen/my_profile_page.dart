@@ -10,7 +10,7 @@ class MyProfilePage extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer: SideMenu.withoutAny(),
+      drawer: SideMenu.defaultMenu('โปรไฟล์ของฉัน'),
       appBar: AppBar(
         backgroundColor: deepOrange,
         title: Text(
