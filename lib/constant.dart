@@ -20,7 +20,7 @@ const kTextdetailGreyColor = TextStyle(
 const kStatusCompleteTextColor = TextStyle(
     fontFamily: 'Prompt',
     fontSize: 16.0,
-    color: successGreen
+    color: successDeepGreen
 );
 
 const kStatusWaringTextColor = TextStyle(
@@ -104,9 +104,9 @@ const Color lightBlue = Color(0xFF527E9B);
 //Status color
 const Color successDeepGreen = Color(0xFF25AF43);
 const Color successGreen = Color(0xFF3ADC5D);
-const Color waitingDeepYellow = Color(0xFFF19710);
+const Color waitingDeepYellow = Color(0xFFEE8100);
 const Color waitingYellow = Color(0xFFF6B26B);
-const Color notYetDeepRed = Color(0xFFF62D2D);
+const Color notYetDeepRed = Color(0xFFF5764E);
 const Color notYetRed = Color(0xFFFF5959);
 //Text color
 const Color deepBlack = Color(0xFF000000);
@@ -117,3 +117,4 @@ const Color deepWhite = Color(0xFFFFFFFF);
 const Color deepGrayBackground = Color(0xFF979797);
 const Color mediumGrayBackground = Color(0xFFE4E6E8);
 const Color lightGrayBackground = Color(0xFFF1EFEF);
+
