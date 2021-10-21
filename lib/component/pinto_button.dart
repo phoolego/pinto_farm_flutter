@@ -4,7 +4,7 @@ import 'package:pinto_farmer_flutter/constant.dart';
 class PintoButton extends StatelessWidget {
   double width;
   var function;
-  Color? buttonColor = Colors.amber;
+  Color? buttonColor = deepOrange;
   String label;
   TextStyle textStyle = kNormalTextStyle;
 

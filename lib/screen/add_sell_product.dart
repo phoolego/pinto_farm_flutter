@@ -155,7 +155,7 @@ class _AddSellProductPageState extends State<AddSellProductPage> {
                           }
                         }
                       },
-                      buttonColor: Colors.amber,
+                      buttonColor: deepOrange,
                     ),
                   ),
                   Text(_errorMessage,style: kErrorTextStyle,),

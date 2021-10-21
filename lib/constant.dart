@@ -94,13 +94,6 @@ const blackSmallNormalTextStyle = TextStyle(
 //Farm's color
 const Color deepOrange = Color(0xFFE19F00);
 const Color lightOrange = Color(0xFFF3D998);
-//Admin's color
-const Color deepBlue = Color(0xFF395066);
-const Color mediumBlue = Color(0xFF48637D);
-const Color lightBlue = Color(0xFF527E9B);
-//Customer's color
-// soon
-
 //Status color
 const Color successDeepGreen = Color(0xFF25AF43);
 const Color successGreen = Color(0xFF3ADC5D);
