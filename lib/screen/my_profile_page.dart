@@ -23,40 +23,60 @@ class MyProfilePage extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(0.1 * screenWidth, 0.02 * screenHeight, 0.1 * screenWidth, 0.02 * screenHeight),
           // decoration: BoxDecoration(color: deepWhite),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(right: 10),
-                      width: 90,
-                      height: 90,
-                      child: Image.asset('assets/images/Icons.jpg'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(right: 10),
+                    width: 90,
+                    height: 90,
+                    child: Image.asset('assets/images/Icons.jpg'),
+                  ),
+                  Expanded(
+                    // width: 0.48 * screenWidth,
+                    child: Text(
+                      '${Auth.farmer.firstname} \n${Auth.farmer.lastname}',
+                      textAlign: TextAlign.left,
+                      style: kNormalTextStyle,
                     ),
-                    Container(
-                      width: 0.48 * screenWidth,
-                      child: Text(
-                        '${Auth.farmer.firstname} \n${Auth.farmer.lastname}',
-                        textAlign: TextAlign.left,
-                        style: kHeadingTextStyle,
-                      ),
-                    ),
-                    IconButton(
-                        onPressed: () {
-                          print('${Auth.farmer.firstname} เข้าสู่หน้าแก้ไขโปรไฟล์ของฉัน');
-                          Navigator.defaultRouteName;
-                          //TODO:My edit profile page
-                        },
-                        icon: Icon(Icons.edit),),
-                  ],
-                ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      print('${Auth.farmer.firstname} เข้าสู่หน้าแก้ไขโปรไฟล์ของฉัน');
+                      Navigator.defaultRouteName;
+                      //TODO:My edit profile page
+                    },
+                    icon: Icon(Icons.edit),
+                  ),
+                ],
               ),
               const Divider(
                 height: 20,
                 thickness: 1,
                 color: Colors.black26,
+              ),
+              Text(
+                'ชื่อฟาร์ม: ${Auth.farmer.farmName}',
+                textAlign: TextAlign.left,
+                style: kNormalTextStyle,
+              ),
+              Text(
+                'พื้นที่ฟาร์ม: ${Auth.farmer.farmMaxArea} ตร.ม.',
+                textAlign: TextAlign.left,
+                style: kNormalTextStyle,
+              ),
+              Text(
+                'เบอร์โทรติดต่อ: ${Auth.farmer.contact}',
+                textAlign: TextAlign.left,
+                style: kNormalTextStyle,
+              ),
+              Text(
+                'ที่อยู่: ${Auth.farmer.address}',
+                textAlign: TextAlign.left,
+                style: kNormalTextStyle,
               ),
             ],
           ),
