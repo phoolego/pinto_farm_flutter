@@ -15,7 +15,7 @@ class _RequestFarmerPageState extends State<RequestFarmerPage> {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 218, 154, 0),
+        backgroundColor: deepOrange,
         title: Text(
           'ขอสิทธิ์เป็นเกษตรบางกะเจ้า',
           style: kAppbarTextStyle,

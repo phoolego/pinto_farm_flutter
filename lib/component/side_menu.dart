@@ -1,23 +1,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
-import 'package:pinto_farmer_flutter/screen/farmer_product_sale_Page.dart';
 import 'package:pinto_farmer_flutter/service/auth.dart';
 
 class SideMenu extends StatelessWidget {
-
 String? firstName = '';
 String? lastName = '';
-String? role = '';
-
-SideMenu.withoutAny(){
-  this.firstName = 'Firstname';
-  this.lastName = 'Lastname';
-  this.role = 'Role';
+String currentPage='รายการผลิตภัณฑ์';
+SideMenu.defaultMenu(this.currentPage){
+  this.firstName = Auth.farmer.firstname;
+  this.lastName = Auth.farmer.lastname;
 }
-SideMenu({this.firstName, this.lastName, this.role});
-
-
+SideMenu({this.firstName, this.lastName});
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +29,12 @@ SideMenu({this.firstName, this.lastName, this.role});
                       padding: EdgeInsets.only(right: 10),
                       width: 80,
                       height: 80,
-                      child: Image.asset('assets/images/Demo.png'),
+                      child: Image.asset('assets/images/Icons.jpg'),
                     ),
                     Text(
-                      '$firstName \n$lastName \n$role',
+                      '$firstName \n$lastName',
                       textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.black, fontSize: 20),
+                      style: kNormalTextStyle,
                     ),
                   ],
                 ),
@@ -51,32 +45,37 @@ SideMenu({this.firstName, this.lastName, this.role});
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: Text('Home'),
+              title: Text('รายการผลิตภัณฑ์',style: kNormalTextStyle),
               onTap: (){
-                //Navigator.pop(context);
-                print('Home');
+                if(currentPage=='รายการผลิตภัณฑ์'){
+                  Navigator.pop(context);
+                }else{
+                  Navigator.pushNamed(context, '/product',);
+                }
               },
             ),
+            // ListTile(
+            //   leading: Icon(Icons.list),
+            //   title: Text('รายการที่ส่งขาย'),
+            //   onTap: (){
+            //     print('$firstName เข้าสู่หน้ารายการที่ส่งขาย');
+            //     Navigator.pushNamed(context, '/product/sale',);
+            //   },
+            // ),
             ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text('Cart'),
+              leading: Icon(Icons.account_circle),
+              title: Text('โปรไฟล์ของฉัน',style: kNormalTextStyle),
               onTap: (){
-                Navigator.pop(context);
-                //Navigator.pop it will just close side menu
-                print('cart');
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text('sale product (testing)'),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    FarmerProductSale()),);
+                if(currentPage=='โปรไฟล์ของฉัน'){
+                  Navigator.pop(context);
+                }else{
+                  Navigator.pushNamed(context, '/profile',);
+                }
               },
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
-              title: Text('Logout'),
+              title: Text('ออกจากระบบ',style: kNormalTextStyle),
               onTap: ()async {
                 await Auth.logout();
                 Navigator.pushReplacementNamed(context,'/');

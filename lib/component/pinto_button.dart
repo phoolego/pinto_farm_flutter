@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 
 class PintoButton extends StatelessWidget {
-  double? width;
-  String label = '';
+  double width;
   var function;
-  Color? buttonColor = Colors.amber;
-  IconData? icon;
+  Color? buttonColor = deepOrange;
+  String label;
+  TextStyle textStyle = kNormalTextStyle;
 
   PintoButton(
-      {this.width,
+      {required this.width,
       required this.label,
       required this.function,
       required this.buttonColor,
-      this.icon});
+      this.textStyle=kNormalTextStyle});
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +30,10 @@ class PintoButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon),
               Text(
                 label,
-                style: kContentTextStyle,
+                style: textStyle,
               ),
-              SizedBox(
-                width: 20,
-              )
             ],
           ),
         ),

@@ -10,18 +10,15 @@ class RegisterChoosePage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: waitingDeepYellow),
-          backgroundColor: Colors.white70,
-          centerTitle: false,
+          backgroundColor: deepOrange,
           title: Text(
-            'ย้อนกลับ',
-            style: kAppbarDeepYellowTextStyle,
+            'เลือกวิธีการสร้างบัญชี',
+            style: kNormalTextStyle,
           ),
-          leadingWidth: 15,
           elevation: 0,
         ),
         body: Container(
-          color: Colors.white70,
+          color: deepWhite,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -58,7 +55,7 @@ class RegisterChoosePage extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    'มีบัญชีอยู่แล้ว\nต้องการขอสิทธิ์เป็นเกษตรกร',
+                                    ': มีบัญชีอยู่แล้ว\nต้องการขอสิทธิ์เป็นเกษตรกร',
                                     style: kContentTextStyle,
                                   ),
                                 ],
@@ -101,7 +98,7 @@ class RegisterChoosePage extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    'สร้างบัญชีใหม่และ\nขอสิทธิ์เป็นเกษตรกร',
+                                    ': สร้างบัญชีใหม่และ\nขอสิทธิ์เป็นเกษตรกร',
                                     style: kContentTextStyle,
                                   ),
                                 ],
