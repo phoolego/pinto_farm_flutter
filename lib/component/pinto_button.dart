@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 
 class PintoButton extends StatelessWidget {
-  double width;
+  double width=200;
   var function;
   Color? buttonColor = deepOrange;
   String label;
   TextStyle textStyle = kNormalTextStyle;
 
   PintoButton(
-      {required this.width,
+      {this.width=200,
       required this.label,
       required this.function,
       required this.buttonColor,

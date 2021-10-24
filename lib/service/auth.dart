@@ -53,18 +53,28 @@ class Auth {
       );
       return response.data['insertId'];
     } on DioError catch (err) {
-      throw err.response!.data['message'];
+      if(err.response==null){
+        throw 'การเชื่อมต่อขัดข้อง';
+      }else if(err.response!.data['message']=='this email was used'){
+        throw 'อีเมลนี้ถูกใช้ไปแล้ว';
+      }else{
+        throw 'ระบบขัดข้อง';
+      }
+    } catch (err){
+      throw 'เกิดข้อผิดพลาด';
     }
   }
-  static Future<int> requestRole(String email,String password) async {
+  static Future<int> requestRole(String email,String password,String farmName,double maxArea) async {
     try {
       var response = await Api.dio.post('/request-farmer-role',
-          data:{'email':email,'password':password}
+        data:{'email':email,'password':password,'farmName':farmName,'maxArea':maxArea}
       );
       return response.data['insertId'];
     } on DioError catch (err) {
-      if(err.response!.statusCode==403){
-        throw 'กรุณากรอก อีเมล และ รหัสผ่าน';
+      if(err.response==null){
+        throw 'การเชื่อมต่อขัดข้อง';
+      }else if(err.response!.statusCode==403){
+        throw 'กรุณากรอกข้อมูลให้ครบถ้วน';
       }else if(err.response!.data['message']=='wrong password'){
         throw 'รหัสผ่านไม่ถูกต้อง';
       }else if(err.response!.data['message']=='you already have farmer permission'){
@@ -77,6 +87,8 @@ class Auth {
       }else{
         throw 'ระบบขัดข้อง';
       }
+    } catch (err){
+      throw 'เกิดข้อผิดพลาด';
     }
   }
   static Future<Farmer> getLoginUser() async{

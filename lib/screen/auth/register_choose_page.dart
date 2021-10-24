@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
-import 'package:pinto_farmer_flutter/component/status_card.dart';
 
 class RegisterChoosePage extends StatelessWidget {
   @override
@@ -11,7 +10,7 @@ class RegisterChoosePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: deepOrange,
-          title: Text(
+          title: const Text(
             'เลือกวิธีการสร้างบัญชี',
             style: kNormalTextStyle,
           ),
@@ -31,38 +30,34 @@ class RegisterChoosePage extends StatelessWidget {
                 },
                 child: Container(
                   alignment: AlignmentDirectional.center,
-                  padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-                  margin: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                  margin: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: lightOrange,
                   ),
                   child: Column(
                     children: [
-                      Container(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      'ขอสิทธิ์เป็นเกษตรบางกะเจ้า',
-                                      style: kHeadingTextStyle,
-                                    ),
-                                  ),
-                                  Text(
-                                    ': มีบัญชีอยู่แล้ว\nต้องการขอสิทธิ์เป็นเกษตรกร',
-                                    style: kContentTextStyle,
-                                  ),
-                                ],
-                              ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  'ขอสิทธิ์เป็นเกษตรบางกะเจ้า',
+                                  style: kHeadingTextStyle,
+                                ),
+                                Text(
+                                  ': มีบัญชีอยู่แล้ว ต้องการขอสิทธิ์เป็นเกษตรกร',
+                                  style: kTextdetailGreyColor,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -74,44 +69,39 @@ class RegisterChoosePage extends StatelessWidget {
                 },
                 child: Container(
                   alignment: AlignmentDirectional.center,
-                  padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-                  margin: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                  margin: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: lightOrange,
                   ),
                   child: Column(
                     children: [
-                      Container(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      'ยังไม่มีบัญชีในระบบปิ่นโต',
-                                      style: kHeadingTextStyle,
-                                    ),
-                                  ),
-                                  Text(
-                                    ': สร้างบัญชีใหม่และ\nขอสิทธิ์เป็นเกษตรกร',
-                                    style: kContentTextStyle,
-                                  ),
-                                ],
-                              ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  'ยังไม่มีบัญชีในระบบปิ่นโต',
+                                  style: kHeadingTextStyle,
+                                ),
+                                Text(
+                                  ': สร้างบัญชีใหม่และขอสิทธิ์เป็นเกษตรกร',
+                                  style: kTextdetailGreyColor,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
               ),
-              Expanded(child: Text('')),
             ],
           ),
         ));
