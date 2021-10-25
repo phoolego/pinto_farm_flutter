@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 
-class PintoTextFieldWithoutHintText extends StatelessWidget {
+class PintoTextField extends StatelessWidget {
   String label = '';
+  String initValue = '';
+  bool isPassword = false;
   var validator;
   var onChanged;
-  int? min;
-  int? max;
 
-  PintoTextFieldWithoutHintText(
-      {required this.label, this.validator, this.onChanged, this.max, this.min});
-
-  PintoTextFieldWithoutHintText.withoutAny() {
-    this.label = 'อีเมล';
-    this.validator = (String val) {};
-    this.onChanged = (String val) {};
-  }
+  PintoTextField(
+      {required this.label, this.validator, this.onChanged, this.isPassword=false, this.initValue=''});
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +36,8 @@ class PintoTextFieldWithoutHintText extends StatelessWidget {
                   ),
                 ),
               ),
+              initialValue: initValue,
+              obscureText: isPassword,
               validator: validator,
               onChanged: onChanged,
             ),

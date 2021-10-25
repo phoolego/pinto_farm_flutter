@@ -130,7 +130,7 @@ class _AddProductPageState extends State<AddProductPage> {
                                       if(value!.isEmpty){
                                         return 'กรุณากรอกพื้นที่ปลูก';
                                       }else if(num.tryParse(value)==null || double.parse(value)<=0){
-                                        return 'กรุณากรอกพตัวเลขที่ถูกต้อง';
+                                        return 'กรุณากรอกตัวเลขที่ถูกต้อง';
                                       }else{
                                         return null;
                                       }
@@ -159,7 +159,7 @@ class _AddProductPageState extends State<AddProductPage> {
                               children: [
                                 Text('วันที่เริ่มปลูก', style: kNormalTextStyle),
                                 Container(
-                                  width: 0.9 * screenWidth,
+                                  width: 0.8 * screenWidth,
                                   height: 50 ,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: lightBlack),
@@ -239,7 +239,7 @@ class _AddProductPageState extends State<AddProductPage> {
                                       if(value!.isEmpty){
                                         return 'กรุณากรอกปริมาณที่คาดว่าจะเก็บเกี่ยว';
                                       }else if(num.tryParse(value)==null || double.parse(value)<=0){
-                                        return 'กรุณากรอกพตัวเลขที่ถูกต้อง';
+                                        return 'กรุณากรอกตัวเลขที่ถูกต้อง';
                                       }else{
                                         return null;
                                       }
@@ -269,7 +269,7 @@ class _AddProductPageState extends State<AddProductPage> {
                                 });
                                 if(_productType.isEmpty){
                                   setState(() {
-                                    _errorProductType='กรุณาเลือกผลิตภัฒฑ์';
+                                    _errorProductType='กรุณาเลือกผลิตภัณฑ์';
                                   });
                                 }else if (_formKey.currentState!.validate()) {
                                   try{
@@ -286,34 +286,6 @@ class _AddProductPageState extends State<AddProductPage> {
                               buttonColor: deepOrange,
                               textStyle: whiteSmallNormalTextStyle,
                             ),
-                            // ElevatedButton(
-                            //   child: Padding(
-                            //       padding: EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight,
-                            //           0.01 * screenWidth, 0.005 * screenHeight),
-                            //       child: const Text('เพิ่มผลิตภัณฑ์', style: whiteSmallNormalTextStyle)
-                            //   ),
-                            //   style: ElevatedButton.styleFrom(primary: deepOrange),
-                            //   onPressed: () async{
-                            //     setState(() {
-                            //       _errorProductType='';
-                            //     });
-                            //     if(_productType.isEmpty){
-                            //       setState(() {
-                            //         _errorProductType='กรุณาเลือกผลิตภัฒฑ์';
-                            //       });
-                            //     }else if (_formKey.currentState!.validate()) {
-                            //       try{
-                            //         await ProductService.insertProduct(_productType, _area, _plantDate, _predictHarvestDate, _predictAmount);
-                            //         Navigator.pop(context);
-                            //         Navigator.pushReplacementNamed(context, '/product');
-                            //       }catch(err){
-                            //         setState(() {
-                            //           _errorMessage = err.toString();
-                            //         });
-                            //       }
-                            //     }
-                            //   },
-                            // ),
                             Text(_errorMessage,style: TextStyle(color: Colors.red),),
                           ],
                         ),

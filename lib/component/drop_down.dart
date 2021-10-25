@@ -6,14 +6,15 @@ class DropDown extends StatelessWidget {
   String? headingLabel = '';
   List<String>? items = [];
   String? hintText = '';
+  var func;
 
-  DropDown.sendStockProduct() {
+  DropDown.sendStockProduct(this.func) {
     headingLabel = 'ตัวกรอง';
     items = [
-      "ยังไม่ได้รับเงิน",
-      "ยังไม่ส่งผลผลิต",
-      "ได้รับเงินแล้ว",
       "ทั้งหมด",
+      "ยังไม่ส่งผลิตภัณฑ์",
+      "ยังไม่ได้รับเงิน",
+      "ได้รับเงินแล้ว",
     ];
     hintText = "กรองสถานะรายการ";
   }
@@ -23,7 +24,7 @@ class DropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       child: DropdownSearch<String>(
         mode: Mode.MENU,
         items: items,
@@ -31,8 +32,8 @@ class DropDown extends StatelessWidget {
         dropdownSearchBaseStyle: kContentTextStyle,
         hint: hintText,
         popupItemDisabled: (String s) => s.startsWith('I'),
-        onChanged: print,
-        selectedItem: "ทั้งหมด",
+        onChanged: func,
+        selectedItem: items![0],
       ),
     );
   }

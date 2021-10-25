@@ -37,11 +37,11 @@ class StockProduct {
   }
   TextStyle getStatusTextStyle(){
     if(sspStatus=='PREPARE'){
-      return kErrorTextStyle;
+      return kStatusNotCompleteTextColor;
     }else if(sspStatus=='DELIVERED'){
-      return kNormalAlertTextStyle;
+      return kStatusWaringTextColor;
     }else if(sspStatus=='PAID'){
-      return kSuccessTextStyle;
+      return kStatusCompleteTextColor;
     }else{
       return kErrorTextStyle;
     }

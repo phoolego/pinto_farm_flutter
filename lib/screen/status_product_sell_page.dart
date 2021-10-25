@@ -9,20 +9,14 @@ class StatusProductSellPage extends StatelessWidget {
   StatusProductSellPage({required this.stockProduct});
   @override
   Widget build(BuildContext context) {
-    String productName = 'ผักกาดขาว';
-    String status = 'ยังไม่ส่งผลผลิต';
-    String date = '01/06/2021';
-    double numberOfSelling = 100;
-    double totalCost = 300.25;
-    String productUnit = 'กรัม';
 
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 218, 154, 0),
+        backgroundColor: deepOrange,
         title: Text(
-          'ชื่อผลิตภัณฑ์: ${stockProduct.name}',
+          '${stockProduct.name}',
           style: kAppbarTextStyle,
         ),
         leading: IconButton(

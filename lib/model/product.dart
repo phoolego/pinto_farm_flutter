@@ -27,7 +27,7 @@ class Product{
     unit = jsonProduct['unit'];
   }
 
-  double getusedAmount(){
+  double getUsedAmount(){
     if(status=='PLANTING') {
       return predictAmount;
     }
@@ -36,5 +36,29 @@ class Product{
     }else{
       return 0;
     }
+  }
+  DateTime? getUsedPlanting(){
+    if(status=='PLANTING') {
+      return predictHarvestDate;
+    }
+    else if(status=='HARVESTED' && harvestAmount!=null){
+      return harvestDate!;
+    }else{
+      return null;
+    }
+  }
+}
+
+class ProductPreview{
+  int productId=0;
+  DateTime plantDate = DateTime.now();
+  String typeOfProduct='';
+  String status='';
+
+  ProductPreview(Map<String,dynamic> jsonProduct){
+    productId = jsonProduct['product_id'];
+    plantDate = DateTime.parse(jsonProduct['plant_date']);
+    typeOfProduct = jsonProduct['type_of_product'];
+    status = jsonProduct['status'];
   }
 }

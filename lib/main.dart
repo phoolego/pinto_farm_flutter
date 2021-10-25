@@ -10,6 +10,7 @@ import 'package:pinto_farmer_flutter/screen/status_product_sell_page.dart';
 import 'package:pinto_farmer_flutter/screen/auth/register_choose_page.dart';
 import 'package:pinto_farmer_flutter/screen/auth/request_farmer_page.dart';
 import 'package:pinto_farmer_flutter/screen/auth/register_farmer_page.dart';
+import 'package:pinto_farmer_flutter/screen/my_profile_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/register' : (context) => RegisterChoosePage(),
         '/register/request-farmer' : (context) => RequestFarmerPage(),
         '/register/register-farmer' : (context) => RegisterFarmerPage(),
+        '/profile': (context) => MyProfilePage(),
 
       },
     );

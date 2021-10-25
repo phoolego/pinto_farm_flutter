@@ -18,7 +18,7 @@ class FarmerProductSale extends StatefulWidget {
 }
 
 class _FarmerProductSaleState extends State<FarmerProductSale> {
-
+  String status='ทั้งหมด';
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -65,7 +65,13 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
                     SizedBox(
                       width: 0.9 * screenWidth,
                       height: 60,
-                      child: DropDown.sendStockProduct(),
+                      child: DropDown.sendStockProduct(
+                        (String? val){
+                          setState(() {
+                            status=val!;
+                          });
+                        }
+                      ),
                     )
                   ],
                 ),
@@ -106,6 +112,7 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
                       );
                     }else{
                       List<StockProduct> stockProducts = snapshot.data!;
+                      stockProducts = stockProducts.where((e) =>status=='ทั้งหมด'|| e.getStatus()==status).toList();
                       return ListView.builder(
                         itemCount: stockProducts.length,
                         itemBuilder: (context, index)=> StatusCard(
@@ -130,7 +137,7 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('ปริมาณที่ขายได้ทั้งหมด ${widget.product.getusedAmount()} ${widget.product.unit} ${
+                  Text('ปริมาณที่ขายได้ทั้งหมด ${widget.product.getUsedAmount()} ${widget.product.unit} ${
                       widget.product.status=='PLANTING'?'จากการคาดการ':'จากการเก็บเกี่ยว'}',style: kNormalTextStyle,),
                   FutureBuilder<List<StockProduct>>(
                     future: ProductService.getStockProduct(widget.product.productId),
