@@ -12,6 +12,7 @@ class Product{
   String unit = 'กก.';
   String areaUnit = 'ตร.ม.';
   String priceUnit = 'บาท';
+  String? productUrl ='';
 
   Product(Map<String,dynamic> jsonProduct){
     productId = jsonProduct['product_id'];
@@ -25,6 +26,7 @@ class Product{
     status = jsonProduct['status'];
     buyPrice = jsonProduct['price_buy']+0.0;
     unit = jsonProduct['unit'];
+    productUrl = jsonProduct['product_pic'];
   }
 
   double getUsedAmount(){
@@ -54,11 +56,13 @@ class ProductPreview{
   DateTime plantDate = DateTime.now();
   String typeOfProduct='';
   String status='';
+  String? productTypePicUrl ='';
 
   ProductPreview(Map<String,dynamic> jsonProduct){
     productId = jsonProduct['product_id'];
     plantDate = DateTime.parse(jsonProduct['plant_date']);
     typeOfProduct = jsonProduct['type_of_product'];
     status = jsonProduct['status'];
+    productTypePicUrl = jsonProduct['picture_of_product'];
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/model/product.dart';
+import 'package:pinto_farmer_flutter/screen/product_detail_image.dart';
 import 'package:pinto_farmer_flutter/screen/product_edit_details_page.dart';
 import 'package:pinto_farmer_flutter/service/date_format.dart';
 import 'package:pinto_farmer_flutter/service/product_service.dart';
@@ -54,27 +54,39 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: Icon(Icons.arrow_back_ios),
+                icon: const Icon(Icons.arrow_back_ios),
               ),
             ),
             body: SafeArea(
               child: Container(
-                decoration: BoxDecoration(color: deepGrayBackground),
+                decoration: const BoxDecoration(color: deepGrayBackground),
                 child: Stack(
                   alignment: Alignment.topCenter,
                   fit: StackFit.expand,
                   children: [
                     Positioned(
                       top: 0,
-                      child: Container(
+                      child: SizedBox(
                         height: 0.35 * screenHeight,
-                        constraints: BoxConstraints(
-                          minWidth: screenWidth,
-                        ),
-                        alignment: AlignmentDirectional.topCenter,
-                        child: Image.asset(
-                          'assets/images/white_cabbage.jpg',
-                        ),
+                        width: screenWidth,
+                        child: product.productUrl!=null?Image.network(
+                          product.productUrl!,
+                          fit: BoxFit.cover,
+                        ):
+                        const Center(child: Text('เพิ่มรูปภาพการปลูก'),),
+                      ),
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: IconButton(
+                        icon: const Icon(Icons.edit),
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) =>
+                              ProductDetailImage(productId: product.productId,)
+                          ),);
+                        },
                       ),
                     ),
                     Positioned(
@@ -87,7 +99,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         padding: EdgeInsets.fromLTRB(0.04 * screenWidth, 0.01 * screenHeight,
                             0.04 * screenWidth, 0.01 * screenHeight),
                         // alignment: Alignment.bottomCenter,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: deepWhite,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(20),
@@ -105,7 +117,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     margin: EdgeInsets.only(top: 0.01 * screenHeight),
                                     padding: EdgeInsets.only(
                                         top: 0.01 * screenHeight, bottom: 0.01 * screenHeight),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: lightGrayBackground,
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(10),
@@ -117,12 +129,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                       children: [
                                         Column(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 0.43 * screenWidth,
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  Text('พื้นที่การปลูก', style: kNormalTextStyle),
+                                                  const Text('พื้นที่การปลูก', style: kNormalTextStyle),
                                                   Text('${product.area} ${product.areaUnit}',
                                                       style: kNormalTextStyle)
                                                 ],
@@ -132,12 +144,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                         ),
                                         Column(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 0.43 * screenWidth,
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  Text('วันที่เริ่มปลูก', style: kNormalTextStyle),
+                                                  const Text('วันที่เริ่มปลูก', style: kNormalTextStyle),
                                                   Text(DateFormat.getFullDate(product.plantDate),
                                                       style: kNormalTextStyle),
                                                 ],
@@ -151,19 +163,19 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   Container(
                                     padding: EdgeInsets.only(
                                         top: 0.01 * screenHeight, bottom: 0.01 * screenHeight),
-                                    decoration: BoxDecoration(color: deepWhite),
+                                    decoration: const BoxDecoration(color: deepWhite),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Column(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 0.43 * screenWidth,
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  Text('ปริมาณที่คาดว่าจะได้', style: kNormalTextStyle),
+                                                  const Text('ปริมาณที่คาดว่าจะได้', style: kNormalTextStyle),
                                                   Text('${product.predictAmount} ${product.unit}',
                                                       style: kNormalTextStyle)
                                                 ],
@@ -173,16 +185,16 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                         ),
                                         Column(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 0.43 * screenWidth,
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  Text('วันที่คาดว่าจะได้', style: kNormalTextStyle),
+                                                  const Text('วันที่คาดว่าจะได้', style: kNormalTextStyle),
                                                   Text(
-                                                      DateFormat.getFullDate(
-                                                          product.predictHarvestDate),
-                                                      style: kNormalTextStyle)
+                                                    DateFormat.getFullDate(product.predictHarvestDate),
+                                                    style: kNormalTextStyle,
+                                                  )
                                                 ],
                                               ),
                                             )
@@ -194,7 +206,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   Container(
                                     padding: EdgeInsets.only(
                                         top: 0.01 * screenHeight, bottom: 0.01 * screenHeight),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: lightGrayBackground,
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(10),
@@ -206,12 +218,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                       children: [
                                         Column(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 0.43 * screenWidth,
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  Text('ปริมาณที่เก็บเกี่ยว', style: kNormalTextStyle),
+                                                  const Text('ปริมาณที่เก็บเกี่ยว', style: kNormalTextStyle),
                                                   Text(
                                                     '${_isNull(product.harvestAmount) ? nullData : product.harvestAmount} ${product.unit}',
                                                     style: _isNull(product.harvestAmount)
@@ -225,12 +237,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                         ),
                                         Column(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 0.43 * screenWidth,
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  Text('วันที่เก็บเกี่ยว', style: kNormalTextStyle),
+                                                  const Text('วันที่เก็บเกี่ยว', style: kNormalTextStyle),
                                                   Text(
                                                     _isNull(product.harvestDate)
                                                         ? nullData
@@ -250,19 +262,19 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   Container(
                                     padding: EdgeInsets.only(
                                         top: 0.01 * screenHeight, bottom: 0.01 * screenHeight),
-                                    decoration: BoxDecoration(color: deepWhite),
+                                    decoration: const BoxDecoration(color: deepWhite),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Column(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 0.43 * screenWidth,
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  Text('ปริมาณที่ส่งขาย', style: kNormalTextStyle),
+                                                  const Text('ปริมาณที่ส่งขาย', style: kNormalTextStyle),
                                                   Text('$nullData ${product.unit}',
                                                       style: kNormalAlertTextStyle)
                                                 ],
@@ -272,12 +284,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                         ),
                                         Column(
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               width: 0.43 * screenWidth,
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  Text('ราคาต่อหน่วย', style: kNormalTextStyle),
+                                                  const Text('ราคาต่อหน่วย', style: kNormalTextStyle),
                                                   Text(
                                                       '${product.buyPrice} ${product.priceUnit}/${product.unit}',
                                                       style: kNormalTextStyle)
@@ -292,7 +304,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 ],
                               ),
                             ),
-                            product.status=='HARVESTED'?SizedBox():Container(
+                            product.status=='HARVESTED'?const SizedBox():Container(
                               padding: EdgeInsets.only(top: 0.01 * screenHeight),
                               child: PintoButton(
                                 width: 200,
@@ -369,7 +381,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               //   },
                               // ),
                             ),
-                            SizedBox(height: 40),
+                            const SizedBox(height: 40),
                           ],
                         ),
                       ),

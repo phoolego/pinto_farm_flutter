@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:pinto_farmer_flutter/api/api.dart';
 import 'package:dio/dio.dart';
+// import 'package:http/http.dart';
 import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/model/product_type.dart';
 import 'package:pinto_farmer_flutter/model/stock_product.dart';
@@ -78,6 +81,36 @@ class ProductService{
       return product;
     } on DioError catch (err) {
       throw err.response!.data['message'];
+    }catch(err){
+      print(err.toString());
+      throw err.toString();
+    }
+  }
+  static Future<void> updateProductImg(int productId,File img) async{
+    try{
+      String fileName = img.path.split('/').last;
+      print(productId);
+      print(img.path);
+      FormData formData = FormData.fromMap({
+        'productId':productId,
+        'productPic':await MultipartFile.fromFile(img.path, filename:fileName)
+      });
+      await Api.dio.put('/farmer-product/update-pic',
+        data: formData,
+        options: Options(
+          headers: {
+            'userId':Auth.farmer.userId,
+            'farmerId':Auth.farmer.farmId,
+          },
+          contentType: 'multipart/form-data',
+        ),
+      );
+    } on DioError catch (err) {
+      if(err.response!=null){
+        throw err.response.toString();
+      }else{
+        throw err.message;
+      }
     }catch(err){
       print(err.toString());
       throw err.toString();

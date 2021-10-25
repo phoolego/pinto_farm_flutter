@@ -12,7 +12,7 @@ class PintoButton extends StatelessWidget {
       {this.width=200,
       required this.label,
       required this.function,
-      required this.buttonColor,
+      this.buttonColor=deepOrange,
       this.textStyle=kNormalTextStyle});
 
   @override

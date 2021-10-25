@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
+import 'package:pinto_farmer_flutter/model/product.dart';
+import 'package:pinto_farmer_flutter/service/date_format.dart';
 
 class ProductCard extends StatelessWidget {
-
-  String productName = '';
-  String dateString = '';
-  int productId = 0;
+  ProductPreview product;
+  // String productName = '';
+  // String dateString = '';
+  // int productId = 0;
   var function;
 
   //not sure about img
 
   ProductCard({
-    required this.productName,
-    required this.dateString,
-    required this.productId,
+    required this.product,
     required this.function});
-
-  ProductCard.withoutProductID({
-    required this.productName,
-    required this.dateString,
-    required this.function});
-
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +32,8 @@ class ProductCard extends StatelessWidget {
                   SizedBox(
                     width: 80,
                     height: 80,
-                    child: Image.asset('assets/images/Icons.jpg'),
+                    child: product.productTypePicUrl!=null?Image.network(product.productTypePicUrl!,fit: BoxFit.cover,):
+                    Image.asset('assets/images/Icons.jpg'),
                     //TODO- fix image to dynamic
                   ),
                   Container(
@@ -47,11 +42,11 @@ class ProductCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          productName,
+                          product.typeOfProduct,
                           style: kHeadingTextStyle,
                         ),
                         Text(
-                          'Date: ${dateString}',
+                          'วันที่ปลูก: ${DateFormat.getFullDate(product.plantDate)}',
                           style: kContentTextStyle,
                         )
                       ],
