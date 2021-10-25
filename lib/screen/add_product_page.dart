@@ -286,34 +286,6 @@ class _AddProductPageState extends State<AddProductPage> {
                               buttonColor: deepOrange,
                               textStyle: whiteSmallNormalTextStyle,
                             ),
-                            // ElevatedButton(
-                            //   child: Padding(
-                            //       padding: EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight,
-                            //           0.01 * screenWidth, 0.005 * screenHeight),
-                            //       child: const Text('เพิ่มผลิตภัณฑ์', style: whiteSmallNormalTextStyle)
-                            //   ),
-                            //   style: ElevatedButton.styleFrom(primary: deepOrange),
-                            //   onPressed: () async{
-                            //     setState(() {
-                            //       _errorProductType='';
-                            //     });
-                            //     if(_productType.isEmpty){
-                            //       setState(() {
-                            //         _errorProductType='กรุณาเลือกผลิตภัณฑ์';
-                            //       });
-                            //     }else if (_formKey.currentState!.validate()) {
-                            //       try{
-                            //         await ProductService.insertProduct(_productType, _area, _plantDate, _predictHarvestDate, _predictAmount);
-                            //         Navigator.pop(context);
-                            //         Navigator.pushReplacementNamed(context, '/product');
-                            //       }catch(err){
-                            //         setState(() {
-                            //           _errorMessage = err.toString();
-                            //         });
-                            //       }
-                            //     }
-                            //   },
-                            // ),
                             Text(_errorMessage,style: TextStyle(color: Colors.red),),
                           ],
                         ),
