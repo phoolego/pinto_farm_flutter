@@ -27,7 +27,7 @@ class MyProfilePage extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     padding: EdgeInsets.only(right: 10),
@@ -45,8 +45,7 @@ class MyProfilePage extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      print('${Auth.farmer.firstname} เข้าสู่หน้าแก้ไขโปรไฟล์ของฉัน');
-                      Navigator.defaultRouteName;
+                      Navigator.pushNamed(context, '/profile/edit');
                       //TODO:My edit profile page
                     },
                     icon: Icon(Icons.edit),
@@ -64,7 +63,7 @@ class MyProfilePage extends StatelessWidget {
                 style: kNormalTextStyle,
               ),
               Text(
-                'พื้นที่ฟาร์ม: ${Auth.farmer.farmMaxArea} ตร.ม.',
+                'พื้นที่ฟาร์มทั้งหมด: ${Auth.farmer.farmMaxArea} ตร.ม.',
                 textAlign: TextAlign.left,
                 style: kNormalTextStyle,
               ),
