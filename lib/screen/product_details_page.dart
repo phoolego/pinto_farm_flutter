@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/model/product.dart';
-import 'package:pinto_farmer_flutter/screen/product_detail_image.dart';
+import 'package:pinto_farmer_flutter/screen/product_detail_image_page.dart';
 import 'package:pinto_farmer_flutter/screen/product_edit_details_page.dart';
 import 'package:pinto_farmer_flutter/service/date_format.dart';
 import 'package:pinto_farmer_flutter/service/product_service.dart';

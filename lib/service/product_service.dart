@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:pinto_farmer_flutter/api/api.dart';
 import 'package:dio/dio.dart';
-// import 'package:http/http.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/model/product_type.dart';
 import 'package:pinto_farmer_flutter/model/stock_product.dart';
@@ -89,11 +89,9 @@ class ProductService{
   static Future<void> updateProductImg(int productId,File img) async{
     try{
       String fileName = img.path.split('/').last;
-      print(productId);
-      print(img.path);
       FormData formData = FormData.fromMap({
         'productId':productId,
-        'productPic':await MultipartFile.fromFile(img.path, filename:fileName)
+        'productPic':await MultipartFile.fromFile(img.path, filename:fileName,contentType: MediaType('image', fileName.split('.').last))
       });
       await Api.dio.put('/farmer-product/update-pic',
         data: formData,

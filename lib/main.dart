@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/screen/auth/auth_controller.dart';
 import 'package:pinto_farmer_flutter/screen/auth/login_page.dart';
+import 'package:pinto_farmer_flutter/screen/my_profile_edit_page.dart';
 import 'package:pinto_farmer_flutter/screen/product_details_page.dart';
 import 'package:pinto_farmer_flutter/screen/product_edit_details_page.dart';
 import 'package:pinto_farmer_flutter/screen/add_product_page.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         '/register/request-farmer' : (context) => RequestFarmerPage(),
         '/register/register-farmer' : (context) => RegisterFarmerPage(),
         '/profile': (context) => MyProfilePage(),
-
+        '/profile/edit': (context) => MyProfileEditPage(),
       },
     );
   }
