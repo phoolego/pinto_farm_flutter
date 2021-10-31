@@ -125,9 +125,8 @@ class _ProductListPageState extends State<ProductListPage> {
                     products = searchOperation(_keyword, products);
                     return ListView.builder(
                       itemCount: products.length,
-                      itemBuilder:(context, index) => ProductCard.withoutProductID(
-                          productName: products[index].typeOfProduct,
-                          dateString: DateFormat.getFullDate(products[index].plantDate),
+                      itemBuilder:(context, index) => ProductCard(
+                          product: products[index],
                           function: () {
                             Navigator.push(
                               context,

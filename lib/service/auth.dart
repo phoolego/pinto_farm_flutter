@@ -1,10 +1,10 @@
 import 'package:pinto_farmer_flutter/api/api.dart';
 import 'package:dio/dio.dart';
 import 'package:pinto_farmer_flutter/model/farmer.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as Ss;
 
 class Auth {
-  static final _storage = FlutterSecureStorage();
+  static const _storage = Ss.FlutterSecureStorage();
   static Farmer farmer = Farmer.notLogin();
 
   static Future<Farmer> login(String? email,String? password) async {
@@ -102,6 +102,36 @@ class Auth {
         return Farmer.notLogin();
       }
     }
-
+  }
+  static Future<void> updateFarmer(String farmName, double maxArea, String firstname, String lastname, String address, String contact) async{
+    try {
+      var response = await Api.dio.put('/update-farmer',
+        data:{
+          'farmName':farmName,
+          'maxArea':maxArea,
+          'firstname':firstname,
+          'lastname':lastname,
+          'address':address,
+          'contact':contact,
+          'userId':farmer.userId,
+        },
+        options: Options(
+          headers: {
+            'userId':Auth.farmer.userId,
+          },
+        ),
+      );
+      farmer = Farmer(response.data);
+    } on DioError catch (err) {
+      if(err.response==null){
+        throw 'การเชื่อมต่อขัดข้อง';
+      }else if(err.response!.statusCode==403){
+        throw 'กรุณากรอกข้อมูลให้ครบถ้วน';
+      }else{
+        throw 'ระบบขัดข้อง';
+      }
+    } catch (err){
+      throw 'เกิดข้อผิดพลาด';
+    }
   }
 }
