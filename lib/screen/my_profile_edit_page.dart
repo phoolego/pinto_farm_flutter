@@ -258,11 +258,45 @@ class _MyProfileEditPageState extends State<MyProfileEditPage> {
                             function: () async {
                               if (_formKey.currentState!.validate()) {
                                 try {
-                                  await Auth.updateFarmer(farmName, maxArea,
-                                      firstname, lastname, address, contact);
+                                  // await Auth.updateFarmer(farmName, maxArea,
+                                  //     firstname, lastname, address, contact);
                                   // Navigator.pop(context);
                                   // Navigator.pushReplacementNamed(
                                   //     context, '/profile');
+                                  showDialog<String>(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          AlertDialog(
+                                            title: const Text('คำเตือน',
+                                                style: kHeadingTextStyle),
+                                            content: const Text(
+                                                'กด "ตกลง" เพื่อทำรายการต่อ',
+                                                style: kContentTextStyle),
+                                            actions: <Widget>[
+                                              InkWell(
+                                                  child: const Text(
+                                                    'ยกเลิก',
+                                                    style: kContentTextStyle,
+                                                  ),
+                                                  onTap: () {
+                                                    Navigator.pop(context);
+                                                  }),
+                                              InkWell(
+                                                child: const Text(
+                                                  'ตกลง',
+                                                  style: kContentTextStyle,
+                                                ),
+                                                onTap: () async {
+                                                  await Auth.updateFarmer(farmName, maxArea,
+                                                      firstname, lastname, address, contact);
+                                                  Navigator.pop(context);
+                                                  Navigator.pushReplacementNamed(
+                                                      context, '/profile');
+                                                },
+                                              )
+                                            ],
+                                          ),
+                                  );
                                 } catch (err) {
                                   setState(() {
                                     _errorMessage = err.toString();
@@ -273,6 +307,7 @@ class _MyProfileEditPageState extends State<MyProfileEditPage> {
                             buttonColor: deepOrange,
                             textStyle: whiteSmallNormalTextStyle,
                           ),
+
                           // PintoButton(
                           //   width: 200,
                           //   label: 'ยืนยันการแก้ไข',
