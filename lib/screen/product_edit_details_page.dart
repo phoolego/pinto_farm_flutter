@@ -23,12 +23,14 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
 
   String _errorHarvestDate = '';
   String _errorMessage = '';
-  _selectDate(BuildContext context,DateTime selectedDate,void Function(DateTime pick) setDate) async {
+  _selectDate(BuildContext context, DateTime selectedDate,
+      void Function(DateTime pick) setDate) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate, // Refer step 1
       firstDate: widget.product.plantDate,
-      lastDate: DateTime(DateTime.now().year+1,DateTime.now().month,DateTime.now().day),
+      lastDate: DateTime(
+          DateTime.now().year + 1, DateTime.now().month, DateTime.now().day),
       helpText: 'เลือกวันที่',
       cancelText: 'ยกเลิก',
       confirmText: 'ตกลง',
@@ -62,7 +64,9 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: screenHeight-kToolbarHeight-MediaQuery.of(context).padding.top,
+            height: screenHeight -
+                kToolbarHeight -
+                MediaQuery.of(context).padding.top,
             decoration: BoxDecoration(color: deepGrayBackground),
             child: Stack(
               alignment: Alignment.topCenter,
@@ -84,10 +88,15 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                 Positioned(
                   top: 0.3 * screenHeight,
                   child: Container(
-                    height: screenHeight * 0.7 - MediaQuery.of(context).padding.top - kToolbarHeight,
+                    height: screenHeight * 0.7 -
+                        MediaQuery.of(context).padding.top -
+                        kToolbarHeight,
                     width: screenWidth,
                     padding: EdgeInsets.fromLTRB(
-                        0.04 * screenWidth, 0.01 * screenHeight, 0.04 * screenWidth, 0.01 * screenHeight),
+                        0.04 * screenWidth,
+                        0.01 * screenHeight,
+                        0.04 * screenWidth,
+                        0.01 * screenHeight),
                     // alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
                       color: deepWhite,
@@ -100,7 +109,9 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(top: 0.01 * screenHeight),
-                          padding: EdgeInsets.only(top: 0.01 * screenHeight, bottom: 0.01 * screenHeight),
+                          padding: EdgeInsets.only(
+                              top: 0.01 * screenHeight,
+                              bottom: 0.01 * screenHeight),
                           decoration: BoxDecoration(
                             color: lightGrayBackground,
                             borderRadius: BorderRadius.all(
@@ -116,10 +127,14 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                   Container(
                                     width: 0.43 * screenWidth,
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Text('พื้นที่การปลูก', style: kNormalTextStyle),
-                                        Text('${widget.product.area} ${widget.product.areaUnit}', style: kNormalTextStyle)
+                                        Text('พื้นที่การปลูก',
+                                            style: kNormalTextStyle),
+                                        Text(
+                                            '${widget.product.area} ${widget.product.areaUnit}',
+                                            style: kNormalTextStyle)
                                       ],
                                     ),
                                   )
@@ -130,10 +145,15 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                   Container(
                                     width: 0.43 * screenWidth,
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Text('วันที่เริ่มปลูก', style: kNormalTextStyle),
-                                        Text(DateFormat.getFullDate(widget.product.plantDate), style: kNormalTextStyle)
+                                        Text('วันที่เริ่มปลูก',
+                                            style: kNormalTextStyle),
+                                        Text(
+                                            DateFormat.getFullDate(
+                                                widget.product.plantDate),
+                                            style: kNormalTextStyle)
                                       ],
                                     ),
                                   )
@@ -159,45 +179,69 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                 Container(
                                   width: 0.9 * screenWidth,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text('วันที่เก็บเกี่ยว', style: kNormalTextStyle),
+                                      Text('วันที่เก็บเกี่ยว',
+                                          style: kNormalTextStyle),
                                       Container(
                                         width: 0.9 * screenWidth,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: lightBlack),
-                                          borderRadius: BorderRadius.all(Radius.circular(5),),
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(5),
+                                          ),
                                         ),
-                                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10, vertical: 12),
                                         child: InkWell(
-                                          onTap: () => _selectDate(context,_harvestDate,(pick){_harvestDate=pick;}),
+                                          onTap: () => _selectDate(
+                                              context, _harvestDate, (pick) {
+                                            _harvestDate = pick;
+                                          }),
                                           child: Text(
-                                            "${DateFormat.getFullDate(_harvestDate.toLocal())}".split(' ')[0],
+                                            "${DateFormat.getFullDate(_harvestDate.toLocal())}"
+                                                .split(' ')[0],
                                             style: kNormalTextStyle,
                                           ),
                                         ),
                                       ),
-                                      _errorHarvestDate.isEmpty?SizedBox():Text(_errorHarvestDate,style: TextStyle(color: Colors.red),),
-                                      SizedBox(height: 0.01 * screenHeight,),
-                                      Text('ปริมาณที่เก็บเกี่ยว (${widget.product.unit})', style: kNormalTextStyle),
+                                      _errorHarvestDate.isEmpty
+                                          ? SizedBox()
+                                          : Text(
+                                              _errorHarvestDate,
+                                              style:
+                                                  TextStyle(color: Colors.red),
+                                            ),
+                                      SizedBox(
+                                        height: 0.01 * screenHeight,
+                                      ),
+                                      Text(
+                                          'ปริมาณที่เก็บเกี่ยว (${widget.product.unit})',
+                                          style: kNormalTextStyle),
                                       TextFormField(
                                         keyboardType: TextInputType.number,
                                         decoration: InputDecoration(
                                           border: OutlineInputBorder(),
-                                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                                          contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 10),
                                         ),
-                                        validator: (value){
-                                          if(value!.isEmpty){
+                                        validator: (value) {
+                                          if (value!.isEmpty) {
                                             return 'กรุณากรอกปริมาณที่เก็บเกี่ยว';
-                                          }else if(num.tryParse(value)==null || double.parse(value)<=0){
+                                          } else if (num.tryParse(value) ==
+                                                  null ||
+                                              double.parse(value) <= 0) {
                                             return 'กรุณากรอกตัวเลขที่ถูกต้อง';
-                                          }else{
+                                          } else {
                                             return null;
                                           }
                                         },
-                                        onChanged: (value){
-                                          if(num.tryParse(value)!=null && double.parse(value)>0){
-                                            _harvestAmount=double.parse(value);
+                                        onChanged: (value) {
+                                          if (num.tryParse(value) != null &&
+                                              double.parse(value) > 0) {
+                                            _harvestAmount =
+                                                double.parse(value);
                                           }
                                         },
                                       )
@@ -215,23 +259,75 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                               PintoButton(
                                 width: 200,
                                 label: 'ยืนยันแก้ไขข้อมูล',
-                                function: () async{
+                                function: () async {
                                   setState(() {
-                                    _errorHarvestDate='';
+                                    _errorHarvestDate = '';
                                   });
-                                  if(_harvestDate.compareTo(widget.product.plantDate)<0){
+                                  if (_harvestDate
+                                          .compareTo(widget.product.plantDate) <
+                                      0) {
                                     setState(() {
-                                      _errorHarvestDate='ไม่สามารถเก็บเกี่ยวก่อนวันปลูกได้';
+                                      _errorHarvestDate =
+                                          'ไม่สามารถเก็บเกี่ยวก่อนวันปลูกได้';
                                     });
-                                  }else if (_formKey.currentState!.validate()) {
-                                    try{
-                                      await ProductService.harvestProduct(widget.product.productId, _harvestDate, _harvestAmount);
-                                      Navigator.pop(context);
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => ProductDetailsPage(productId: widget.product.productId,))
+                                  } else if (_formKey.currentState!
+                                      .validate()) {
+                                    try {
+                                      // await ProductService.harvestProduct(
+                                      //     widget.product.productId,
+                                      //     _harvestDate,
+                                      //     _harvestAmount);
+                                      //Navigator.pop(context);
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(builder: (context) => ProductDetailsPage(productId: widget.product.productId,))
+                                      // );
+                                      showDialog<String>(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            AlertDialog(
+                                          title: const Text('คำเตือน',
+                                              style: kHeadingTextStyle),
+                                          content: const Text(
+                                              'กด "ตกลง" เพื่อทำรายการต่อ',
+                                              style: kContentTextStyle),
+                                          actions: <Widget>[
+                                            InkWell(
+                                                child: const Text(
+                                                  'ยกเลิก',
+                                                  style: kContentTextStyle,
+                                                ),
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                }),
+                                            InkWell(
+                                              child: const Text(
+                                                'ตกลง',
+                                                style: kContentTextStyle,
+                                              ),
+                                              onTap: () async {
+                                                await ProductService
+                                                    .harvestProduct(
+                                                        widget
+                                                            .product.productId,
+                                                        _harvestDate,
+                                                        _harvestAmount);
+                                                Navigator.pop(context);
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            ProductDetailsPage(
+                                                              productId: widget
+                                                                  .product
+                                                                  .productId,
+                                                            )));
+                                              },
+                                            )
+                                          ],
+                                        ),
                                       );
-                                    }catch(err){
+                                    } catch (err) {
                                       setState(() {
                                         _errorMessage = err.toString();
                                       });
@@ -241,16 +337,6 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                 buttonColor: deepOrange,
                                 textStyle: whiteSmallNormalTextStyle,
                               ),
-                              // ElevatedButton(
-                              //   child: Padding(
-                              //       padding: EdgeInsets.fromLTRB(0.01 * screenWidth, 0.005 * screenHeight,
-                              //           0.01 * screenWidth, 0.005 * screenHeight),
-                              //       child: Text('ยืนยันแก้ไขข้อมูล', style: whiteSmallNormalTextStyle)),
-                              //   style: ElevatedButton.styleFrom(primary: deepOrange),
-                              //   onPressed: () {
-                              //     print('Pressed');
-                              //   },
-                              // )
                             ],
                           ),
                         ),
