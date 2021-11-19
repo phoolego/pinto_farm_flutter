@@ -32,7 +32,7 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushNamed(context, '/product');
           },
           icon: Icon(Icons.arrow_back),
         ),

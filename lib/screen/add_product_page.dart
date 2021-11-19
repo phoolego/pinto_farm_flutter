@@ -273,9 +273,41 @@ class _AddProductPageState extends State<AddProductPage> {
                                   });
                                 }else if (_formKey.currentState!.validate()) {
                                   try{
-                                    await ProductService.insertProduct(_productType, _area, _plantDate, _predictHarvestDate, _predictAmount);
-                                    Navigator.pop(context);
-                                    Navigator.pushReplacementNamed(context, '/product');
+                                    // await ProductService.insertProduct(_productType, _area, _plantDate, _predictHarvestDate, _predictAmount);
+                                    // Navigator.pop(context);
+                                    // Navigator.pushReplacementNamed(context, '/product');
+                                    showDialog<String>(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          AlertDialog(
+                                            title: const Text('คำเตือน',
+                                                style: kHeadingTextStyle),
+                                            content: const Text(
+                                                'กด "ตกลง" เพื่อทำรายการต่อ',
+                                                style: kContentTextStyle),
+                                            actions: <Widget>[
+                                              InkWell(
+                                                  child: const Text(
+                                                    'ยกเลิก',
+                                                    style: kContentTextStyle,
+                                                  ),
+                                                  onTap: () {
+                                                    Navigator.pop(context);
+                                                  }),
+                                              InkWell(
+                                                child: const Text(
+                                                  'ตกลง',
+                                                  style: kContentTextStyle,
+                                                ),
+                                                onTap: () async {
+                                                  await ProductService.insertProduct(_productType, _area, _plantDate, _predictHarvestDate, _predictAmount);
+                                                  Navigator.pop(context);
+                                                  Navigator.pushReplacementNamed(context, '/product');
+                                                },
+                                              )
+                                            ],
+                                          ),
+                                    );
                                   }catch(err){
                                     setState(() {
                                       _errorMessage = err.toString();
