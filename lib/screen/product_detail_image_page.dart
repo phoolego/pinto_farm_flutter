@@ -85,13 +85,13 @@ class _ProductDetailImageState extends State<ProductDetailImage> {
               SizedBox(height: screenHeight*0.01,),
               PintoButton(
                 function: getImageFromGallery,
-                label: 'คลังรูปภาพ',
+                label: '+ คลังรูปภาพ',
                 buttonColor: lightOrange,
               ),
               SizedBox(height: screenHeight*0.01,),
               PintoButton(
                 function: getImageFromCamera,
-                label: 'ถ่ายภาพ',
+                label: '+ ถ่ายภาพ',
                 buttonColor: lightOrange,
               ),
               SizedBox(height: screenHeight*0.02,),
