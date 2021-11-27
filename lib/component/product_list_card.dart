@@ -18,51 +18,58 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return InkWell(
       onTap: function,
-      child: Container(
-        height: 100,
-        width: 500,
+      child: SizedBox(
+        width: screenWidth*0.8,
         child: Column(
           children: [
-            Container(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: product.productTypePicUrl!=null?Image.network(product.productTypePicUrl!,fit: BoxFit.cover,):
-                    Image.asset('assets/images/Icons.jpg'),
-                    //TODO- fix image to dynamic
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          product.typeOfProduct,
-                          style: kHeadingTextStyle,
-                        ),
-                        Text(
-                          'วันที่ปลูก: ${DateFormat.getFullDate(product.plantDate)}',
-                          style: kContentTextStyle,
-                        )
-                      ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 80,
+                      height: 80,
+                      child: product.productTypePicUrl!=null?Image.network(product.productTypePicUrl!,fit: BoxFit.cover,):
+                      Image.asset('assets/images/Icons.jpg'),
+                      //TODO- fix image to dynamic
                     ),
-                  ),
-                  Expanded(child: Text(' ')),
-                  //sorry for lazy na ;-;
-                  SizedBox(
+                    Container(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(child: Icon(Icons.chevron_right)),
+                          Text(
+                            product.typeOfProduct,
+                            style: kHeadingTextStyle,
+                          ),
+                          Text(
+                            'วันที่ปลูก: ${DateFormat.getFullDate(product.plantDate)}',
+                            style: kContentTextStyle,
+                          )
                         ],
-                      ))
-                ],
-              ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: const [
+                        Icon(Icons.chevron_right),
+                      ],
+                    ))
+              ],
+            ),
+            const Divider(
+              height: 20,
+              thickness: 1,
+              color: Colors.black26,
             ),
           ],
         ),
