@@ -7,7 +7,8 @@ import 'package:pinto_farmer_flutter/service/product_service.dart';
 
 class ProductDetailImage extends StatefulWidget {
   int productId;
-  ProductDetailImage({required this.productId});
+  var operation;
+  ProductDetailImage({required this.productId, required this.operation});
   @override
   _ProductDetailImageState createState() => _ProductDetailImageState();
 }
@@ -99,6 +100,7 @@ class _ProductDetailImageState extends State<ProductDetailImage> {
                 function: () async {
                   try{
                     await ProductService.updateProductImg(widget.productId,_image!);
+                    widget.operation['ProductDetailsPage']();
                     Navigator.pop(context);
                   }catch(err){
                     error = err.toString();

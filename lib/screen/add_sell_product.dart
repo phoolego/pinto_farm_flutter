@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 import 'package:pinto_farmer_flutter/model/product.dart';
-import 'package:pinto_farmer_flutter/screen/farmer_product_sell_page.dart';
+import 'package:pinto_farmer_flutter/screen/product_sale_list_page.dart';
 import 'package:pinto_farmer_flutter/service/product_service.dart';
 
 class AddSellProductPage extends StatefulWidget {
@@ -145,7 +145,7 @@ class _AddSellProductPageState extends State<AddSellProductPage> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => FarmerProductSale(product: widget.product)
+                                  builder: (context) => ProductSaleList(product: widget.product)
                               ),
                             );
                           }catch(err){

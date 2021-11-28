@@ -7,7 +7,7 @@ import 'package:pinto_farmer_flutter/screen/product_edit_details_page.dart';
 import 'package:pinto_farmer_flutter/screen/add_product_page.dart';
 import 'package:pinto_farmer_flutter/screen/product_list_page.dart';
 import 'package:pinto_farmer_flutter/screen/add_sell_product.dart';
-import 'package:pinto_farmer_flutter/screen/status_product_sell_page.dart';
+import 'package:pinto_farmer_flutter/screen/product_sale_status_page.dart';
 import 'package:pinto_farmer_flutter/screen/auth/register_choose_page.dart';
 import 'package:pinto_farmer_flutter/screen/auth/request_farmer_page.dart';
 import 'package:pinto_farmer_flutter/screen/auth/register_farmer_page.dart';

@@ -7,7 +7,7 @@ import 'package:pinto_farmer_flutter/screen/product_edit_details_page.dart';
 import 'package:pinto_farmer_flutter/service/date_format.dart';
 import 'package:pinto_farmer_flutter/service/product_service.dart';
 
-import 'farmer_product_sell_page.dart';
+import 'product_sale_list_page.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   int productId;
@@ -21,9 +21,16 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   bool _isNull(dynamic value) {
     return value == null;
   }
-
+  void reload(){
+    setState(() {
+      print('reload ProductDetailsPage');
+    });
+  }
   @override
   Widget build(BuildContext context) {
+    Map operation = {
+      'ProductDetailsPage':reload
+    };
     //String
     String nullData = 'ไม่มีข้อมูล';
     //size
@@ -84,7 +91,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         onPressed: (){
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) =>
-                              ProductDetailImage(productId: product.productId,)
+                              ProductDetailImage(productId: product.productId,operation: operation,)
                           ),);
                         },
                       ),
@@ -321,26 +328,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   );
                                 },
                               ),
-                              // ElevatedButton(
-                              //   child: Padding(
-                              //       padding: EdgeInsets.fromLTRB(
-                              //           0.01 * screenWidth,
-                              //           0.005 * screenHeight,
-                              //           0.01 * screenWidth,
-                              //           0.005 * screenHeight),
-                              //       child: Text('แก้ไขข้อมูล',
-                              //           style: whiteSmallNormalTextStyle)),
-                              //   style: ElevatedButton.styleFrom(primary: deepOrange),
-                              //   onPressed: () {
-                              //     print('Pressed');
-                              //     Navigator.push(
-                              //       context,
-                              //       MaterialPageRoute(
-                              //           builder: (context) =>
-                              //               ProductEditDetailsPage(product: product)),
-                              //     );
-                              //   },
-                              // ),
                             ),
                             Container(
                               padding: EdgeInsets.only(top: 0.01 * screenHeight),
@@ -353,33 +340,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => FarmerProductSale(product: product)
+                                      builder: (context) => ProductSaleList(product: product)
                                     ),
                                   );
                                 },
                               ),
-                              // ElevatedButton(
-                              //   child: Padding(
-                              //       padding: EdgeInsets.fromLTRB(
-                              //           0.01 * screenWidth,
-                              //           0.005 * screenHeight,
-                              //           0.01 * screenWidth,
-                              //           0.005 * screenHeight),
-                              //       child: Text('รายการส่งขาย',
-                              //           style: blackSmallNormalTextStyle)),
-                              //   style: ElevatedButton.styleFrom(
-                              //     primary: lightOrange,
-                              //   ),
-                              //   onPressed: () {
-                              //     print('Pressed');
-                              //     Navigator.push(
-                              //       context,
-                              //       MaterialPageRoute(
-                              //           builder: (context) =>
-                              //               FarmerProductSale(product: product)),
-                              //     );
-                              //   },
-                              // ),
                             ),
                             const SizedBox(height: 40),
                           ],

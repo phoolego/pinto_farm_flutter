@@ -6,18 +6,18 @@ import 'package:pinto_farmer_flutter/component/status_card.dart';
 import 'package:pinto_farmer_flutter/model/product.dart';
 import 'package:pinto_farmer_flutter/model/stock_product.dart';
 import 'package:pinto_farmer_flutter/screen/add_sell_product.dart';
-import 'package:pinto_farmer_flutter/screen/status_product_sell_page.dart';
+import 'package:pinto_farmer_flutter/screen/product_sale_status_page.dart';
 import 'package:pinto_farmer_flutter/service/product_service.dart';
 
-class FarmerProductSale extends StatefulWidget {
+class ProductSaleList extends StatefulWidget {
   Product product;
-  FarmerProductSale({Key? key, required this.product}) : super(key: key);
+  ProductSaleList({Key? key, required this.product}) : super(key: key);
 
   @override
-  _FarmerProductSaleState createState() => _FarmerProductSaleState();
+  _ProductSaleListState createState() => _ProductSaleListState();
 }
 
-class _FarmerProductSaleState extends State<FarmerProductSale> {
+class _ProductSaleListState extends State<ProductSaleList> {
   String status='ทั้งหมด';
   @override
   Widget build(BuildContext context) {
@@ -26,15 +26,15 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: deepOrange,
-        title: Text(
+        title: const Text(
           'รายการที่ส่งขาย',
           style: kAppbarTextStyle,
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/product');
+            Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
       body: Container(
@@ -120,7 +120,7 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
                           function: (){
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => StatusProductSellPage(stockProduct: stockProducts[index]))
+                                MaterialPageRoute(builder: (context) => ProductSaleStatusPage(stockProduct: stockProducts[index]))
                             );
                           }
                         ),
@@ -133,7 +133,7 @@ class _FarmerProductSaleState extends State<FarmerProductSale> {
             Container(
               padding: EdgeInsets.symmetric(horizontal: screenWidth*0.05,vertical: 20),
               width: screenWidth,
-              color: lightOrange,
+              color: deepOrange,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

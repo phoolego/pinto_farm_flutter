@@ -4,9 +4,9 @@ import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/model/stock_product.dart';
 import 'package:pinto_farmer_flutter/service/date_format.dart';
 
-class StatusProductSellPage extends StatelessWidget {
+class ProductSaleStatusPage extends StatelessWidget {
   StockProduct stockProduct;
-  StatusProductSellPage({required this.stockProduct});
+  ProductSaleStatusPage({required this.stockProduct});
   @override
   Widget build(BuildContext context) {
 
@@ -23,7 +23,7 @@ class StatusProductSellPage extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_ios),
         ),
       ),
       body: Container(
