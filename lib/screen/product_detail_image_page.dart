@@ -100,6 +100,9 @@ class _ProductDetailImageState extends State<ProductDetailImage> {
                 function: () async {
                   try{
                     await ProductService.updateProductImg(widget.productId,_image!);
+                    imageCache!.clear();
+                    imageCache!.clearLiveImages();
+                    widget.operation['ProductListPage']();
                     widget.operation['ProductDetailsPage']();
                     Navigator.pop(context);
                   }catch(err){

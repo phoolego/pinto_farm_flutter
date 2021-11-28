@@ -11,7 +11,8 @@ import 'product_sale_list_page.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   int productId;
-  ProductDetailsPage({Key? key, required this.productId}) : super(key: key);
+  Map operation;
+  ProductDetailsPage({Key? key, required this.productId, required this.operation}) : super(key: key);
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
@@ -28,9 +29,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   }
   @override
   Widget build(BuildContext context) {
-    Map operation = {
-      'ProductDetailsPage':reload
-    };
+    widget.operation['ProductDetailsPage'] = reload;
     //String
     String nullData = 'ไม่มีข้อมูล';
     //size
@@ -91,7 +90,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         onPressed: (){
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) =>
-                              ProductDetailImage(productId: product.productId,operation: operation,)
+                              ProductDetailImage(productId: product.productId,operation: widget.operation,)
                           ),);
                         },
                       ),
@@ -323,7 +322,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                      ProductEditDetailsPage(product: product)
+                                      ProductEditDetailsPage(product: product,operation: widget.operation,)
                                     ),
                                   );
                                 },

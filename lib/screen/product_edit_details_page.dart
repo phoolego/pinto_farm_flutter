@@ -9,8 +9,8 @@ import 'package:pinto_farmer_flutter/service/product_service.dart';
 
 class ProductEditDetailsPage extends StatefulWidget {
   Product product;
-
-  ProductEditDetailsPage({required this.product});
+  Map operation;
+  ProductEditDetailsPage({required this.product, required this.operation});
 
   @override
   State<ProductEditDetailsPage> createState() => _ProductEditDetailsPageState();
@@ -58,7 +58,7 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
       body: SafeArea(
@@ -67,7 +67,7 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
             height: screenHeight -
                 kToolbarHeight -
                 MediaQuery.of(context).padding.top,
-            decoration: BoxDecoration(color: deepGrayBackground),
+            decoration: const BoxDecoration(color: deepGrayBackground),
             child: Stack(
               alignment: Alignment.topCenter,
               fit: StackFit.expand,
@@ -98,7 +98,7 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                         0.04 * screenWidth,
                         0.01 * screenHeight),
                     // alignment: Alignment.bottomCenter,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: deepWhite,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
@@ -112,7 +112,7 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                           padding: EdgeInsets.only(
                               top: 0.01 * screenHeight,
                               bottom: 0.01 * screenHeight),
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: lightGrayBackground,
                             borderRadius: BorderRadius.all(
                               Radius.circular(10),
@@ -124,13 +124,13 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                             children: [
                               Column(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 0.43 * screenWidth,
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text('พื้นที่การปลูก',
+                                        const Text('พื้นที่การปลูก',
                                             style: kNormalTextStyle),
                                         Text(
                                             '${widget.product.area} ${widget.product.areaUnit}',
@@ -142,13 +142,13 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                               ),
                               Column(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 0.43 * screenWidth,
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text('วันที่เริ่มปลูก',
+                                        const Text('วันที่เริ่มปลูก',
                                             style: kNormalTextStyle),
                                         Text(
                                             DateFormat.getFullDate(
@@ -166,7 +166,7 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                           key: _formKey,
                           child: Container(
                             margin: EdgeInsets.only(top: 0.01 * screenHeight),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: deepWhite,
                               borderRadius: BorderRadius.all(
                                 Radius.circular(10),
@@ -176,23 +176,23 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
+                                SizedBox(
                                   width: 0.9 * screenWidth,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text('วันที่เก็บเกี่ยว',
+                                      const Text('วันที่เก็บเกี่ยว',
                                           style: kNormalTextStyle),
                                       Container(
                                         width: 0.9 * screenWidth,
                                         decoration: BoxDecoration(
                                           border: Border.all(color: lightBlack),
-                                          borderRadius: BorderRadius.all(
+                                          borderRadius: const BorderRadius.all(
                                             Radius.circular(5),
                                           ),
                                         ),
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 10, vertical: 12),
                                         child: InkWell(
                                           onTap: () => _selectDate(
@@ -200,18 +200,18 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                             _harvestDate = pick;
                                           }),
                                           child: Text(
-                                            "${DateFormat.getFullDate(_harvestDate.toLocal())}"
+                                            DateFormat.getFullDate(_harvestDate.toLocal())
                                                 .split(' ')[0],
                                             style: kNormalTextStyle,
                                           ),
                                         ),
                                       ),
                                       _errorHarvestDate.isEmpty
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : Text(
                                               _errorHarvestDate,
                                               style:
-                                                  TextStyle(color: Colors.red),
+                                                  const TextStyle(color: Colors.red),
                                             ),
                                       SizedBox(
                                         height: 0.01 * screenHeight,
@@ -221,7 +221,7 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                           style: kNormalTextStyle),
                                       TextFormField(
                                         keyboardType: TextInputType.number,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           border: OutlineInputBorder(),
                                           contentPadding: EdgeInsets.symmetric(
                                               horizontal: 10),
@@ -312,16 +312,9 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                                             .product.productId,
                                                         _harvestDate,
                                                         _harvestAmount);
+                                                widget.operation['ProductListPage']();
+                                                widget.operation['ProductDetailsPage']();
                                                 Navigator.pop(context);
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            ProductDetailsPage(
-                                                              productId: widget
-                                                                  .product
-                                                                  .productId,
-                                                            )));
                                               },
                                             )
                                           ],

@@ -16,7 +16,6 @@ class ProductListPage extends StatefulWidget {
 
 class _ProductListPageState extends State<ProductListPage> {
   String _keyword='';
-
   List<ProductPreview> searchOperation(String keyword, List<ProductPreview> ProdctList) {
     List<ProductPreview> result = [];
     if(keyword.isNotEmpty){
@@ -30,16 +29,21 @@ class _ProductListPageState extends State<ProductListPage> {
       return ProdctList;
     }
   }
-
+  void reload(){
+    setState(() {
+      print('reload ProductListPage');
+    });
+  }
   @override
   Widget build(BuildContext context) {
+    Map operation = {'ProductListPage':reload};
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       drawer: SideMenu.defaultMenu('รายการผลิตภัณฑ์'),
       appBar: AppBar(
         backgroundColor: deepOrange,
-        title: Text(
+        title: const Text(
           'รายการผลิตภัณฑ์',
           style: kAppbarTextStyle,
         ),
@@ -130,7 +134,7 @@ class _ProductListPageState extends State<ProductListPage> {
                           function: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => ProductDetailsPage(productId: products[index].productId,))
+                              MaterialPageRoute(builder: (context) => ProductDetailsPage(productId: products[index].productId,operation: operation,))
                             );
                           },
                       ),
