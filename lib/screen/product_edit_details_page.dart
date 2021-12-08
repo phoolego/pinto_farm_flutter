@@ -74,15 +74,10 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
               children: [
                 Positioned(
                   top: 0,
-                  child: Container(
+                  child: SizedBox(
                     height: 0.35 * screenHeight,
-                    constraints: BoxConstraints(
-                      minWidth: screenWidth,
-                    ),
-                    alignment: AlignmentDirectional.topCenter,
-                    child: Image.asset(
-                      'assets/images/white_cabbage.jpg',
-                    ),
+                    width: screenWidth,
+                    child: const Center(child: Text('เพิ่มรูปภาพการปลูก'),),
                   ),
                 ),
                 Positioned(
@@ -314,7 +309,7 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                                         _harvestAmount);
                                                 widget.operation['ProductListPage']();
                                                 widget.operation['ProductDetailsPage']();
-                                                Navigator.pop(context);
+                                                Navigator.pop(context);Navigator.pop(context);
                                               },
                                             )
                                           ],
