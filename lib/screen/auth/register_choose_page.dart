@@ -51,7 +51,7 @@ class RegisterChoosePage extends StatelessWidget {
                                   style: kHeadingTextStyle,
                                 ),
                                 Text(
-                                  ': มีบัญชีอยู่แล้ว ต้องการขอสิทธิ์เป็นเกษตรกร',
+                                  'มีบัญชีอยู่แล้ว ต้องการขอสิทธิ์เป็นเกษตรกร',
                                   style: kTextdetailGreyColor,
                                 ),
                               ],
@@ -90,7 +90,7 @@ class RegisterChoosePage extends StatelessWidget {
                                   style: kHeadingTextStyle,
                                 ),
                                 Text(
-                                  ': สร้างบัญชีใหม่และขอสิทธิ์เป็นเกษตรกร',
+                                  'สร้างบัญชีใหม่และขอสิทธิ์เป็นเกษตรกร',
                                   style: kTextdetailGreyColor,
                                 ),
                               ],
