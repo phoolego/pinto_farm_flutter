@@ -27,7 +27,7 @@ class MyProfilePage extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     padding: EdgeInsets.only(right: 10),
@@ -46,9 +46,9 @@ class MyProfilePage extends StatelessWidget {
                   IconButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/profile/edit');
-                      //TODO:My edit profile page
                     },
                     icon: Icon(Icons.edit),
+                    alignment: Alignment.topCenter,
                   ),
                 ],
               ),
