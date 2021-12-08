@@ -50,6 +50,8 @@ SideMenu({this.firstName, this.lastName});
                 if(currentPage=='รายการผลิตภัณฑ์'){
                   Navigator.pop(context);
                 }else{
+                  imageCache!.clear();
+                  imageCache!.clearLiveImages();
                   Navigator.pushNamed(context, '/product',);
                 }
               },
@@ -69,6 +71,8 @@ SideMenu({this.firstName, this.lastName});
                 if(currentPage=='โปรไฟล์ของฉัน'){
                   Navigator.pop(context);
                 }else{
+                  imageCache!.clear();
+                  imageCache!.clearLiveImages();
                   Navigator.pushNamed(context, '/profile',);
                 }
               },
@@ -77,6 +81,8 @@ SideMenu({this.firstName, this.lastName});
               leading: Icon(Icons.exit_to_app),
               title: Text('ออกจากระบบ',style: kNormalTextStyle),
               onTap: ()async {
+                imageCache!.clear();
+                imageCache!.clearLiveImages();
                 await Auth.logout();
                 Navigator.pushReplacementNamed(context,'/');
               },
