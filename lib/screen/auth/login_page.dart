@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:pinto_farmer_flutter/component/pinto_button.dart';
 import 'package:pinto_farmer_flutter/constant.dart';
 import 'package:pinto_farmer_flutter/service/auth.dart';
@@ -147,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                                 function: () async {
                                   Navigator.pushNamed(context, '/register');
                                 },
-                                buttonColor: lightOrange),
+                                buttonColor: Colors.white12),
                             SizedBox(height: 10),
                           ],
                         )
