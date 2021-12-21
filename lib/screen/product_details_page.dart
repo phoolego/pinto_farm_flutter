@@ -281,8 +281,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
                                                   const Text('ปริมาณที่ส่งขาย', style: kNormalTextStyle),
-                                                  Text('$nullData ${product.unit}',
-                                                      style: kNormalAlertTextStyle)
+                                                  product.sellingAmount==null?
+                                                  Text(
+                                                    '$nullData ${product.unit}',
+                                                    style: kNormalAlertTextStyle,
+                                                  ):
+                                                  Text(
+                                                    '${product.sellingAmount} ${product.unit}',
+                                                    style: kNormalTextStyle,
+                                                  )
                                                 ],
                                               ),
                                             )

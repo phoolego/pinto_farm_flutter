@@ -13,6 +13,7 @@ class Product{
   String areaUnit = 'ตร.ม.';
   String priceUnit = 'บาท';
   String? productUrl ='';
+  double? sellingAmount;
 
   Product(Map<String,dynamic> jsonProduct){
     productId = jsonProduct['product_id'];
@@ -27,6 +28,7 @@ class Product{
     buyPrice = jsonProduct['price_buy']+0.0;
     unit = jsonProduct['unit'];
     productUrl = jsonProduct['product_pic'];
+    sellingAmount = jsonProduct['ssp_amount']==null?null:jsonProduct['ssp_amount']+0.0;
   }
 
   double getUsedAmount(){
