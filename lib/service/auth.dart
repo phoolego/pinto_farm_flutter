@@ -51,16 +51,20 @@ class Auth {
           'maxArea': maxArea
         }
       );
-      return response.data['insertId'];
+      return response.data['user_id'];
     } on DioError catch (err) {
+      print(err.response!.data['message']);
       if(err.response==null){
         throw 'การเชื่อมต่อขัดข้อง';
       }else if(err.response!.data['message']=='this email was used'){
         throw 'อีเมลนี้ถูกใช้ไปแล้ว';
+      }else if(err.response!.data['message']=='this farm name was used'){
+        throw 'ชื่อฟาร์มนี้ถูกใช้ไปแล้ว';
       }else{
         throw 'ระบบขัดข้อง';
       }
     } catch (err){
+      print(err);
       throw 'เกิดข้อผิดพลาด';
     }
   }

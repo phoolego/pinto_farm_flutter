@@ -51,6 +51,7 @@ class _RequestFarmerPageState extends State<RequestFarmerPage> {
               ),
               PintoTextField(
                 label: 'อีเมล',
+                initValue: email,
                 validator: (String? val) {
                   if (val!.isEmpty) {
                     return 'กรุณากรอกอีเมล';
@@ -78,6 +79,7 @@ class _RequestFarmerPageState extends State<RequestFarmerPage> {
               ),
               PintoTextField(
                 label: 'ชื่อฟาร์ม',
+                initValue: farmName,
                 validator: (String? val) {
                   if (val!.isEmpty) {
                     return 'กรุณากรอกชื่อฟาร์ม';
@@ -91,6 +93,7 @@ class _RequestFarmerPageState extends State<RequestFarmerPage> {
               ),
               PintoTextField(
                 label: 'ขนาดฟาร์ม (ตร.ม.)',
+                initValue: maxArea.toString(),
                 validator: (String? val) {
                   if(val!.isEmpty){
                     return 'กรุณากรอกพื้นที่ปลูก';

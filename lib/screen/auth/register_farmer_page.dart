@@ -56,6 +56,7 @@ class _RegisterFarmerPageState extends State<RegisterFarmerPage> {
               ),
               PintoTextField(
                 label: 'อีเมล',
+                initValue: email,
                 validator: (String? val) {
                   if (val!.isEmpty) {
                     return 'กรุณากรอกอีเมล';
@@ -70,6 +71,7 @@ class _RegisterFarmerPageState extends State<RegisterFarmerPage> {
               PintoTextField(
                 label: 'รหัสผ่าน',
                 isPassword: true,
+                initValue: password,
                 validator: (String? val) {
                   if (val!.isEmpty) {
                     return 'กรุณากรอกรหัสผ่าน';
@@ -98,6 +100,7 @@ class _RegisterFarmerPageState extends State<RegisterFarmerPage> {
               ),
               PintoTextField(
                 label: 'ชื่อ',
+                initValue: firstname,
                 validator: (String? val) {
                   if (val!.isEmpty) {
                     return 'กรุณากรอกชื่อ';
@@ -111,6 +114,7 @@ class _RegisterFarmerPageState extends State<RegisterFarmerPage> {
               ),
               PintoTextField(
                 label: 'นามสกุล',
+                initValue: lastname,
                 validator: (String? val) {
                   if (val!.isEmpty) {
                     return 'กรุณากรอกนามสกุล';
@@ -136,6 +140,7 @@ class _RegisterFarmerPageState extends State<RegisterFarmerPage> {
                     Padding(
                       padding: EdgeInsets.zero,
                       child: TextFormField(
+                        initialValue: address,
                         minLines: 3,
                         maxLines: 5,
                         decoration: const InputDecoration(
@@ -169,6 +174,7 @@ class _RegisterFarmerPageState extends State<RegisterFarmerPage> {
                       padding: EdgeInsets.zero,
                       child: TextFormField(
                         keyboardType: TextInputType.phone,
+                        initialValue: contact,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(
@@ -193,6 +199,7 @@ class _RegisterFarmerPageState extends State<RegisterFarmerPage> {
               ),
               PintoTextField(
                 label: 'ชื่อฟาร์ม',
+                initValue: farmName,
                 validator: (String? val) {
                   if (val!.isEmpty) {
                     return 'กรุณากรอกชื่อฟาร์ม';
@@ -206,6 +213,7 @@ class _RegisterFarmerPageState extends State<RegisterFarmerPage> {
               ),
               PintoTextField(
                 label: 'ขนาดฟาร์ม (ตร.ม.)',
+                initValue: maxArea.toString(),
                 validator: (String? val) {
                   if(val!.isEmpty){
                     return 'กรุณากรอกพื้นที่ปลูก';
