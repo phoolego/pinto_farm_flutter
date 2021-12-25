@@ -301,7 +301,7 @@ class _AddProductPageState extends State<AddProductPage> {
                                                 ),
                                                 onTap: () async {
                                                   await ProductService.insertProduct(_productType, _area, _plantDate, _predictHarvestDate, _predictAmount);
-                                                  Navigator.pop(context);
+                                                  Navigator.popUntil(context, ModalRoute.withName('/product'));
                                                   Navigator.pushReplacementNamed(context, '/product');
                                                 },
                                               )
