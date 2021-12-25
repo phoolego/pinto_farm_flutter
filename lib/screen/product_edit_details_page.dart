@@ -309,7 +309,8 @@ class _ProductEditDetailsPageState extends State<ProductEditDetailsPage> {
                                                         _harvestAmount);
                                                 widget.operation['ProductListPage']();
                                                 widget.operation['ProductDetailsPage']();
-                                                Navigator.pop(context);Navigator.pop(context);
+                                                Navigator.pop(context);
+                                                Navigator.pop(context);
                                               },
                                             )
                                           ],

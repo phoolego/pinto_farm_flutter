@@ -289,7 +289,7 @@ class _MyProfileEditPageState extends State<MyProfileEditPage> {
                                                 onTap: () async {
                                                   await Auth.updateFarmer(farmName, maxArea,
                                                       firstname, lastname, address, contact);
-                                                  Navigator.pop(context);
+                                                  Navigator.popUntil(context, ModalRoute.withName('/profile'));
                                                   Navigator.pushReplacementNamed(
                                                       context, '/profile');
                                                 },
